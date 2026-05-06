@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Nutrition — Athletes Guide | دليل التغذية للرياضيين</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0d7c66;
+    --primary-m: #0f9d82;
+    --primary-light: #14b89a;
+    --primary-pale: #e6f7f4;
+    --accent: #f59e0b;
+    --accent-pale: #fffbeb;
+    --blue: #2563eb;
+    --blue-pale: #eff6ff;
+    --red: #dc2626;
+    --red-pale: #fef2f2;
+    --text: #0f2320;
+    --text-soft: #5a7570;
+    --border: #d1ece7;
+    --bg: #f4fbf9;
+    --white: #ffffff;
+    --radius: 16px;
+    --shadow: 0 4px 22px rgba(13,124,102,0.11);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.8; }
+
+  /* ── LANG TOGGLE ── */
+  .lang-bar { background: var(--primary); display: flex; justify-content: flex-end; align-items: center; gap: 8px; padding: 8px 24px; }
+  .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; font-family: 'Tajawal','Nunito',sans-serif; font-size: 13px; font-weight: 700; padding: 5px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { background: white; color: var(--primary); }
+  .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.28); }
+  .ar-text, .en-text { transition: opacity 0.2s; }
+  body.lang-ar .en-text { display: none; }
+  body.lang-en .ar-text { display: none; }
+  body.lang-en { direction: ltr; font-family: 'Nunito', sans-serif; }
+  body.lang-en .sticky-nav .nav-inner { direction: ltr; }
+  body.lang-en .info-box.green { border-right: none; border-left: 4px solid var(--primary); }
+  body.lang-en .info-box.teal { border-right: none; border-left: 4px solid var(--primary-m); }
+  body.lang-en .info-box.amber { border-right: none; border-left: 4px solid var(--accent); }
+  body.lang-en .info-box.blue { border-right: none; border-left: 4px solid var(--blue); }
+  body.lang-en .info-box.red { border-right: none; border-left: 4px solid var(--red); }
+  body.lang-en .timeline { padding-right: 0; padding-left: 30px; }
+  body.lang-en .timeline::before { right: auto; left: 11px; }
+  body.lang-en .tl-dot { right: auto; left: -30px; }
+  body.lang-en .acc-trigger { text-align: left; }
+  body.lang-en .chklist li { flex-direction: row; }
+  body.lang-en .example-box { border-right: none; border-left: 4px solid var(--accent); }
+  body.lang-en .big-tip { flex-direction: row; }
+  body.lang-en .foot-nav .nav-btn.prim:first-of-type::after { content: ' ›'; }
+
+  /* ── HEADER ── */
+  header { background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #0d7c66 70%, #14b89a 100%); color: white; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; bottom: -60px; right: -60px; width: 280px; height: 280px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+  header::after { content: ''; position: absolute; top: -50px; left: 30px; width: 220px; height: 220px; background: rgba(245,158,11,0.1); border-radius: 50%; }
+  .header-inner { max-width: 920px; margin: 0 auto; padding: 44px 24px 38px; position: relative; z-index: 1; }
+  .aud-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 30px; margin-bottom: 14px; }
+  header h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+  header h1 .highlight { color: #6ee7c7; }
+  .header-sub { font-size: 1rem; opacity: 0.88; max-width: 580px; font-weight: 400; }
+  .header-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .hpill { background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.24); color: white; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; cursor: pointer; transition: background 0.2s; }
+  .hpill:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── NAV ── */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 2px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .nav-inner { max-width: 920px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 0 0 auto; padding: 13px 18px; border: none; background: transparent; font-family: inherit; font-size: 13px; font-weight: 700; color: var(--text-soft); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  .tab-btn:hover { color: var(--primary); }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-pale); }
+
+  /* ── MAIN ── */
+  main { max-width: 920px; margin: 0 auto; padding: 32px 20px 70px; }
+  .section { display: none; animation: fadeUp 0.35s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SECTION HEADER ── */
+  .sec-head { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .sec-icon { width: 58px; height: 58px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; box-shadow: 0 6px 18px rgba(13,124,102,0.28); }
+  .sec-head h2 { font-size: 1.7rem; font-weight: 900; color: var(--primary); line-height: 1.2; }
+  .sec-head .sub-label { font-size: 0.85rem; color: var(--text-soft); margin-top: 3px; font-style: italic; }
+
+  /* ── CARDS ── */
+  .card { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 24px 26px; margin-bottom: 18px; box-shadow: var(--shadow); }
+  .card-title { font-weight: 800; font-size: 1.05rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+  /* ── BIG TIP ── */
+  .big-tip { background: linear-gradient(135deg, var(--primary-pale), #fff); border: 2px solid var(--primary); border-radius: 14px; padding: 20px 22px; margin: 14px 0; display: flex; gap: 14px; align-items: flex-start; }
+  .tip-icon { font-size: 28px; flex-shrink: 0; }
+  .tip-body { font-size: 1rem; font-weight: 500; color: var(--text); }
+  .tip-body strong { color: var(--primary); font-weight: 900; }
+
+  /* ── INFO BOXES ── */
+  .info-box { border-radius: 12px; padding: 15px 18px; margin: 12px 0; display: flex; gap: 12px; align-items: flex-start; font-size: 0.94rem; }
+  .info-box.green { background: var(--primary-pale); border-right: 4px solid var(--primary); }
+  .info-box.teal { background: #e0f7f2; border-right: 4px solid var(--primary-m); }
+  .info-box.amber { background: var(--accent-pale); border-right: 4px solid var(--accent); }
+  .info-box.blue { background: var(--blue-pale); border-right: 4px solid var(--blue); }
+  .info-box.red { background: var(--red-pale); border-right: 4px solid var(--red); }
+  .info-box-icon { font-size: 21px; flex-shrink: 0; }
+  .info-box strong { display: block; margin-bottom: 3px; font-weight: 800; }
+
+  /* ── EXAMPLE BOX ── */
+  .example-box { background: #f8fffe; border-radius: 12px; padding: 15px 18px; margin: 12px 0; border-right: 4px solid var(--accent); font-size: 0.93rem; color: var(--text-soft); }
+  .example-box strong { color: #b45309; font-weight: 800; display: block; margin-bottom: 5px; }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  @media(max-width:620px) { .grid-2,.grid-3 { grid-template-columns: 1fr; } }
+
+  /* ── STAT CARDS ── */
+  .stat-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .stat-num { font-size: 2rem; font-weight: 900; line-height: 1; }
+  .stat-unit { font-size: 0.76rem; color: var(--text-soft); margin-top: 3px; }
+  .stat-label { font-size: 0.86rem; font-weight: 700; margin-top: 7px; }
+
+  /* ── ACCORDION ── */
+  .acc-item { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+  .acc-trigger { width: 100%; background: none; border: none; padding: 15px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; text-align: right; }
+  .acc-trigger:hover { background: var(--primary-pale); }
+  .acc-trigger.open { background: var(--primary-pale); color: var(--primary); }
+  .acc-arrow { transition: transform 0.3s; font-size: 16px; color: var(--primary); }
+  .acc-trigger.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.2s; padding: 0 20px; font-size: 0.93rem; color: var(--text-soft); }
+  .acc-body.open { max-height: 1200px; padding: 15px 20px 20px; }
+
+  /* ── PLATE VISUAL ── */
+  .plate-wrap { display: flex; flex-direction: column; align-items: center; margin: 18px 0; }
+  .plate { width: 210px; height: 210px; border-radius: 50%; position: relative; overflow: hidden; border: 6px solid #d1ece7; box-shadow: 0 8px 28px rgba(0,0,0,0.13); }
+  .seg-carb-1 { position: absolute; top: 0; left: 0; right: 0; height: 50%; background: #fbbf24; }
+  .seg-carb-2 { position: absolute; bottom: 0; right: 0; width: 50%; height: 50%; background: #fcd34d; }
+  .seg-protein { position: absolute; bottom: 0; left: 0; width: 50%; height: 50%; background: #34d399; }
+  .plate-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 76px; height: 76px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); z-index: 2; }
+  .plate-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; justify-content: center; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; }
+  .legend-dot { width: 13px; height: 13px; border-radius: 4px; }
+
+  /* ── MACRO BARS ── */
+  .mbar-wrap { margin: 12px 0; }
+  .mbar-lbl { display: flex; justify-content: space-between; font-size: 0.86rem; font-weight: 800; margin-bottom: 5px; }
+  .mbar-bg { background: var(--border); border-radius: 20px; height: 13px; overflow: hidden; }
+  .mbar-fill { height: 100%; border-radius: 20px; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+  /* ── TABLE ── */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 10px 0; }
+  .tbl th { background: var(--primary); color: white; padding: 10px 13px; text-align: right; font-weight: 700; }
+  .tbl th:first-child { border-radius: 10px 0 0 0; }
+  .tbl th:last-child { border-radius: 0 10px 0 0; }
+  .tbl td { padding: 9px 13px; border-bottom: 1px solid var(--border); }
+  .tbl tr:nth-child(even) td { background: #f4fbf9; }
+  body.lang-en .tbl th { text-align: left; }
+
+  /* ── WATER TRACKER ── */
+  .water-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+  .w-glass { width: 48px; height: 48px; border-radius: 12px; border: 2px solid var(--border); background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.2s; }
+  .w-glass:hover { border-color: var(--primary); transform: scale(1.1); }
+  .w-glass.on { background: var(--primary-pale); border-color: var(--primary); }
+  .water-display { font-size: 2.8rem; font-weight: 900; color: var(--primary); line-height: 1; }
+
+  /* ── TIMELINE ── */
+  .timeline { padding-right: 30px; position: relative; }
+  .timeline::before { content: ''; position: absolute; right: 11px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 22px; }
+  .tl-dot { position: absolute; right: -30px; top: 5px; width: 22px; height: 22px; border-radius: 50%; background: var(--primary); border: 3px solid white; box-shadow: 0 0 0 2px var(--primary); }
+  .tl-item h4 { font-weight: 800; font-size: 0.97rem; color: var(--primary); margin-bottom: 4px; }
+  .tl-item p { font-size: 0.91rem; color: var(--text-soft); }
+
+  /* ── CALC ── */
+  .calc-box { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 26px; box-shadow: var(--shadow); }
+  .calc-box h3 { font-size: 1.2rem; font-weight: 900; color: var(--primary); margin-bottom: 5px; }
+  .calc-box > p { font-size: 0.88rem; color: var(--text-soft); margin-bottom: 18px; }
+  .form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .form-g { flex: 1; min-width: 130px; }
+  .form-g label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; color: var(--text-soft); margin-bottom: 5px; text-transform: uppercase; }
+  .form-g input, .form-g select { width: 100%; padding: 10px 13px; border: 2px solid var(--border); border-radius: 9px; font-family: inherit; font-size: 0.97rem; color: var(--text); background: white; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+  .form-g input:focus, .form-g select:focus { outline: none; border-color: var(--primary); }
+  .calc-btn { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border: none; border-radius: 9px; padding: 12px 28px; font-family: inherit; font-size: 0.97rem; font-weight: 800; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+  .calc-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .result-box { background: var(--primary-pale); border: 2px solid var(--primary); border-radius: 12px; padding: 20px; margin-top: 18px; display: none; }
+  .result-box.show { display: block; animation: fadeUp 0.3s; }
+  .result-box h4 { font-size: 1.1rem; font-weight: 900; color: var(--primary); margin-bottom: 12px; }
+  .r-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+  .r-row:last-child { border-bottom: none; }
+  .r-label { color: var(--text-soft); }
+  .r-val { font-weight: 900; color: var(--primary); font-size: 1.05rem; }
+
+  /* ── QUIZ ── */
+  .quiz-q { font-weight: 800; margin-bottom: 14px; font-size: 1rem; }
+  .quiz-opts { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-opt { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 0.95rem; background: white; text-align: right; font-family: inherit; color: var(--text); transition: all 0.2s; }
+  body.lang-en .quiz-opt { text-align: left; }
+  .quiz-opt:hover { border-color: var(--primary); background: var(--primary-pale); }
+  .quiz-opt.correct { border-color: var(--primary); background: var(--primary-pale); color: var(--primary); font-weight: 700; }
+  .quiz-opt.wrong { border-color: var(--red); background: var(--red-pale); color: var(--red); font-weight: 700; }
+  .quiz-fb { font-size: 0.9rem; margin-top: 12px; padding: 12px 16px; border-radius: 8px; display: none; font-weight: 600; }
+  .quiz-fb.show { display: block; }
+  .quiz-fb.ok { background: var(--primary-pale); color: var(--primary); }
+  .quiz-fb.no { background: var(--red-pale); color: var(--red); }
+
+  /* ── CHECKLIST ── */
+  .chklist { list-style: none; }
+  .chklist li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+  .chklist li:last-child { border-bottom: none; }
+  .chk { width: 23px; height: 23px; border-radius: 6px; border: 2px solid var(--border); flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; background: white; transition: all 0.2s; margin-top: 2px; }
+  .chk.done { background: var(--primary); border-color: var(--primary); color: white; }
+
+  /* ── SUPPLEMENTS ── */
+  .supp-card { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+  .supp-hd { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+  .supp-hd:hover { background: var(--primary-pale); }
+  .supp-name { font-weight: 800; font-size: 0.97rem; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 11px; border-radius: 20px; }
+  .badge.high { background: #d1fae5; color: #065f46; }
+  .badge.mid { background: #fef3c7; color: #92400e; }
+  .badge.low { background: var(--red-pale); color: #991b1b; }
+  .supp-bd { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.2s; font-size: 0.9rem; color: var(--text-soft); }
+  .supp-bd.open { max-height: 500px; padding: 14px 18px 18px; }
+
+  /* ── PILLS ── */
+  .pill { display: inline-block; padding: 3px 11px; border-radius: 20px; font-size: 12px; font-weight: 700; margin: 3px; }
+  .pill.g { background: var(--primary-pale); color: var(--primary); }
+  .pill.a { background: var(--accent-pale); color: #b45309; }
+  .pill.b { background: var(--blue-pale); color: var(--blue); }
+  .pill.r { background: var(--red-pale); color: var(--red); }
+
+  /* ── URINE SCALE ── */
+  .urine-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+  .urine-box { flex: 1; min-width: 80px; border-radius: 10px; padding: 12px 8px; text-align: center; }
+  .urine-box .u-icon { font-size: 1.3rem; }
+  .urine-box .u-label { font-size: 0.78rem; font-weight: 800; margin-top: 5px; }
+  .urine-box .u-status { font-size: 0.72rem; font-weight: 700; margin-top: 3px; }
+
+  /* ── FOOTER NAV ── */
+  .foot-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .nav-btn { display: flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 9px; border: 2px solid var(--border); background: white; font-family: inherit; font-size: 0.92rem; font-weight: 700; color: var(--text-soft); cursor: pointer; transition: all 0.2s; }
+  .nav-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-pale); }
+  .nav-btn.prim { background: var(--primary); border-color: var(--primary); color: white; }
+  .nav-btn.prim:hover { background: var(--primary-light); border-color: var(--primary-light); }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+  .dot.done { background: var(--primary); }
+
+  /* ── COLOUR URINE GUIDE ── */
+  .u1 { background: #fef9c3; }
+  .u2 { background: #fef08a; }
+  .u3 { background: #fde047; }
+  .u4 { background: #facc15; }
+  .u5 { background: #f97316; }
+  .u6 { background: #dc2626; color: white; }
+
+  @media print { .sticky-nav,.foot-nav,.header-pills,.lang-bar { display: none !important; } .section { display: block !important; page-break-after: always; } }
+</style>
+</head>
+<body class="lang-ar">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ar')">🇪🇬 العربية</button>
+  <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="aud-badge">
+      <span class="ar-text">🏃 للرياضيين</span>
+      <span class="en-text">🏃 For Athletes</span>
+    </div>
+    <h1>
+      <span class="ar-text">تغذيتك = <span class="highlight">قوتك</span><br>دليل التغذية الرياضية</span>
+      <span class="en-text">Your Nutrition = <span class="highlight">Your Power</span><br>Sports Nutrition Guide</span>
+    </h1>
+    <p class="header-sub">
+      <span class="ar-text">كل حاجة محتاج تعرفها عن الأكل والشرب عشان تأدي أحسن وتتعافى أسرع — بلغة بسيطة وأمثلة من حياتك.</span>
+      <span class="en-text">Everything you need to know about eating and drinking to perform better and recover faster — in plain language with real examples.</span>
+    </p>
+    <div class="header-pills">
+      <span class="hpill" onclick="goTab(0)"><span class="ar-text">📋 تقييمك</span><span class="en-text">📋 Assessment</span></span>
+      <span class="hpill" onclick="goTab(1)"><span class="ar-text">⚡ سعراتك</span><span class="en-text">⚡ Your Calories</span></span>
+      <span class="hpill" onclick="goTab(2)"><span class="ar-text">🍽️ الكارب والبروتين</span><span class="en-text">🍽️ Carbs, Protein & Fat</span></span>
+      <span class="hpill" onclick="goTab(3)"><span class="ar-text">💧 مياه وترطيب</span><span class="en-text">💧 Hydration</span></span>
+      <span class="hpill" onclick="goTab(4)"><span class="ar-text">🕐 قبل/بعد التمرين</span><span class="en-text">🕐 Pre/Post Workout</span></span>
+      <span class="hpill" onclick="goTab(5)"><span class="ar-text">💊 مكملات</span><span class="en-text">💊 Supplements</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="goTab(0)"><span class="ar-text">📋 تقييمي</span><span class="en-text">📋 Assessment</span></button>
+    <button class="tab-btn" onclick="goTab(1)"><span class="ar-text">⚡ سعراتي</span><span class="en-text">⚡ Calories</span></button>
+    <button class="tab-btn" onclick="goTab(2)"><span class="ar-text">🍽️ الماكرو</span><span class="en-text">🍽️ Macros</span></button>
+    <button class="tab-btn" onclick="goTab(3)"><span class="ar-text">💧 مياه</span><span class="en-text">💧 Hydration</span></button>
+    <button class="tab-btn" onclick="goTab(4)"><span class="ar-text">🕐 قبل/بعد</span><span class="en-text">🕐 Pre/Post</span></button>
+    <button class="tab-btn" onclick="goTab(5)"><span class="ar-text">💊 مكملات</span><span class="en-text">💊 Supplements</span></button>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════ 0 — ASSESSMENT ═══════════════ -->
+<div class="section active" id="sec-0">
+  <div class="sec-head">
+    <div class="sec-icon">📋</div>
+    <div>
+      <h2><span class="ar-text">تقييمك الغذائي</span><span class="en-text">Your Nutritional Assessment</span></h2>
+      <div class="sub-label"><span class="ar-text">عشان تبدأ صح، لازم نعرف هنتك فين أولاً</span><span class="en-text">To start right, we need to know where you are now</span></div>
+    </div>
+  </div>
+
+  <div class="big-tip">
+    <span class="tip-icon">💡</span>
+    <div class="tip-body">
+      <span class="ar-text">زي ما المدرب بيعمل اختبار لياقة قبل ما يبدأ يدرّبك، الأخصائي بيعمل تقييم غذائي الأول عشان <strong>يعرف جسمك محتاج إيه بالظبط.</strong></span>
+      <span class="en-text">Just like a coach does a fitness test before training you, a nutritionist does a nutritional assessment first to <strong>understand exactly what your body needs.</strong></span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="ar-text">📝 هتتسأل عن إيه؟</span><span class="en-text">📝 What Gets Assessed?</span></div>
+      <ul class="chklist">
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🍽️ بتاكل إيه يومياً؟ (٣–٧ أيام يوميات أكل)</span><span class="en-text">🍽️ What you eat daily (3–7 day food diary)</span></span></li>
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">⏰ إمتى بتاكل بالنسبة للتمرين؟</span><span class="en-text">⏰ When you eat relative to training</span></span></li>
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">⚖️ وزنك وطولك وتركيبة جسمك (عضل ودهون)</span><span class="en-text">⚖️ Your weight, height & body composition</span></span></li>
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🏋️ نوع الرياضة وحجم تمرينك</span><span class="en-text">🏋️ Your sport type and training volume</span></span></li>
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">💊 أي مكملات بتاخدها دلوقتي</span><span class="en-text">💊 Any supplements you currently take</span></span></li>
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🩸 تحاليل الدم (حديد، فيتامين D…)</span><span class="en-text">🩸 Blood tests (iron, vitamin D…)</span></span></li>
+        <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🎯 هدفك الرياضي إيه؟</span><span class="en-text">🎯 What is your sports goal?</span></span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ar-text">🩸 تحاليل مهمة للرياضيين</span><span class="en-text">🩸 Key Blood Tests for Athletes</span></div>
+      <div class="info-box green">
+        <span class="info-box-icon">🔩</span>
+        <div>
+          <strong><span class="ar-text">الفيريتين (مخزون الحديد)</span><span class="en-text">Ferritin (Iron Stores)</span></strong>
+          <span class="ar-text">نقصه بيعمل تعب وخمول حتى لو بتتمرن صح.</span>
+          <span class="en-text">Low ferritin causes fatigue even if you're training correctly.</span>
+        </div>
+      </div>
+      <div class="info-box teal">
+        <span class="info-box-icon">☀️</span>
+        <div>
+          <strong><span class="ar-text">فيتامين D</span><span class="en-text">Vitamin D</span></strong>
+          <span class="ar-text">مهم للعظام والمناعة وقوة العضلات.</span>
+          <span class="en-text">Essential for bones, immunity and muscle strength.</span>
+        </div>
+      </div>
+      <div class="info-box amber">
+        <span class="info-box-icon">🧬</span>
+        <div>
+          <strong><span class="ar-text">B12 والزنك</span><span class="en-text">B12 & Zinc</span></strong>
+          <span class="ar-text">مهمين للطاقة والأداء والمناعة.</span>
+          <span class="en-text">Important for energy, performance and immunity.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🎯 حدد هدفك</span><span class="en-text">🎯 Define Your Goal</span></div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="ar-text">🔥 تخسيس وزن</span><span class="en-text">🔥 Lose Weight / Body Fat</span></span><span class="acc-arrow">▾</span>
+      </button>
+      <div class="acc-body">
+        <span class="ar-text"><p>المطلوب: تقليل السعرات بهدوء مع الحفاظ على البروتين. مش تبعيت كل حاجة دفعة واحدة! الخسارة التدريجية بتحافظ على العضل.</p></span>
+        <span class="en-text"><p>Required: Reduce calories gradually while keeping protein high. Don't cut everything at once! Slow loss preserves muscle mass.</p></span>
+        <div class="info-box amber" style="margin-top:10px">
+          <span class="info-box-icon">⚠️</span>
+          <div><span class="ar-text">لو قللت الأكل كتير مع التمرين الشديد، جسمك هيتضرر. الأخصائي يحدد الكمية المناسبة.</span><span class="en-text">Cutting too much while training hard can damage your body. Let a nutritionist set the right amount for you.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="ar-text">💪 كسب عضل</span><span class="en-text">💪 Build Muscle / Gain Strength</span></span><span class="acc-arrow">▾</span>
+      </button>
+      <div class="acc-body">
+        <span class="ar-text"><p>المطلوب: زيادة السعرات قليلاً + بروتين كافي + تمرين قوة. مش لازم تاكل كتير جداً — زيادة ٢٥٠–٣٠٠ سعر بس كافية لبناء عضل بدون دهون زيادة.</p></span>
+        <span class="en-text"><p>Required: Slightly more calories + sufficient protein + resistance training. You don't need to eat huge amounts — an extra 250–300 kcal/day is enough to build muscle without excess fat.</p></span>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <span><span class="ar-text">🏆 تحسين الأداء الرياضي</span><span class="en-text">🏆 Improve Athletic Performance</span></span><span class="acc-arrow">▾</span>
+      </button>
+      <div class="acc-body">
+        <span class="ar-text"><p>المطلوب: ضبط توقيت الأكل، كمية الكارب حسب التمرين، والترطيب الكافي. حتى لو وزنك تمام، ممكن تحسّن الأداء بكتير بس بتغيير التوقيت.</p></span>
+        <span class="en-text"><p>Required: Fine-tune meal timing, carbohydrate amounts matched to training, and proper hydration. Even if your weight is fine, you can significantly improve performance just by changing timing.</p></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <strong><span class="ar-text">🌟 مثال حقيقي</span><span class="en-text">🌟 Real Example</span></strong>
+    <span class="ar-text">محمد عداء بيتعب بسرعة في التمرين. عمل تحاليل لقى الفيريتين منخفض. الأخصائية غيّرت أكله وأضافت مصادر حديد — بعد شهرين رجع تحمّله زي الأول وأحسن! 💪</span>
+    <span class="en-text">Ahmed, a runner, was getting tired quickly during training. Blood tests showed low ferritin. His nutritionist adjusted his diet and added iron sources — after two months his endurance was back and better than ever! 💪</span>
+  </div>
+
+  <div class="card">
+    <div class="quiz-q"><span class="ar-text">🤔 سؤال سريع: أهم تحليل ينقصه بيعمل تعب وخمول عند الرياضيين؟</span><span class="en-text">🤔 Quick question: Which deficiency most commonly causes fatigue in athletes?</span></div>
+    <div class="quiz-opts">
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">السكر في الدم</span><span class="en-text">Blood glucose</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,true)">🔩 <span class="ar-text">الفيريتين (مخزون الحديد)</span><span class="en-text">Ferritin (iron stores)</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">الكوليسترول</span><span class="en-text">Cholesterol</span></button>
+    </div>
+    <div class="quiz-fb" id="qfb0"></div>
+  </div>
+
+  <div class="foot-nav">
+    <div class="dots"><div class="dot done"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(1)"><span class="ar-text">سعراتك ⟵</span><span class="en-text">Your Calories ›</span></button>
+  </div>
+</div>
+
+<!-- ═══════════════ 1 — ENERGY ═══════════════ -->
+<div class="section" id="sec-1">
+  <div class="sec-head">
+    <div class="sec-icon">⚡</div>
+    <div>
+      <h2><span class="ar-text">محتاج قد إيه سعرات؟</span><span class="en-text">How Many Calories Do You Need?</span></h2>
+      <div class="sub-label"><span class="ar-text">احسب وقودك اليومي</span><span class="en-text">Calculate your daily fuel requirement</span></div>
+    </div>
+  </div>
+
+  <div class="big-tip">
+    <span class="tip-icon">🔥</span>
+    <div class="tip-body">
+      <span class="ar-text">السعرات الحرارية = وقود جسمك. زي ما العربية محتاجة بنزين، <strong>جسمك محتاج سعرات عشان يشتغل ويتدرب ويتعافى.</strong></span>
+      <span class="en-text">Calories = your body's fuel. Just like a car needs petrol, <strong>your body needs calories to function, train and recover.</strong></span>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="stat-card"><div class="stat-num" style="color:var(--primary)">BMR</div><div class="stat-unit"><span class="ar-text">معدل الأيض الأساسي</span><span class="en-text">Basal Metabolic Rate</span></div><div class="stat-label"><span class="ar-text">وقود جسمك وأنت نايم</span><span class="en-text">Energy at rest / sleeping</span></div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--accent)">PAL</div><div class="stat-unit"><span class="ar-text">مستوى النشاط</span><span class="en-text">Physical Activity Level</span></div><div class="stat-label"><span class="ar-text">كل ما اتحركت أكتر، محتاج أكتر</span><span class="en-text">More movement = more fuel</span></div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--primary-light)">TDEE</div><div class="stat-unit"><span class="ar-text">مجموع السعرات اليومي</span><span class="en-text">Total Daily Energy Expenditure</span></div><div class="stat-label"><span class="ar-text">محتاجه عشان تعيش وتتمرن</span><span class="en-text">What you need to live + train</span></div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-title"><span class="ar-text">📖 مستويات النشاط — أنت في مستوى إيه؟</span><span class="en-text">📖 Activity Levels — Where Do You Fit?</span></div>
+    <table class="tbl">
+      <thead><tr>
+        <th><span class="ar-text">المستوى</span><span class="en-text">Level</span></th>
+        <th><span class="ar-text">المضاعف</span><span class="en-text">Multiplier</span></th>
+        <th><span class="ar-text">مثال</span><span class="en-text">Example</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="ar-text">قليل الحركة</span><span class="en-text">Sedentary</span></td><td>× 1.2</td><td><span class="ar-text">شغل مكتب، بدون رياضة</span><span class="en-text">Desk job, no exercise</span></td></tr>
+        <tr><td><span class="ar-text">نشاط خفيف</span><span class="en-text">Lightly Active</span></td><td>× 1.375</td><td><span class="ar-text">جيم ٢–٣ أيام</span><span class="en-text">Gym 2–3 days/week</span></td></tr>
+        <tr><td><span class="ar-text">نشاط متوسط</span><span class="en-text">Moderately Active</span></td><td>× 1.55</td><td><span class="ar-text">جيم ٤–٥ أيام</span><span class="en-text">Gym 4–5 days/week</span></td></tr>
+        <tr><td><span class="ar-text">نشاط عالي</span><span class="en-text">Very Active</span></td><td>× 1.725</td><td><span class="ar-text">تمرين شديد يومي</span><span class="en-text">Hard daily training</span></td></tr>
+        <tr><td><span class="ar-text">نشاط شديد جداً</span><span class="en-text">Extremely Active</span></td><td>× 1.9</td><td><span class="ar-text">مرتين في اليوم</span><span class="en-text">Twice-daily sessions</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="calc-box">
+    <h3><span class="ar-text">⚡ احسب سعراتك اليومية</span><span class="en-text">⚡ Calculate Your Daily Calories</span></h3>
+    <p><span class="ar-text">ادخل بياناتك وهنقولك محتاج قد إيه كل يوم</span><span class="en-text">Enter your details and we'll calculate your daily needs</span></p>
+    <div class="form-row">
+      <div class="form-g"><label><span class="ar-text">السن</span><span class="en-text">Age</span></label><input type="number" id="c-age" placeholder="25" min="15" max="70"></div>
+      <div class="form-g"><label><span class="ar-text">الجنس</span><span class="en-text">Sex</span></label><select id="c-sex"><option value="m"><span class="ar-text">ذكر</span></option><option value="f"><span class="ar-text">أنثى</span></option></select></div>
+      <div class="form-g"><label><span class="ar-text">الوزن (كجم)</span><span class="en-text">Weight (kg)</span></label><input type="number" id="c-wt" placeholder="70"></div>
+      <div class="form-g"><label><span class="ar-text">الطول (سم)</span><span class="en-text">Height (cm)</span></label><input type="number" id="c-ht" placeholder="175"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-g"><label><span class="ar-text">مستوى النشاط</span><span class="en-text">Activity Level</span></label>
+        <select id="c-act">
+          <option value="1.2"><span class="ar-text">قليل الحركة</span></option>
+          <option value="1.375"><span class="ar-text">نشاط خفيف</span></option>
+          <option value="1.55" selected><span class="ar-text">نشاط متوسط</span></option>
+          <option value="1.725"><span class="ar-text">نشاط عالي</span></option>
+          <option value="1.9"><span class="ar-text">نشاط شديد جداً</span></option>
+        </select>
+      </div>
+      <div class="form-g"><label><span class="ar-text">هدفك</span><span class="en-text">Goal</span></label>
+        <select id="c-goal">
+          <option value="0"><span class="ar-text">محافظة على الوزن</span></option>
+          <option value="-300"><span class="ar-text">تخسيس خفيف (−300)</span></option>
+          <option value="-500"><span class="ar-text">تخسيس (−500)</span></option>
+          <option value="300"><span class="ar-text">كسب عضل (+300)</span></option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calcTDEE()"><span class="ar-text">احسب سعراتي 🔥</span><span class="en-text">Calculate My Calories 🔥</span></button>
+    <div class="result-box" id="tdeeRes">
+      <h4><span class="ar-text">⚡ سعراتك اليومية</span><span class="en-text">⚡ Your Daily Calorie Needs</span></h4>
+      <div class="r-row"><span class="r-label"><span class="ar-text">معدل الأيض الأساسي (BMR)</span><span class="en-text">Basal Metabolic Rate (BMR)</span></span><span class="r-val" id="r-bmr">—</span></div>
+      <div class="r-row"><span class="r-label"><span class="ar-text">مجموع السعرات اليومي (TDEE)</span><span class="en-text">Total Daily Calories (TDEE)</span></span><span class="r-val" id="r-tdee">—</span></div>
+      <div class="r-row"><span class="r-label"><span class="ar-text">هدفك اليومي</span><span class="en-text">Your Daily Target</span></span><span class="r-val" id="r-target">—</span></div>
+      <div class="r-row"><span class="r-label"><span class="ar-text">البروتين المطلوب يومياً</span><span class="en-text">Daily Protein Target</span></span><span class="r-val" id="r-prot">—</span></div>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(0)"><span class="ar-text">⟶ التقييم</span><span class="en-text">‹ Assessment</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(2)"><span class="ar-text">الكارب والبروتين ⟵</span><span class="en-text">Macros ›</span></button>
+  </div>
+</div>
+
+<!-- ═══════════════ 2 — MACROS ═══════════════ -->
+<div class="section" id="sec-2">
+  <div class="sec-head">
+    <div class="sec-icon">🍽️</div>
+    <div>
+      <h2><span class="ar-text">الكارب والبروتين والدهون</span><span class="en-text">Carbs, Protein & Fat</span></h2>
+      <div class="sub-label"><span class="ar-text">الثلاثة الكبار في أكلك — كل واحد بيعمل إيه؟</span><span class="en-text">The three big fuel sources — what does each one do?</span></div>
+    </div>
+  </div>
+
+  <div class="big-tip">
+    <span class="tip-icon">🎯</span>
+    <div class="tip-body">
+      <span class="ar-text">تخيّل جسمك عربية سباق — <strong>الكارب</strong> هو البنزين، <strong>البروتين</strong> هو اللي بيصلح العربية، و<strong>الدهون</strong> هي زيت الموتور. الثلاثة مهمين!</span>
+      <span class="en-text">Picture your body as a racing car — <strong>carbs</strong> are the petrol, <strong>protein</strong> repairs the engine, and <strong>fat</strong> is the motor oil. All three are essential!</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🍽️ طبق الرياضي المثالي</span><span class="en-text">🍽️ The Athlete's Ideal Plate</span></div>
+    <div class="plate-wrap">
+      <div class="plate">
+        <div class="seg-carb-1"></div>
+        <div class="seg-carb-2"></div>
+        <div class="seg-protein"></div>
+        <div class="plate-center">🍽️</div>
+      </div>
+      <div class="plate-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#fbbf24"></div><span class="ar-text">كارب ٥٠–٦٥٪ (رز/معكرونة/خبز)</span><span class="en-text">Carbs 50–65% (rice/pasta/bread)</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#34d399"></div><span class="ar-text">بروتين ٢٠–٢٥٪ (فراخ/سمك/بيض)</span><span class="en-text">Protein 20–25% (chicken/fish/eggs)</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#dbeafe"></div><span class="ar-text">دهون صحية ٢٠–٣٠٪</span><span class="en-text">Healthy fats 20–30%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🌾 الكارب — بنزين جسمك</span><span class="en-text">🌾 Carbohydrates — Your Body's Fuel</span></div>
+    <div class="mbar-wrap"><div class="mbar-lbl"><span><span class="ar-text">🌾 كارب</span><span class="en-text">🌾 Carbs</span></span><span>50–65%</span></div><div class="mbar-bg"><div class="mbar-fill" style="width:58%;background:linear-gradient(90deg,#d97706,#fbbf24)"></div></div></div>
+    <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><span><span class="ar-text">قد إيه كارب محتاج كل يوم؟</span><span class="en-text">How many carbs do you need daily?</span></span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">
+        <table class="tbl">
+          <thead><tr><th><span class="ar-text">حجم التمرين</span><span class="en-text">Training Volume</span></th><th><span class="ar-text">الكمية اليومية</span><span class="en-text">Daily Amount</span></th><th><span class="ar-text">مثال</span><span class="en-text">Example</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ar-text">خفيف (ساعة أو أقل)</span><span class="en-text">Light (≤1 hr)</span></td><td>3–5 g/kg</td><td><span class="ar-text">جيم عادي</span><span class="en-text">Recreational gym</span></td></tr>
+            <tr><td><span class="ar-text">متوسط (١–٣ ساعات)</span><span class="en-text">Moderate (1–3 hr)</span></td><td>5–7 g/kg</td><td><span class="ar-text">كرة قدم / سباحة</span><span class="en-text">Football / swimming</span></td></tr>
+            <tr><td><span class="ar-text">عالي (٣+ ساعات)</span><span class="en-text">High (3+ hr)</span></td><td>6–10 g/kg</td><td><span class="ar-text">تمرين مكثف</span><span class="en-text">Intensive training</span></td></tr>
+          </tbody>
+        </table>
+        <div class="example-box" style="margin-top:10px">
+          <strong><span class="ar-text">🌟 مثال</span><span class="en-text">🌟 Example</span></strong>
+          <span class="ar-text">سارة (٧٠ كجم) لاعبة كرة سلة، بتتمرن ٩٠ دقيقة. محتاجة ٣٥٠–٤٩٠ جم كارب يومياً. لو راحت التمرين بدون كارب كافي — هتحس بإجهاد وقلة تركيز.</span>
+          <span class="en-text">Sara (70 kg) plays basketball 90 min/day. She needs 350–490g carbs daily. If she trains without enough carbs — she'll feel fatigued and lose concentration.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🥩 البروتين — بنّاء العضل</span><span class="en-text">🥩 Protein — The Muscle Builder</span></div>
+    <div class="mbar-wrap"><div class="mbar-lbl"><span><span class="ar-text">🥩 بروتين</span><span class="en-text">🥩 Protein</span></span><span>20–25%</span></div><div class="mbar-bg"><div class="mbar-fill" style="width:22%;background:linear-gradient(90deg,#0d7c66,#34d399)"></div></div></div>
+    <div class="grid-2" style="margin-top:12px">
+      <div class="info-box green" style="margin:0"><span class="info-box-icon">🍗</span><div><strong><span class="ar-text">أفضل المصادر</span><span class="en-text">Best Sources</span></strong><span class="pill g">فراخ/Chicken</span><span class="pill g">بيض/Eggs</span><span class="pill g">سمك/Fish</span><span class="pill g">زبادي/Yoghurt</span><span class="pill g">عدس/Lentils</span></div></div>
+      <div class="info-box teal" style="margin:0"><span class="info-box-icon">🎯</span><div><strong><span class="ar-text">قد إيه محتاج؟</span><span class="en-text">How much do you need?</span></strong><span class="ar-text">قوة: ١.٦–٢.٢ جم/كجم · تحمل: ١.٢–١.٦ · رياضة جماعية: ١.٤–١.٨</span><span class="en-text">Strength: 1.6–2.2 g/kg · Endurance: 1.2–1.6 · Team: 1.4–1.8</span></div></div>
+    </div>
+    <div class="example-box" style="margin-top:12px">
+      <strong><span class="ar-text">🌟 مثال</span><span class="en-text">🌟 Example</span></strong>
+      <span class="ar-text">عمر (٧٥ كجم) لاعب كرة قدم — محتاج ١٠٥–١٣٥ جم بروتين يومياً. يعني: ١٥٠ جم فراخ + ٤ بيضات + كوب زبادي يوناني.</span>
+      <span class="en-text">Omar (75 kg) plays football — he needs 105–135g protein/day. That's roughly: 150g grilled chicken + 4 eggs + 1 cup Greek yoghurt.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🫒 الدهون — مش عدوك!</span><span class="en-text">🫒 Fat — Not Your Enemy!</span></div>
+    <div class="mbar-wrap"><div class="mbar-lbl"><span><span class="ar-text">🫒 دهون</span><span class="en-text">🫒 Fat</span></span><span>20–35%</span></div><div class="mbar-bg"><div class="mbar-fill" style="width:28%;background:linear-gradient(90deg,#0369a1,#60a5fa)"></div></div></div>
+    <div class="grid-3" style="margin-top:12px">
+      <div class="info-box green" style="margin:0;flex-direction:column;gap:5px"><strong>✅ <span class="ar-text">اختار</span><span class="en-text">Choose</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">زيت زيتون، أفوكادو، مكسرات، سمك دهني</span><span class="en-text">Olive oil, avocado, nuts, oily fish</span></span></div>
+      <div class="info-box amber" style="margin:0;flex-direction:column;gap:5px"><strong>⚠️ <span class="ar-text">باعتدال</span><span class="en-text">Moderate</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">منتجات الألبان، اللحوم الحمراء</span><span class="en-text">Dairy, red meat</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:5px"><strong>❌ <span class="ar-text">قلل</span><span class="en-text">Limit</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">مقليات، أكل جاهز كتير</span><span class="en-text">Fried food, ultra-processed</span></span></div>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(1)"><span class="ar-text">⟶ سعراتي</span><span class="en-text">‹ Calories</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(3)"><span class="ar-text">المياه ⟵</span><span class="en-text">Hydration ›</span></button>
+  </div>
+</div>
+
+<!-- ═══════════════ 3 — HYDRATION ═══════════════ -->
+<div class="section" id="sec-3">
+  <div class="sec-head">
+    <div class="sec-icon">💧</div>
+    <div>
+      <h2><span class="ar-text">المياه والترطيب</span><span class="en-text">Water & Hydration</span></h2>
+      <div class="sub-label"><span class="ar-text">الجفاف بيأثر على أداءك أسرع مما تتخيل</span><span class="en-text">Dehydration affects your performance faster than you think</span></div>
+    </div>
+  </div>
+
+  <div class="big-tip">
+    <span class="tip-icon">💧</span>
+    <div class="tip-body">
+      <span class="ar-text">لو جسمك فقد بس <strong>٢٪ من وزنه مياه</strong> — أداءك الرياضي بينزل ملحوظ. يعني لو وزنك ٧٠ كجم، فقدان ١.٤ لتر بس كافي يأثر على سرعتك وتركيزك!</span>
+      <span class="en-text">If your body loses just <strong>2% of its weight in water</strong> — your athletic performance noticeably drops. For a 70 kg person, losing just 1.4 litres affects speed and concentration!</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🎨 راقب لون البول — دليلك السهل</span><span class="en-text">🎨 Urine Colour — Your Easy Guide</span></div>
+    <div class="urine-row">
+      <div class="urine-box u1"><div class="u-icon">💛</div><div class="u-label"><span class="ar-text">شاحب جداً</span><span class="en-text">Very pale</span></div><div class="u-status" style="color:var(--primary)">✅ <span class="ar-text">ممتاز</span><span class="en-text">Excellent</span></div></div>
+      <div class="urine-box u2"><div class="u-icon">💛</div><div class="u-label"><span class="ar-text">أصفر فاتح</span><span class="en-text">Pale yellow</span></div><div class="u-status" style="color:var(--primary)">✅ <span class="ar-text">كويس</span><span class="en-text">Good</span></div></div>
+      <div class="urine-box u3"><div class="u-icon">🟡</div><div class="u-label"><span class="ar-text">أصفر</span><span class="en-text">Yellow</span></div><div class="u-status" style="color:var(--accent)">⚠️ <span class="ar-text">اشرب</span><span class="en-text">Drink more</span></div></div>
+      <div class="urine-box u4"><div class="u-icon">🟠</div><div class="u-label"><span class="ar-text">غامق</span><span class="en-text">Dark</span></div><div class="u-status" style="color:#d97706">⚠️ <span class="ar-text">جفاف</span><span class="en-text">Dehydrated</span></div></div>
+      <div class="urine-box u5"><div class="u-icon">🔴</div><div class="u-label"><span class="ar-text">برتقالي</span><span class="en-text">Orange</span></div><div class="u-status" style="color:var(--red)">🚨 <span class="ar-text">شديد</span><span class="en-text">Severe</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">📋 متى تشرب إيه؟</span><span class="en-text">📋 When and What to Drink?</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">قبل التمرين بساعتين</span><span class="en-text">2 Hours Before Training</span></h4><p><span class="ar-text">اشرب ٤٠٠–٦٠٠ مل مياه عادية</span><span class="en-text">Drink 400–600 ml of water</span></p></div>
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">أثناء التمرين (أقل من ساعة)</span><span class="en-text">During Training (&lt;60 min)</span></h4><p><span class="ar-text">١٥٠–٢٥٠ مل كل ١٥–٢٠ دقيقة — مياه عادية كافية</span><span class="en-text">150–250 ml every 15–20 min — plain water is enough</span></p></div>
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">أثناء التمرين (أكتر من ساعة)</span><span class="en-text">During Training (&gt;60 min)</span></h4><p><span class="ar-text">١٥٠–٢٥٠ مل + مشروب رياضي (لأن فيه سكر وأملاح)</span><span class="en-text">150–250 ml + sports drink (contains sugar + electrolytes)</span></p></div>
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">بعد التمرين</span><span class="en-text">After Training</span></h4><p><span class="ar-text">اشرب ١.٥ ضعف الوزن المفقود. لو نزل كيلو، اشرب ١.٥ لتر</span><span class="en-text">Drink 1.5× the weight lost. If you lost 1 kg, drink 1.5 litres</span></p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🥤 تراكر الماء اليومي</span><span class="en-text">🥤 Daily Water Tracker</span></div>
+    <p style="font-size:0.88rem;color:var(--text-soft);margin-bottom:12px"><span class="ar-text">اضغط على كل كوب (٢٥٠ مل) لما بتشربه</span><span class="en-text">Tap each glass (250 ml) as you drink it</span></p>
+    <div class="water-row" id="waterRow"></div>
+    <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px">
+      <div class="water-display" id="wCount">0</div>
+      <div>
+        <div style="font-size:0.85rem;color:var(--text-soft)" id="wMl">0 ml</div>
+        <div style="font-size:0.88rem;color:var(--primary);font-weight:700" id="wMsg"></div>
+      </div>
+    </div>
+    <button class="calc-btn" style="margin-top:14px;padding:8px 18px;font-size:0.85rem;background:#e5e7eb;color:var(--text)" onclick="resetWater()"><span class="ar-text">إعادة ضبط</span><span class="en-text">Reset</span></button>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(2)"><span class="ar-text">⟶ الماكرو</span><span class="en-text">‹ Macros</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(4)"><span class="ar-text">قبل/بعد التمرين ⟵</span><span class="en-text">Pre/Post Workout ›</span></button>
+  </div>
+</div>
+
+<!-- ═══════════════ 4 — PRE/POST ═══════════════ -->
+<div class="section" id="sec-4">
+  <div class="sec-head">
+    <div class="sec-icon">🕐</div>
+    <div>
+      <h2><span class="ar-text">قبل وبعد التمرين</span><span class="en-text">Pre & Post-Workout Nutrition</span></h2>
+      <div class="sub-label"><span class="ar-text">التوقيت هو السر!</span><span class="en-text">Timing is the secret!</span></div>
+    </div>
+  </div>
+  <div class="big-tip">
+    <span class="tip-icon">⏰</span>
+    <div class="tip-body">
+      <span class="ar-text">مش بس <em>إيه</em> بتاكله — <strong>إمتى</strong> بتاكله بيفرق فرق كبير في أداءك وتعافيك.</span>
+      <span class="en-text">It's not just <em>what</em> you eat — <strong>when</strong> you eat it makes a huge difference to your performance and recovery.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">⏱️ جدولك يوم التمرين</span><span class="en-text">⏱️ Your Training Day Timeline</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">قبل بـ٣–٤ ساعات: الوجبة الرئيسية</span><span class="en-text">3–4 Hours Before: Main Meal</span></h4>
+        <p><span class="ar-text">كارب عالي + بروتين متوسط + أقل دهون وألياف</span><span class="en-text">High carb + moderate protein + low fat & fibre</span></p>
+        <div class="example-box" style="margin-top:8px"><strong><span class="ar-text">🍽️ أمثلة</span><span class="en-text">🍽️ Examples</span></strong><span class="ar-text">رز بالفراخ المشوية · معكرونة بالتونة · عيش بالبيض المسلوق</span><span class="en-text">Rice with grilled chicken · Pasta with tuna · Wholegrain toast with eggs</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">قبل بـ٣٠–٦٠ دقيقة: سناك خفيف</span><span class="en-text">30–60 Min Before: Light Snack</span></h4>
+        <p><span class="ar-text">شيء سريع الهضم — كارب فقط</span><span class="en-text">Easy-to-digest carbohydrate snack</span></p>
+        <div class="example-box" style="margin-top:8px"><strong><span class="ar-text">🍌 أمثلة</span><span class="en-text">🍌 Examples</span></strong><span class="ar-text">موزة · ٢–٣ تمرات · توست بعسل · مشروب رياضي</span><span class="en-text">Banana · 2–3 dates · Toast with honey · Sports drink</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">أثناء التمرين (أكتر من ساعة)</span><span class="en-text">During Training (&gt;60 min)</span></h4>
+        <p><span class="ar-text">٣٠–٦٠ جم كارب كل ساعة — جل رياضي، موز، تمر</span><span class="en-text">30–60 g carbs per hour — gel, banana, dates</span></p>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4>⭐ <span class="ar-text">بعد بـ٣٠ دقيقة: نافذة التعافي الذهبية</span><span class="en-text">30 Min After: The Golden Recovery Window ⭐</span></h4>
+        <p><span class="ar-text">كارب + بروتين بنسبة ٣:١ — ده الوقت الذهبي لبناء العضل وإرجاع الطاقة</span><span class="en-text">Carbs + protein at a 3:1 ratio — this is the golden window for muscle repair and glycogen refuelling</span></p>
+        <div class="example-box" style="margin-top:8px"><strong><span class="ar-text">🥛 أمثلة</span><span class="en-text">🥛 Examples</span></strong><span class="ar-text">شيكولاتة حليب · زبادي يوناني + موزة · برتين شيك + تمر + موز</span><span class="en-text">Chocolate milk · Greek yoghurt + banana · Protein shake + dates + banana</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">قبل النوم: بروتين بطيء الهضم</span><span class="en-text">Before Bed: Slow-Release Protein</span></h4>
+        <p><span class="ar-text">قريش جبن أو زبادي يوناني — بيغذي العضلات أثناء النوم</span><span class="en-text">Cottage cheese or Greek yoghurt — feeds muscles during sleep</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="quiz-q"><span class="ar-text">🧠 سؤال: إيه أحسن وجبة بعد التمرين مباشرة؟</span><span class="en-text">🧠 Question: What is the best post-workout meal?</span></div>
+    <div class="quiz-opts">
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">بروتين بس (شيك بروتين)</span><span class="en-text">Protein only (protein shake)</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,true)">💚 <span class="ar-text">كارب + بروتين مع بعض</span><span class="en-text">Carbs + protein combined</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">لا حاجة، ريّح الجهاز الهضمي</span><span class="en-text">Nothing — rest your digestive system</span></button>
+    </div>
+    <div class="quiz-fb" id="qfb1"></div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(3)"><span class="ar-text">⟶ المياه</span><span class="en-text">‹ Hydration</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(5)"><span class="ar-text">المكملات ⟵</span><span class="en-text">Supplements ›</span></button>
+  </div>
+</div>
+
+<!-- ═══════════════ 5 — SUPPLEMENTS ═══════════════ -->
+<div class="section" id="sec-5">
+  <div class="sec-head">
+    <div class="sec-icon">💊</div>
+    <div>
+      <h2><span class="ar-text">المكملات الغذائية</span><span class="en-text">Supplements</span></h2>
+      <div class="sub-label"><span class="ar-text">ما ينفع وما لا ينفع — بالبسيط</span><span class="en-text">What works and what doesn't — in simple terms</span></div>
+    </div>
+  </div>
+
+  <div class="big-tip">
+    <span class="tip-icon">⚠️</span>
+    <div class="tip-body">
+      <span class="ar-text">الأكل الصح <strong>أولاً دايماً.</strong> المكملات بتكمّل — مش بتحل محل الأكل. استشر الأخصائي قبل ما تبدأ أي مكمل!</span>
+      <span class="en-text">Good food <strong>always comes first.</strong> Supplements complement — they don't replace food. Always consult a nutritionist before starting any supplement!</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">🏆 مكملات بدليل علمي قوي</span><span class="en-text">🏆 Supplements with Strong Evidence</span></div>
+
+    <div class="supp-card">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">⚡ <span class="ar-text">الكرياتين</span><span class="en-text">Creatine Monohydrate</span></span><span class="badge high"><span class="ar-text">دليل قوي ✓</span><span class="en-text">Strong Evidence ✓</span></span></div>
+      <div class="supp-bd">
+        <p><strong><span class="ar-text">بيعمل إيه؟</span><span class="en-text">What does it do?</span></strong> <span class="ar-text">بيزود طاقة العضلات في اللحظات السريعة والشديدة — سبرينت، رفع أثقال، جمبات سريعة.</span><span class="en-text">Boosts muscle energy during short intense efforts — sprints, heavy lifts, explosive jumps.</span></p>
+        <p style="margin-top:8px"><strong><span class="ar-text">الجرعة:</span><span class="en-text">Dose:</span></strong> <span class="ar-text">٣–٥ جم يومياً. أي وقت، الاستمرارية هي المهمة.</span><span class="en-text">3–5 g/day. Any time of day — consistency matters most.</span></p>
+        <div class="example-box" style="margin-top:8px"><strong>🌟 <span class="ar-text">مثال</span><span class="en-text">Example</span></strong><span class="ar-text">لاعب أثقال أخد كرياتين ٨ أسابيع — زاد تكراره بحوالي ١٠–١٥٪ 💪</span><span class="en-text">A weightlifter took creatine for 8 weeks — increased reps by 10–15% 💪</span></div>
+      </div>
+    </div>
+
+    <div class="supp-card" style="margin-top:8px">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">☕ <span class="ar-text">الكافيين</span><span class="en-text">Caffeine</span></span><span class="badge high"><span class="ar-text">دليل قوي ✓</span><span class="en-text">Strong Evidence ✓</span></span></div>
+      <div class="supp-bd">
+        <p><strong><span class="ar-text">بيعمل إيه؟</span><span class="en-text">What does it do?</span></strong> <span class="ar-text">بيقلل الإحساس بالتعب ويزود التركيز والتحمل.</span><span class="en-text">Reduces perception of fatigue and improves focus and endurance.</span></p>
+        <p style="margin-top:8px"><strong><span class="ar-text">الجرعة:</span><span class="en-text">Dose:</span></strong> <span class="ar-text">٣–٦ مجم/كجم قبل التمرين بساعة.</span><span class="en-text">3–6 mg/kg, 60 minutes before training.</span></p>
+        <div class="info-box amber" style="margin-top:8px"><span class="info-box-icon">⚠️</span><div><span class="ar-text">متاخدوش بالليل عشان مايأثرش على نومك. النوم أهم من أي مكمل!</span><span class="en-text">Don't take it at night — it will affect your sleep. Sleep is more important than any supplement!</span></div></div>
+      </div>
+    </div>
+
+    <div class="supp-card" style="margin-top:8px">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">☀️ <span class="ar-text">فيتامين D</span><span class="en-text">Vitamin D</span></span><span class="badge mid"><span class="ar-text">مفيد جداً</span><span class="en-text">Very Beneficial</span></span></div>
+      <div class="supp-bd">
+        <p><span class="ar-text">كتير من الناس ناقصهم فيتامين D. بيأثر على العضلات والمناعة والعظام.</span><span class="en-text">Many people are deficient in Vitamin D. It affects muscle function, immunity and bone health.</span></p>
+        <p style="margin-top:8px"><strong><span class="ar-text">الجرعة:</span><span class="en-text">Dose:</span></strong> <span class="ar-text">١٠٠٠–٢٠٠٠ وحدة يومياً — بعد تحليل الدم.</span><span class="en-text">1,000–2,000 IU/day — after a blood test to confirm deficiency.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ar-text">❌ مكملات مش تستحق فلوسك</span><span class="en-text">❌ Supplements Not Worth Your Money</span></div>
+    <div class="grid-2">
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong><span class="ar-text">BCAAs منفردة</span><span class="en-text">BCAAs (standalone)</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">مش محتاجها لو بتاكل بروتين كافي</span><span class="en-text">Unnecessary if your protein intake is adequate</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong><span class="ar-text">Fat Burners</span><span class="en-text">Fat Burners</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">معظمها مش فعّال والأكل والرياضة أقوى بكتير</span><span class="en-text">Most are ineffective — food and exercise work far better</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong><span class="ar-text">Testosterone Boosters</span><span class="en-text">Testosterone Boosters</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">مفيش دليل علمي + مخاطر عديدة</span><span class="en-text">No scientific evidence + multiple risks</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong><span class="ar-text">Detox & Cleanses</span><span class="en-text">Detox & Cleanses</span></strong><span style="font-size:0.84rem;color:var(--text-soft)"><span class="ar-text">جسمك بيعمل ده لوحده!</span><span class="en-text">Your body already does this naturally!</span></span></div>
+    </div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#064e3b,#0d7c66,#14b89a);color:white;border:none">
+    <div style="font-size:1.45rem;font-weight:900;margin-bottom:12px"><span class="ar-text">🎉 خلصت الدليل!</span><span class="en-text">🎉 You've Completed the Guide!</span></div>
+    <p style="opacity:0.92;font-size:0.95rem;margin-bottom:8px"><span class="ar-text">دلوقتي عندك الأساسيات. تذكر دايماً:</span><span class="en-text">Now you have the essentials. Always remember:</span></p>
+    <ul style="opacity:0.88;font-size:0.91rem;padding-right:18px;line-height:2.1">
+      <li><span class="ar-text">🌾 الكارب هو وقودك — ماتخافش منه</span><span class="en-text">🌾 Carbs are your fuel — don't fear them</span></li>
+      <li><span class="ar-text">🥩 البروتين بيبني العضل — وزّعه على مدار اليوم</span><span class="en-text">🥩 Protein builds muscle — spread it throughout the day</span></li>
+      <li><span class="ar-text">💧 اشرب مياه كافية — راقب لون البول</span><span class="en-text">💧 Stay hydrated — watch your urine colour</span></li>
+      <li><span class="ar-text">⏰ التوقيت مهم — وجبة قبل وبعد التمرين</span><span class="en-text">⏰ Timing matters — eat before and after every session</span></li>
+      <li><span class="ar-text">💊 الأكل أولاً — المكملات بتكمّل بس</span><span class="en-text">💊 Food first — supplements only complement</span></li>
+    </ul>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="calc-btn" style="background:rgba(255,255,255,0.18);border:2px solid rgba(255,255,255,0.35)" onclick="goTab(0)"><span class="ar-text">↩ من الأول</span><span class="en-text">↩ Start Again</span></button>
+      <button class="calc-btn" style="background:white;color:var(--primary)" onclick="window.print()"><span class="ar-text">🖨️ اطبع الدليل</span><span class="en-text">🖨️ Print Guide</span></button>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(4)"><span class="ar-text">⟶ قبل/بعد التمرين</span><span class="en-text">‹ Pre/Post Workout</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div></div>
+    <button class="nav-btn prim" onclick="goTab(0)"><span class="ar-text">↩ من الأول</span><span class="en-text">↩ Start Again</span></button>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ── LANGUAGE ──
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&lang==='ar')||(i===1&&lang==='en')));
+  // update select options text
+  const sexSel = document.getElementById('c-sex');
+  if (lang === 'ar') {
+    sexSel.options[0].text = 'ذكر'; sexSel.options[1].text = 'أنثى';
+  } else {
+    sexSel.options[0].text = 'Male'; sexSel.options[1].text = 'Female';
+  }
+  const actSel = document.getElementById('c-act');
+  const actAr = ['قليل الحركة','نشاط خفيف','نشاط متوسط','نشاط عالي','نشاط شديد جداً'];
+  const actEn = ['Sedentary','Lightly Active','Moderately Active','Very Active','Extremely Active'];
+  Array.from(actSel.options).forEach((o,i) => { o.text = lang==='ar' ? actAr[i] : actEn[i]; });
+  const goalSel = document.getElementById('c-goal');
+  const goalAr = ['محافظة على الوزن','تخسيس خفيف (−300)','تخسيس (−500)','كسب عضل (+300)'];
+  const goalEn = ['Maintain Weight','Mild loss (−300 kcal)','Lose weight (−500 kcal)','Gain muscle (+300 kcal)'];
+  Array.from(goalSel.options).forEach((o,i) => { o.text = lang==='ar' ? goalAr[i] : goalEn[i]; });
+}
+
+// ── TABS ──
+const tabs = document.querySelectorAll('.tab-btn');
+const secs = document.querySelectorAll('.section');
+function goTab(i) {
+  tabs.forEach((t,idx) => t.classList.toggle('active', idx===i));
+  secs.forEach((s,idx) => s.classList.toggle('active', idx===i));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── ACCORDION ──
+function toggleAcc(btn) {
+  const b = btn.nextElementSibling, open = b.classList.contains('open');
+  btn.classList.toggle('open', !open); b.classList.toggle('open', !open);
+}
+
+// ── CHECKLIST ──
+function toggleChk(el) { el.classList.toggle('done'); el.textContent = el.classList.contains('done') ? '✓' : ''; }
+
+// ── QUIZ ──
+const qfbAr = { ok: '✅ صح! ممتاز.', no: '❌ مش صح — راجع المحتوى.' };
+const qfbEn = { ok: '✅ Correct! Great work.', no: '❌ Not quite — review the content.' };
+function answerQ(btn, correct) {
+  btn.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o => o.disabled = true);
+  btn.classList.add(correct ? 'correct' : 'wrong');
+  const fb = btn.closest('.card').querySelector('.quiz-fb');
+  fb.className = 'quiz-fb show ' + (correct ? 'ok' : 'no');
+  const isAr = document.body.classList.contains('lang-ar');
+  fb.textContent = correct ? (isAr ? qfbAr.ok : qfbEn.ok) : (isAr ? qfbAr.no : qfbEn.no);
+}
+
+// ── TDEE ──
+function calcTDEE() {
+  const age = +document.getElementById('c-age').value;
+  const sex = document.getElementById('c-sex').value;
+  const wt = +document.getElementById('c-wt').value;
+  const ht = +document.getElementById('c-ht').value;
+  const act = +document.getElementById('c-act').value;
+  const goal = +document.getElementById('c-goal').value;
+  const isAr = document.body.classList.contains('lang-ar');
+  if (!age||!wt||!ht) { alert(isAr ? 'ادخل بياناتك الأول!' : 'Please fill in all fields first!'); return; }
+  const bmr = sex==='m' ? (10*wt)+(6.25*ht)-(5*age)+5 : (10*wt)+(6.25*ht)-(5*age)-161;
+  const tdee = Math.round(bmr*act);
+  const target = Math.round(tdee+goal);
+  const prot = Math.round(wt*1.8);
+  const u = isAr ? ' سعر/يوم' : ' kcal/day';
+  document.getElementById('r-bmr').textContent = Math.round(bmr)+u;
+  document.getElementById('r-tdee').textContent = tdee+u;
+  document.getElementById('r-target').textContent = target+u;
+  document.getElementById('r-prot').textContent = prot+(isAr?' جم/يوم':' g/day');
+  document.getElementById('tdeeRes').classList.add('show');
+}
+
+// ── WATER TRACKER ──
+const msgs_ar = {0:'',1:'ابدأت كويس!',2:'هيّا!',3:'على الطريق 💧',4:'النص وصلنا!',6:'قرّبت!',8:'🌊 ممتاز!',12:'🏆 مثالي!'};
+const msgs_en = {0:'',1:'Good start!',2:'Keep going!',3:'On track 💧',4:'Halfway there!',6:'Almost there!',8:'🌊 Well hydrated!',12:'🏆 Perfect hydration!'};
+function buildWater() {
+  const row = document.getElementById('waterRow');
+  for (let i = 0; i < 12; i++) {
+    const g = document.createElement('div');
+    g.className = 'w-glass'; g.innerHTML = '💧';
+    g.onclick = () => {
+      g.classList.toggle('on');
+      const f = document.querySelectorAll('.w-glass.on').length;
+      const isAr = document.body.classList.contains('lang-ar');
+      document.getElementById('wCount').textContent = f;
+      document.getElementById('wMl').textContent = (f*250)+' ml / '+(f*0.25).toFixed(2)+' L';
+      const m = isAr ? msgs_ar : msgs_en;
+      document.getElementById('wMsg').textContent = m[f] || '';
+    };
+    row.appendChild(g);
+  }
+}
+buildWater();
+function resetWater() {
+  document.querySelectorAll('.w-glass').forEach(g => g.classList.remove('on'));
+  document.getElementById('wCount').textContent = '0';
+  document.getElementById('wMl').textContent = '0 ml';
+  document.getElementById('wMsg').textContent = '';
+}
+
+// ── SUPPLEMENTS ──
+function toggleSupp(hd) { hd.nextElementSibling.classList.toggle('open'); }
+
+// ── MACRO BARS ──
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.mbar-fill').forEach(b => {
+    const t = b.style.width; b.style.width = '0';
+    setTimeout(() => { b.style.width = t; }, 500);
+  });
+});
+</script>
+</body>
+</html>
