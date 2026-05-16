@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Young Athletes Nutrition | تغذية الرياضيين الصغار (٩–١٦ سنة)</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #7c3aed;
+    --primary-m: #8b5cf6;
+    --primary-light: #a78bfa;
+    --primary-pale: #f5f3ff;
+    --accent: #f59e0b;
+    --accent-pale: #fffbeb;
+    --green: #059669;
+    --green-pale: #ecfdf5;
+    --blue: #2563eb;
+    --blue-pale: #eff6ff;
+    --pink: #db2777;
+    --pink-pale: #fdf2f8;
+    --red: #dc2626;
+    --red-pale: #fef2f2;
+    --orange: #ea580c;
+    --orange-pale: #fff7ed;
+    --teal: #0f766e;
+    --teal-pale: #f0fdfa;
+    --text: #1e1b4b;
+    --text-soft: #6b7280;
+    --border: #e0d9f7;
+    --bg: #f8f7ff;
+    --white: #ffffff;
+    --radius: 18px;
+    --shadow: 0 4px 24px rgba(124,58,237,0.10);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.85; }
+
+  /* ── LANGUAGE ── */
+  .lang-bar { background: var(--primary); display: flex; justify-content: flex-end; align-items: center; gap: 8px; padding: 8px 24px; }
+  .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; font-family: inherit; font-size: 13px; font-weight: 700; padding: 5px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { background: white; color: var(--primary); }
+  .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.28); }
+  body.lang-ar .en-text { display: none; }
+  body.lang-en .ar-text { display: none; }
+  body.lang-en { direction: ltr; font-family: 'Nunito', sans-serif; }
+  body.lang-en .sticky-nav .nav-inner { direction: ltr; }
+  body.lang-en .info-box { border-right: none !important; border-left: 4px solid; }
+  body.lang-en .info-box.purple { border-left-color: var(--primary); }
+  body.lang-en .info-box.green { border-left-color: var(--green); }
+  body.lang-en .info-box.amber { border-left-color: var(--accent); }
+  body.lang-en .info-box.blue { border-left-color: var(--blue); }
+  body.lang-en .info-box.pink { border-left-color: var(--pink); }
+  body.lang-en .info-box.red { border-left-color: var(--red); }
+  body.lang-en .info-box.orange { border-left-color: var(--orange); }
+  body.lang-en .info-box.teal { border-left-color: var(--teal); }
+  body.lang-en .timeline { padding-right: 0; padding-left: 32px; }
+  body.lang-en .timeline::before { right: auto; left: 12px; }
+  body.lang-en .tl-dot { right: auto; left: -32px; }
+  body.lang-en .acc-trigger { text-align: left; }
+  body.lang-en .chklist li { flex-direction: row; }
+  body.lang-en .fun-box { border-right: none; border-left: 4px solid var(--accent); }
+  body.lang-en .blood-label { text-align: left; }
+  body.lang-en .prof-card { border-right: none; border-left: 4px solid rgba(255,255,255,0.4); }
+
+  /* ── PROFESSORS CREDIT BAR ── */
+  .prof-bar {
+    background: linear-gradient(135deg, #1e1b4b, #312e81, #4c1d95);
+    padding: 14px 24px;
+    color: white;
+  }
+  .prof-bar-inner {
+    max-width: 920px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .prof-label { font-size: 11px; font-weight: 700; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .prof-names { display: flex; gap: 16px; flex-wrap: wrap; }
+  .prof-card {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-right: 4px solid rgba(245,158,11,0.7);
+    border-radius: 10px;
+    padding: 8px 14px;
+  }
+  .prof-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #f97316); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: white; flex-shrink: 0; }
+  .prof-info .p-name { font-weight: 800; font-size: 0.88rem; line-height: 1.2; }
+  .prof-info .p-title { font-size: 0.73rem; opacity: 0.75; }
+  .prof-audience {
+    background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.4);
+    border-radius: 10px; padding: 8px 14px; font-size: 0.82rem; font-weight: 700;
+    color: #fde68a; text-align: center;
+  }
+
+  /* ── HEADER ── */
+  header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 35%, #7c3aed 65%, #8b5cf6 85%, #f59e0b 100%); color: white; position: relative; overflow: hidden; }
+  header::before { content: '⚽'; position: absolute; right: -10px; top: -20px; font-size: 200px; opacity: 0.07; transform: rotate(20deg); }
+  header::after { content: ''; position: absolute; bottom: -70px; left: -50px; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+  .star-deco { position: absolute; top: 20px; left: 80px; font-size: 60px; opacity: 0.15; animation: spin 8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .header-inner { max-width: 920px; margin: 0 auto; padding: 40px 24px 34px; position: relative; z-index: 1; }
+  .age-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.3); border: 2px solid rgba(245,158,11,0.6); color: #fde68a; font-size: 13px; font-weight: 800; padding: 6px 18px; border-radius: 30px; margin-bottom: 12px; }
+  header h1 { font-size: clamp(1.7rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.2; margin-bottom: 8px; }
+  header h1 .highlight { color: #fde68a; }
+  .header-sub { font-size: 0.97rem; opacity: 0.9; max-width: 600px; font-weight: 400; }
+  .header-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .hpill { background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.25); color: white; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; cursor: pointer; transition: background 0.2s; }
+  .hpill:hover { background: rgba(255,255,255,0.26); }
+
+  /* ── AUDIENCE BANNER ── */
+  .audience-banner {
+    background: rgba(0,0,0,0.25); padding: 10px 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .audience-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .aud-label { font-size: 11px; font-weight: 700; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; }
+  .aud-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; }
+
+  /* ── AGE STRIP ── */
+  .age-strip { background: rgba(0,0,0,0.2); padding: 10px 24px; }
+  .age-strip-inner { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .age-strip-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8); white-space: nowrap; }
+  .age-bubbles { display: flex; gap: 6px; flex-wrap: wrap; }
+  .age-bubble { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; cursor: pointer; transition: all 0.2s; border: 2px solid rgba(255,255,255,0.3); color: white; }
+  .age-bubble.child { background: rgba(245,158,11,0.5); }
+  .age-bubble.early-teen { background: rgba(139,92,246,0.6); }
+  .age-bubble.teen { background: rgba(124,58,237,0.7); }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 2px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .nav-inner { max-width: 920px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 0 0 auto; padding: 12px 16px; border: none; background: transparent; font-family: inherit; font-size: 12.5px; font-weight: 700; color: var(--text-soft); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  .tab-btn:hover { color: var(--primary); }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-pale); }
+
+  /* ── MAIN ── */
+  main { max-width: 920px; margin: 0 auto; padding: 28px 20px 70px; }
+  .section { display: none; animation: fadeUp 0.35s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SECTION HEAD ── */
+  .sec-head { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .sec-icon { width: 58px; height: 58px; background: linear-gradient(135deg, var(--primary), var(--primary-m)); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; box-shadow: 0 6px 18px rgba(124,58,237,0.28); }
+  .sec-head h2 { font-size: 1.6rem; font-weight: 900; color: var(--primary); line-height: 1.2; }
+  .sec-head .sub-label { font-size: 0.82rem; color: var(--text-soft); margin-top: 3px; font-style: italic; }
+
+  /* ── CARDS ── */
+  .card { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 22px 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .card-title { font-weight: 800; font-size: 1.03rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+  /* ── FUN TIP ── */
+  .fun-tip { background: linear-gradient(135deg, #f5f3ff, #fff); border: 2px solid var(--primary); border-radius: 16px; padding: 18px 20px; margin: 12px 0; display: flex; gap: 14px; align-items: flex-start; }
+  .fun-tip .tip-icon { font-size: 28px; flex-shrink: 0; }
+  .fun-tip .tip-body { font-size: 0.97rem; font-weight: 500; color: var(--text); }
+  .fun-tip .tip-body strong { color: var(--primary); font-weight: 900; }
+
+  /* ── INFO BOXES ── */
+  .info-box { border-radius: 12px; padding: 14px 17px; margin: 11px 0; display: flex; gap: 12px; align-items: flex-start; font-size: 0.93rem; }
+  .info-box.purple { background: var(--primary-pale); border-right: 4px solid var(--primary); }
+  .info-box.green { background: var(--green-pale); border-right: 4px solid var(--green); }
+  .info-box.amber { background: var(--accent-pale); border-right: 4px solid var(--accent); }
+  .info-box.blue { background: var(--blue-pale); border-right: 4px solid var(--blue); }
+  .info-box.pink { background: var(--pink-pale); border-right: 4px solid var(--pink); }
+  .info-box.red { background: var(--red-pale); border-right: 4px solid var(--red); }
+  .info-box.orange { background: var(--orange-pale); border-right: 4px solid var(--orange); }
+  .info-box.teal { background: var(--teal-pale); border-right: 4px solid var(--teal); }
+  .info-box-icon { font-size: 20px; flex-shrink: 0; }
+  .info-box strong { display: block; margin-bottom: 3px; font-weight: 800; }
+
+  /* ── FUN BOX ── */
+  .fun-box { background: linear-gradient(135deg, #fef9c3, #fffbeb); border-radius: 13px; padding: 15px 17px; margin: 11px 0; border-right: 4px solid var(--accent); font-size: 0.93rem; }
+  .fun-box strong { color: #92400e; font-weight: 800; display: block; margin-bottom: 5px; }
+
+  /* ── COMPETITION MODE TOGGLE ── */
+  .comp-toggle { display: flex; gap: 0; border-radius: 14px; overflow: hidden; border: 2px solid var(--border); margin: 14px 0; }
+  .comp-btn { flex: 1; padding: 14px 16px; border: none; background: white; font-family: inherit; font-size: 0.93rem; font-weight: 700; cursor: pointer; transition: all 0.25s; color: var(--text-soft); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .comp-btn .comp-icon { font-size: 1.6rem; }
+  .comp-btn:hover { background: var(--primary-pale); color: var(--primary); }
+  .comp-btn.active-comp { background: var(--primary); color: white; }
+  .comp-btn.active-rec { background: var(--green); color: white; }
+  .comp-result { display: none; border-radius: 12px; padding: 16px 18px; margin-top: 8px; font-size: 0.92rem; }
+  .comp-result.show { display: block; animation: fadeUp 0.3s; }
+  .comp-result.comp-mode { background: var(--primary-pale); border: 2px solid var(--primary); }
+  .comp-result.rec-mode { background: var(--green-pale); border: 2px solid var(--green); }
+  .comp-result h4 { font-weight: 800; margin-bottom: 8px; }
+  .comp-result.comp-mode h4 { color: var(--primary); }
+  .comp-result.rec-mode h4 { color: var(--green); }
+
+  /* ── AGE GROUPS ── */
+  .age-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; margin: 12px 0; }
+  .age-card { border-radius: 14px; padding: 16px; text-align: center; border: 2px solid transparent; transition: transform 0.2s; }
+  .age-card:hover { transform: translateY(-3px); }
+  .age-card.child-card { background: #fffbeb; border-color: #fcd34d; }
+  .age-card.early-card { background: var(--primary-pale); border-color: var(--primary-m); }
+  .age-card.teen-card { background: var(--green-pale); border-color: var(--green); }
+  .age-card .age-emoji { font-size: 2rem; display: block; margin-bottom: 7px; }
+  .age-card .age-range { font-weight: 900; font-size: 0.97rem; margin-bottom: 4px; }
+  .age-card .age-desc { font-size: 0.78rem; color: var(--text-soft); line-height: 1.5; }
+  .age-card.child-card .age-range { color: #d97706; }
+  .age-card.early-card .age-range { color: var(--primary); }
+  .age-card.teen-card .age-range { color: var(--green); }
+
+  /* ── BLOOD TEST VISUAL ── */
+  .blood-visual { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+  .blood-tube { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; transition: transform 0.2s; }
+  .blood-tube:hover { transform: scale(1.05); }
+  .tube-body { width: 36px; height: 90px; border-radius: 4px 4px 20px 20px; border: 3px solid rgba(0,0,0,0.15); position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .tube-liquid { position: absolute; bottom: 0; width: 100%; border-radius: 0 0 18px 18px; transition: height 0.8s ease; }
+  .tube-cap { width: 42px; height: 12px; border-radius: 4px; margin-bottom: 2px; }
+  .blood-label { font-size: 10px; font-weight: 800; text-align: center; max-width: 70px; line-height: 1.3; color: var(--text); }
+  .blood-value { font-size: 9.5px; color: var(--text-soft); text-align: center; max-width: 70px; }
+  .blood-status { font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 10px; }
+  .tube-tooltip { display: none; position: absolute; bottom: 110%; right: 50%; transform: translateX(50%); background: #1e1b4b; color: white; font-size: 11px; padding: 8px 10px; border-radius: 8px; width: 160px; text-align: center; z-index: 50; line-height: 1.4; white-space: normal; }
+  .blood-tube:hover .tube-tooltip { display: block; }
+  .tube-wrap { position: relative; }
+
+  /* ── GRIDS ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 11px; }
+  @media(max-width:620px) { .grid-2,.grid-3,.age-grid { grid-template-columns: 1fr; } .blood-visual { justify-content: center; } }
+
+  /* ── STAT CARDS ── */
+  .stat-card { background: white; border: 2px solid var(--border); border-radius: 15px; padding: 18px; text-align: center; }
+  .stat-num { font-size: 1.9rem; font-weight: 900; line-height: 1; }
+  .stat-unit { font-size: 0.75rem; color: var(--text-soft); margin-top: 3px; }
+  .stat-label { font-size: 0.84rem; font-weight: 700; margin-top: 7px; }
+
+  /* ── ACCORDION ── */
+  .acc-item { background: white; border: 1px solid var(--border); border-radius: 13px; margin-bottom: 9px; overflow: hidden; }
+  .acc-trigger { width: 100%; background: none; border: none; padding: 14px 19px; font-family: inherit; font-size: 0.95rem; font-weight: 700; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; text-align: right; }
+  .acc-trigger:hover { background: var(--primary-pale); }
+  .acc-trigger.open { background: var(--primary-pale); color: var(--primary); }
+  .acc-arrow { transition: transform 0.3s; font-size: 16px; color: var(--primary); }
+  .acc-trigger.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.38s, padding 0.2s; padding: 0 19px; font-size: 0.92rem; color: var(--text-soft); }
+  .acc-body.open { max-height: 1600px; padding: 14px 19px 18px; }
+
+  /* ── TABLES ── */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin: 8px 0; }
+  .tbl th { background: var(--primary); color: white; padding: 9px 12px; text-align: right; font-weight: 700; }
+  .tbl th:first-child { border-radius: 9px 0 0 0; }
+  .tbl th:last-child { border-radius: 0 9px 0 0; }
+  .tbl td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .tbl tr:nth-child(even) td { background: #faf9ff; }
+  body.lang-en .tbl th { text-align: left; }
+
+  /* ── MACRO BARS ── */
+  .mbar-wrap { margin: 11px 0; }
+  .mbar-lbl { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; margin-bottom: 5px; }
+  .mbar-bg { background: var(--border); border-radius: 20px; height: 13px; overflow: hidden; }
+  .mbar-fill { height: 100%; border-radius: 20px; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+  /* ── ENERGY AVAILABILITY VISUAL ── */
+  .ea-scale { display: flex; height: 30px; border-radius: 20px; overflow: hidden; margin: 14px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .ea-zone { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: white; transition: flex 0.8s; }
+  .ea-danger { background: var(--red); flex: 2; }
+  .ea-caution { background: var(--accent); flex: 2; }
+  .ea-optimal { background: var(--green); flex: 3; }
+  .ea-markers { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-soft); margin-top: 4px; padding: 0 4px; }
+  .ea-needle-wrap { position: relative; height: 10px; margin-top: 6px; }
+
+  /* ── PLATE VISUAL ── */
+  .plate-wrap { display: flex; flex-direction: column; align-items: center; margin: 16px 0; }
+  .plate { width: 200px; height: 200px; border-radius: 50%; position: relative; overflow: hidden; border: 6px solid var(--border); box-shadow: 0 8px 28px rgba(124,58,237,0.15); }
+  .seg-carb { position: absolute; top: 0; left: 0; right: 0; height: 55%; background: #fbbf24; }
+  .seg-protein { position: absolute; bottom: 0; right: 0; width: 50%; height: 45%; background: #34d399; }
+  .seg-veggies { position: absolute; bottom: 0; left: 0; width: 50%; height: 45%; background: #60a5fa; }
+  .plate-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 76px; height: 76px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); z-index: 2; }
+  .plate-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; justify-content: center; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 4px; }
+
+  /* ── WATER TRACKER ── */
+  .water-row { display: flex; flex-wrap: wrap; gap: 9px; margin: 12px 0; }
+  .w-glass { width: 46px; height: 46px; border-radius: 11px; border: 2px solid var(--border); background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.2s; }
+  .w-glass:hover { border-color: var(--blue); transform: scale(1.1); }
+  .w-glass.on { background: var(--blue-pale); border-color: var(--blue); }
+  .water-display { font-size: 2.6rem; font-weight: 900; color: var(--blue); line-height: 1; }
+
+  /* ── TIMELINE ── */
+  .timeline { padding-right: 32px; position: relative; }
+  .timeline::before { content: ''; position: absolute; right: 12px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-dot { position: absolute; right: -32px; top: 5px; width: 22px; height: 22px; border-radius: 50%; background: var(--primary); border: 3px solid white; box-shadow: 0 0 0 2px var(--primary); }
+  .tl-item h4 { font-weight: 800; font-size: 0.95rem; color: var(--primary); margin-bottom: 4px; }
+  .tl-item p { font-size: 0.9rem; color: var(--text-soft); }
+
+  /* ── CALC ── */
+  .calc-box { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; box-shadow: var(--shadow); }
+  .calc-box h3 { font-size: 1.18rem; font-weight: 900; color: var(--primary); margin-bottom: 5px; }
+  .calc-box > p { font-size: 0.87rem; color: var(--text-soft); margin-bottom: 16px; }
+  .form-row { display: flex; gap: 11px; flex-wrap: wrap; margin-bottom: 11px; }
+  .form-g { flex: 1; min-width: 128px; }
+  .form-g label { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.5px; color: var(--text-soft); margin-bottom: 4px; text-transform: uppercase; }
+  .form-g input, .form-g select { width: 100%; padding: 9px 12px; border: 2px solid var(--border); border-radius: 9px; font-family: inherit; font-size: 0.95rem; color: var(--text); background: white; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+  .form-g input:focus, .form-g select:focus { outline: none; border-color: var(--primary); }
+  .calc-btn { background: linear-gradient(135deg, var(--primary), var(--primary-m)); color: white; border: none; border-radius: 9px; padding: 11px 26px; font-family: inherit; font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+  .calc-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .result-box { background: var(--primary-pale); border: 2px solid var(--primary); border-radius: 13px; padding: 18px; margin-top: 16px; display: none; }
+  .result-box.show { display: block; animation: fadeUp 0.3s; }
+  .result-box h4 { font-size: 1.05rem; font-weight: 900; color: var(--primary); margin-bottom: 11px; }
+  .r-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.91rem; }
+  .r-row:last-child { border-bottom: none; }
+  .r-label { color: var(--text-soft); }
+  .r-val { font-weight: 900; color: var(--primary); font-size: 1.02rem; }
+  .r-note { font-size: 0.77rem; color: var(--text-soft); margin-top: 10px; font-style: italic; }
+
+  /* ── QUIZ ── */
+  .quiz-q { font-weight: 800; margin-bottom: 12px; font-size: 0.98rem; }
+  .quiz-opts { display: flex; flex-direction: column; gap: 9px; }
+  .quiz-opt { display: flex; align-items: center; gap: 10px; padding: 11px 15px; border: 2px solid var(--border); border-radius: 11px; cursor: pointer; font-size: 0.93rem; background: white; text-align: right; font-family: inherit; color: var(--text); transition: all 0.2s; }
+  body.lang-en .quiz-opt { text-align: left; }
+  .quiz-opt:hover { border-color: var(--primary); background: var(--primary-pale); }
+  .quiz-opt.correct { border-color: var(--green); background: var(--green-pale); color: var(--green); font-weight: 700; }
+  .quiz-opt.wrong { border-color: var(--red); background: var(--red-pale); color: var(--red); font-weight: 700; }
+  .quiz-fb { font-size: 0.9rem; margin-top: 11px; padding: 11px 15px; border-radius: 9px; display: none; font-weight: 600; }
+  .quiz-fb.show { display: block; }
+  .quiz-fb.ok { background: var(--green-pale); color: var(--green); }
+  .quiz-fb.no { background: var(--red-pale); color: var(--red); }
+
+  /* ── CHECKLIST ── */
+  .chklist { list-style: none; }
+  .chklist li { display: flex; align-items: flex-start; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+  .chklist li:last-child { border-bottom: none; }
+  .chk { width: 23px; height: 23px; border-radius: 7px; border: 2px solid var(--border); flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; background: white; transition: all 0.2s; margin-top: 1px; }
+  .chk.done { background: var(--green); border-color: var(--green); color: white; }
+
+  /* ── SUPPLEMENT CARDS ── */
+  .supp-card { background: white; border: 1px solid var(--border); border-radius: 13px; margin-bottom: 9px; overflow: hidden; }
+  .supp-hd { padding: 13px 17px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+  .supp-hd:hover { background: var(--primary-pale); }
+  .supp-name { font-weight: 800; font-size: 0.95rem; }
+  .badge { font-size: 10.5px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .badge.ok { background: #d1fae5; color: #065f46; }
+  .badge.caution { background: #fef3c7; color: #92400e; }
+  .badge.no { background: var(--red-pale); color: #991b1b; }
+  .supp-bd { padding: 0 17px; max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.2s; font-size: 0.89rem; color: var(--text-soft); }
+  .supp-bd.open { max-height: 600px; padding: 13px 17px 17px; }
+
+  /* ── PILLS ── */
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 700; margin: 2px; }
+  .pill.p { background: var(--primary-pale); color: var(--primary); }
+  .pill.g { background: var(--green-pale); color: var(--green); }
+  .pill.a { background: var(--accent-pale); color: #b45309; }
+  .pill.b { background: var(--blue-pale); color: var(--blue); }
+  .pill.r { background: var(--red-pale); color: var(--red); }
+
+  /* ── URINE GUIDE ── */
+  .urine-row { display: flex; gap: 7px; flex-wrap: wrap; margin: 11px 0; }
+  .urine-box { flex: 1; min-width: 68px; border-radius: 11px; padding: 11px 7px; text-align: center; }
+  .urine-box .u-emoji { font-size: 1.3rem; }
+  .urine-box .u-label { font-size: 0.74rem; font-weight: 800; margin-top: 4px; }
+  .urine-box .u-status { font-size: 0.68rem; font-weight: 700; margin-top: 2px; }
+
+  /* ── SPORT SELECTOR ── */
+  .sport-btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 11px 0; }
+  .sport-btn { padding: 7px 14px; border-radius: 20px; border: 2px solid var(--border); background: white; font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all 0.2s; color: var(--text-soft); }
+  .sport-btn:hover, .sport-btn.selected { background: var(--primary); border-color: var(--primary); color: white; }
+
+  /* ── GROWTH NOTE ── */
+  .growth-note { background: linear-gradient(135deg, #f5f3ff, #fdf4ff); border: 2px dashed var(--primary-m); border-radius: 13px; padding: 16px 18px; margin: 12px 0; font-size: 0.92rem; }
+  .growth-note strong { color: var(--primary); display: block; margin-bottom: 5px; font-size: 0.97rem; }
+
+  /* ── STAR RATING ── */
+  .star-rating { display: flex; gap: 7px; margin: 10px 0; }
+  .star { font-size: 26px; cursor: pointer; transition: transform 0.15s; filter: grayscale(1); }
+  .star:hover, .star.lit { filter: grayscale(0); transform: scale(1.2); }
+  .star-msg { font-size: 0.87rem; font-weight: 700; color: var(--primary); margin-top: 6px; min-height: 22px; }
+
+  /* ── FOOTER NAV ── */
+  .foot-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .nav-btn { display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 9px; border: 2px solid var(--border); background: white; font-family: inherit; font-size: 0.9rem; font-weight: 700; color: var(--text-soft); cursor: pointer; transition: all 0.2s; }
+  .nav-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-pale); }
+  .nav-btn.prim { background: var(--primary); border-color: var(--primary); color: white; }
+  .nav-btn.prim:hover { background: var(--primary-m); }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+  .dot.done { background: var(--primary); }
+
+  /* ── ALLERGY TAGS ── */
+  .allergy-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .allergy-tag { padding: 7px 14px; border-radius: 20px; border: 2px solid var(--border); background: white; font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all 0.2s; color: var(--text-soft); display: flex; align-items: center; gap: 5px; }
+  .allergy-tag.selected { background: var(--red-pale); border-color: var(--red); color: var(--red); }
+  .allergy-result { background: var(--red-pale); border: 2px solid var(--red); border-radius: 11px; padding: 14px 16px; margin-top: 10px; font-size: 0.88rem; color: var(--red); display: none; }
+  .allergy-result.show { display: block; }
+
+  @media print { .sticky-nav,.foot-nav,.header-pills,.lang-bar,.age-strip,.audience-banner { display: none !important; } .section { display: block !important; page-break-after: always; } }
+</style>
+</head>
+<body class="lang-ar">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ar')">🇪🇬 العربية</button>
+  <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+</div>
+
+<!-- PROFESSORS CREDIT BAR -->
+<div class="prof-bar">
+  <div class="prof-bar-inner">
+    <div>
+      <div class="prof-label"><span class="ar-text">إعداد وإشراف علمي</span><span class="en-text">Prepared & Supervised by</span></div>
+      <div class="prof-names">
+        <div class="prof-card">
+          <div class="prof-avatar">R</div>
+          <div class="prof-info">
+            <div class="p-name">
+              <span class="ar-text">أ.د. رندا رضا</span>
+              <span class="en-text">Prof. Randa Reda</span>
+            </div>
+            <div class="p-title">
+              <span class="ar-text">أستاذة التغذية الرياضية · المؤلف الرئيسي</span>
+              <span class="en-text">Professor of Sports Nutrition · Principal Author</span>
+            </div>
+          </div>
+        </div>
+        <div class="prof-card">
+          <div class="prof-avatar">Y</div>
+          <div class="prof-info">
+            <div class="p-name">
+              <span class="ar-text">أ.د. ياسمين جمال</span>
+              <span class="en-text">Prof. Yasmine Gamal</span>
+            </div>
+            <div class="p-title">
+              <span class="ar-text">أستاذة طب الأطفال والرياضة</span>
+              <span class="en-text">Professor of Paediatric Sports Medicine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prof-audience">
+      👨‍👩‍👧 <span class="ar-text">موجّه للآباء والمدربين</span><span class="en-text">For Parents & Coaches</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="star-deco">⭐</div>
+  <div class="header-inner">
+    <div class="age-badge">
+      🏅 <span class="ar-text">للرياضيين الصغار · ٩–١٦ سنة</span>
+      <span class="en-text">Young Athletes · Ages 9–16</span>
+    </div>
+    <h1>
+      <span class="ar-text">🏆 <span class="highlight">أكل الأبطال الصغار</span><br>دليل التغذية الرياضية</span>
+      <span class="en-text">🏆 <span class="highlight">Champion Fuel</span><br>Young Athletes Nutrition Guide</span>
+    </h1>
+    <p class="header-sub">
+      <span class="ar-text">دليل متكامل للآباء والمدربين — لفهم احتياجات الرياضي الصغير وتغذيته بشكل صحيح من سن ٩ إلى ١٦ سنة.</span>
+      <span class="en-text">A complete guide for parents and coaches — to understand and properly nourish young athletes from ages 9 to 16.</span>
+    </p>
+    <div class="header-pills">
+      <span class="hpill" onclick="goTab(0)"><span class="ar-text">📋 التقييم</span><span class="en-text">📋 Assessment</span></span>
+      <span class="hpill" onclick="goTab(1)"><span class="ar-text">⚡ الطاقة</span><span class="en-text">⚡ Energy</span></span>
+      <span class="hpill" onclick="goTab(2)"><span class="ar-text">🍽️ الأكل</span><span class="en-text">🍽️ Food</span></span>
+      <span class="hpill" onclick="goTab(3)"><span class="ar-text">💧 مياه</span><span class="en-text">💧 Water</span></span>
+      <span class="hpill" onclick="goTab(4)"><span class="ar-text">🕐 قبل/بعد</span><span class="en-text">🕐 Before/After</span></span>
+      <span class="hpill" onclick="goTab(5)"><span class="ar-text">💊 مكملات</span><span class="en-text">💊 Supplements</span></span>
+    </div>
+  </div>
+  <div class="audience-banner">
+    <div class="audience-inner">
+      <span class="aud-label"><span class="ar-text">الدليل ده موجّه لـ</span><span class="en-text">This guide is for</span></span>
+      <span class="aud-pill">👨‍👩‍👧 <span class="ar-text">الآباء والأمهات</span><span class="en-text">Parents</span></span>
+      <span class="aud-pill">🏋️ <span class="ar-text">المدربين</span><span class="en-text">Coaches</span></span>
+      <span class="aud-pill">🏥 <span class="ar-text">المختصين الصحيين</span><span class="en-text">Health Professionals</span></span>
+    </div>
+  </div>
+  <div class="age-strip">
+    <div class="age-strip-inner">
+      <span class="age-strip-label"><span class="ar-text">سن الرياضي</span><span class="en-text">Athlete's age:</span></span>
+      <div class="age-bubbles" id="ageBubbles"></div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="goTab(0)"><span class="ar-text">📋 التقييم</span><span class="en-text">📋 Assessment</span></button>
+    <button class="tab-btn" onclick="goTab(1)"><span class="ar-text">⚡ الطاقة & EA</span><span class="en-text">⚡ Energy & EA</span></button>
+    <button class="tab-btn" onclick="goTab(2)"><span class="ar-text">🍽️ الأكل</span><span class="en-text">🍽️ Food</span></button>
+    <button class="tab-btn" onclick="goTab(3)"><span class="ar-text">💧 مياه</span><span class="en-text">💧 Water</span></button>
+    <button class="tab-btn" onclick="goTab(4)"><span class="ar-text">🕐 قبل/بعد</span><span class="en-text">🕐 Pre/Post</span></button>
+    <button class="tab-btn" onclick="goTab(5)"><span class="ar-text">💊 مكملات</span><span class="en-text">💊 Supplements</span></button>
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════════ 0 — ASSESSMENT ══════════════ -->
+<div class="section active" id="sec-0">
+  <div class="sec-head">
+    <div class="sec-icon">📋</div>
+    <div>
+      <h2><span class="ar-text">التقييم الغذائي الشامل</span><span class="en-text">Comprehensive Nutritional Assessment</span></h2>
+      <div class="sub-label"><span class="ar-text">للآباء والمدربين — الخطوة الأولى لحماية صحة الرياضي الصغير</span><span class="en-text">For parents & coaches — the first step in protecting the young athlete's health</span></div>
+    </div>
+  </div>
+
+  <!-- COMPETITION vs RECREATIONAL -->
+  <div class="card">
+    <div class="card-title">🏆 <span class="ar-text">أولاً: نشاط الرياضي الصغير</span><span class="en-text">First: What is the young athlete's level?</span></div>
+    <p style="font-size:0.88rem;color:var(--text-soft);margin-bottom:12px"><span class="ar-text">اختر المستوى عشان يتحدد مستوى التغذية المطلوب</span><span class="en-text">Select the level to determine the required nutrition approach</span></p>
+    <div class="comp-toggle">
+      <button class="comp-btn" id="compBtn" onclick="setMode('competitive')">
+        <span class="comp-icon">🥇</span>
+        <span style="font-size:0.95rem"><span class="ar-text">رياضي تنافسي</span><span class="en-text">Competitive Athlete</span></span>
+        <span style="font-size:0.75rem;opacity:0.8"><span class="ar-text">بطولات ومنافسات</span><span class="en-text">Tournaments & competitions</span></span>
+      </button>
+      <button class="comp-btn" id="recBtn" onclick="setMode('recreational')">
+        <span class="comp-icon">🌟</span>
+        <span style="font-size:0.95rem"><span class="ar-text">رياضي ترفيهي</span><span class="en-text">Recreational Athlete</span></span>
+        <span style="font-size:0.75rem;opacity:0.8"><span class="ar-text">نشاط ومتعة</span><span class="en-text">Activity & fun</span></span>
+      </button>
+    </div>
+    <div class="comp-result comp-mode" id="compResult">
+      <h4>🥇 <span class="ar-text">الرياضي التنافسي — احتياجات خاصة</span><span class="en-text">Competitive Athlete — Special Needs</span></h4>
+      <span class="ar-text"><p>الرياضي التنافسي محتاج <strong>تخطيط غذائي دقيق</strong> مع متابعة دورية منتظمة. الاحتياجات أعلى من الرياضي الترفيهي بسبب:</p><ul style="padding-right:18px;margin-top:8px;line-height:2"><li>التمرين المكثف والمتكرر (٥–٧ أيام/أسبوع)</li><li>الضغط النفسي قبل المنافسات</li><li>ضرورة الوصول لأعلى أداء في وقت محدد</li><li>احتمال فقدان الوزن أو السيطرة عليه لمتطلبات الرياضة</li></ul><p style="margin-top:8px">⚠️ <strong>تحذير للمدربين:</strong> لا تطلب من الرياضي الصغير إنقاص الوزن بدون إشراف طبي متخصص.</p></span>
+      <span class="en-text"><p>A competitive athlete needs <strong>precise nutritional planning</strong> with regular monitoring. Needs are higher than recreational athletes due to:</p><ul style="padding-left:18px;margin-top:8px;line-height:2"><li>Intensive frequent training (5–7 days/week)</li><li>Psychological pressure before competitions</li><li>Need to peak at specific times</li><li>Possible weight management requirements</li></ul><p style="margin-top:8px">⚠️ <strong>Warning to coaches:</strong> Never ask a young athlete to lose weight without specialist medical supervision.</p></span>
+    </div>
+    <div class="comp-result rec-mode" id="recResult">
+      <h4>🌟 <span class="ar-text">الرياضي الترفيهي — أساسيات صحية</span><span class="en-text">Recreational Athlete — Healthy Foundations</span></h4>
+      <span class="ar-text"><p>الرياضي الترفيهي هدفه الأول <strong>المتعة والصحة</strong>. التغذية الصح بتساعده على:</p><ul style="padding-right:18px;margin-top:8px;line-height:2"><li>الاستمتاع بالرياضة أكتر</li><li>النمو الصح والسليم</li><li>بناء عادات غذائية صحية تستمر طول العمر</li><li>الحفاظ على الطاقة والتركيز في المدرسة</li></ul><p style="margin-top:8px">✅ <strong>للآباء:</strong> مش محتاج بروتوكول غذائي معقد — الأكل المتوازن والمتنوع كافي.</p></span>
+      <span class="en-text"><p>A recreational athlete's primary goal is <strong>fun and health</strong>. Good nutrition helps them:</p><ul style="padding-left:18px;margin-top:8px;line-height:2"><li>Enjoy sport more</li><li>Grow healthily</li><li>Build healthy eating habits that last a lifetime</li><li>Maintain energy and focus at school</li></ul><p style="margin-top:8px">✅ <strong>For parents:</strong> No complex nutritional protocol needed — balanced and varied eating is sufficient.</p></span>
+    </div>
+  </div>
+
+  <!-- AGE GROUPS -->
+  <div class="age-grid">
+    <div class="age-card child-card"><span class="age-emoji">🌱</span><div class="age-range"><span class="ar-text">٩–١١ سنة</span><span class="en-text">Ages 9–11</span></div><div class="age-desc"><span class="ar-text">مرحلة النمو — الجسم بيبني عضلات وعظام</span><span class="en-text">Growth phase — building muscles and bones</span></div></div>
+    <div class="age-card early-card"><span class="age-emoji">🚀</span><div class="age-range"><span class="ar-text">١٢–١٣ سنة</span><span class="en-text">Ages 12–13</span></div><div class="age-desc"><span class="ar-text">بداية البلوغ — الطاقة المطلوبة بتزيد</span><span class="en-text">Early puberty — energy needs rise</span></div></div>
+    <div class="age-card teen-card"><span class="age-emoji">💪</span><div class="age-range"><span class="ar-text">١٤–١٦ سنة</span><span class="en-text">Ages 14–16</span></div><div class="age-desc"><span class="ar-text">طفرة النمو — أعلى احتياجات في الحياة</span><span class="en-text">Growth spurt — peak lifetime needs</span></div></div>
+  </div>
+
+  <!-- MEDICAL HISTORY -->
+  <div class="card">
+    <div class="card-title">🩺 <span class="ar-text">التاريخ المرضي والعائلي</span><span class="en-text">Medical & Family History</span></div>
+    <div class="info-box purple"><span class="info-box-icon">👨‍👩‍👧</span><div><strong><span class="ar-text">لماذا التاريخ العائلي مهم؟</span><span class="en-text">Why is family history important?</span></strong><span class="ar-text">بعض الأمراض وراثية — معرفة التاريخ العائلي بيساعد المختص على تصميم خطة غذائية آمنة ومناسبة.</span><span class="en-text">Some conditions are hereditary — knowing family history helps the specialist design a safe and appropriate nutrition plan.</span></div></div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)"><span><span class="ar-text">📋 التاريخ المرضي الشخصي للرياضي</span><span class="en-text">📋 Athlete's Personal Medical History</span></span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">
+        <ul class="chklist">
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">أي أمراض مزمنة (سكري، ربو، أمراض قلب، مشاكل غدة درقية)</span><span class="en-text">Any chronic conditions (diabetes, asthma, heart disease, thyroid issues)</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">أي عمليات جراحية سابقة</span><span class="en-text">Any previous surgeries</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">الأدوية الحالية (بعضها بيأثر على التغذية والأداء)</span><span class="en-text">Current medications (some affect nutrition and performance)</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">تاريخ كسور الإجهاد أو إصابات متكررة</span><span class="en-text">History of stress fractures or recurrent injuries</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">اضطرابات الدورة الشهرية (للبنات)</span><span class="en-text">Menstrual irregularities (for girls)</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">أي تشخيص نفسي سابق (اكتئاب، قلق، اضطرابات أكل)</span><span class="en-text">Any previous psychological diagnosis (depression, anxiety, eating disorders)</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">مشاكل الجهاز الهضمي المتكررة</span><span class="en-text">Recurrent gastrointestinal problems</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-trigger" onclick="toggleAcc(this)"><span><span class="ar-text">👨‍👩‍👧 التاريخ العائلي المرضي</span><span class="en-text">👨‍👩‍👧 Family Medical History</span></span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">
+        <ul class="chklist">
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">أمراض القلب والشرايين في الأسرة</span><span class="en-text">Heart disease in the family</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">السكري النوع الأول أو الثاني</span><span class="en-text">Type 1 or Type 2 diabetes</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">هشاشة العظام (أوستيوبوروسيس)</span><span class="en-text">Osteoporosis</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">اضطرابات الغدة الدرقية</span><span class="en-text">Thyroid disorders</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">فقر الدم الوراثي (مثل الأنيميا المنجلية أو التلاسيميا)</span><span class="en-text">Hereditary anaemia (sickle cell, thalassaemia)</span></span></li>
+          <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">الحساسية الغذائية الوراثية</span><span class="en-text">Hereditary food allergies</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALLERGIES & INTOLERANCES -->
+  <div class="card">
+    <div class="card-title">⚠️ <span class="ar-text">الحساسية الغذائية وعدم تحمّل الأكل</span><span class="en-text">Food Allergies & Intolerances</span></div>
+    <div class="info-box red"><span class="info-box-icon">🚨</span><div><strong><span class="ar-text">معلومة مهمة لكل مدرب وأب</span><span class="en-text">Important information for every coach and parent</span></strong>
+    <span class="ar-text">
+      <strong>الحساسية الغذائية</strong> = ردّ فعل من جهاز المناعة تجاه أكل معين، وممكن يكون شديد وخطير ويحتاج تدخل طبي فوري. <br>
+      <strong>عدم تحمّل الأكل</strong> = الجهاز الهضمي بيصعب عليه هضم نوع معين من الأكل — بيسبب أعراض مزعجة زي انتفاخ أو إسهال، لكنه أقل خطورة من الحساسية.
+    </span>
+    <span class="en-text">
+      <strong>Food allergy</strong> = an immune system reaction to a specific food that can be severe and requires immediate medical attention. <br>
+      <strong>Food intolerance</strong> = the digestive system struggles to process a certain food — causes uncomfortable symptoms like bloating or diarrhoea, but is less dangerous than an allergy.
+    </span>
+    </div></div>
+
+    <p style="font-size:0.88rem;color:var(--text-soft);margin-bottom:10px"><span class="ar-text">اختر كل ما ينطبق على الرياضي الصغير:</span><span class="en-text">Select all that apply to the young athlete:</span></p>
+    <div class="allergy-grid" id="allergyGrid">
+      <button class="allergy-tag" onclick="toggleAllergy(this,'gluten')">🌾 <span class="ar-text">جلوتين (قمح)</span><span class="en-text">Gluten (wheat)</span></button>
+      <button class="allergy-tag" onclick="toggleAllergy(this,'dairy')">🥛 <span class="ar-text">ألبان / لاكتوز</span><span class="en-text">Dairy / lactose</span></button>
+      <button class="allergy-tag" onclick="toggleAllergy(this,'nuts')">🥜 <span class="ar-text">مكسرات</span><span class="en-text">Nuts</span></button>
+      <button class="allergy-tag" onclick="toggleAllergy(this,'eggs')">🥚 <span class="ar-text">بيض</span><span class="en-text">Eggs</span></button>
+      <button class="allergy-tag" onclick="toggleAllergy(this,'fish')">🐟 <span class="ar-text">سمك / مأكولات بحرية</span><span class="en-text">Fish / seafood</span></button>
+      <button class="allergy-tag" onclick="toggleAllergy(this,'soy')">🫘 <span class="ar-text">فول الصويا</span><span class="en-text">Soya</span></button>
+    </div>
+    <div class="allergy-result" id="allergyResult"></div>
+
+    <div class="acc-item" style="margin-top:12px">
+      <button class="acc-trigger" onclick="toggleAcc(this)"><span><span class="ar-text">إرشادات للمدربين — كيف تتعامل مع الحساسية؟</span><span class="en-text">Coach Guidelines — How to Handle Allergies?</span></span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">
+        <div class="grid-2">
+          <div class="info-box green" style="margin:0;flex-direction:column;gap:5px"><strong>✅ <span class="ar-text">يجب على المدرب</span><span class="en-text">Coaches must</span></strong><ul style="padding-right:14px;font-size:0.85rem;line-height:2;color:var(--text-soft)"><li><span class="ar-text">يعرف كل حساسيات اللاعبين</span><span class="en-text">Know all players' allergies</span></li><li><span class="ar-text">يبلّغ منظمي المسابقات</span><span class="en-text">Inform event organisers</span></li><li><span class="ar-text">يتأكد من مكونات الأكل والمشروبات</span><span class="en-text">Check food/drink ingredients</span></li><li><span class="ar-text">يعرف مكان جهاز الطوارئ (EpiPen) لو موجود</span><span class="en-text">Know EpiPen location if present</span></li></ul></div>
+          <div class="info-box red" style="margin:0;flex-direction:column;gap:5px"><strong>❌ <span class="ar-text">لا يجوز أبداً</span><span class="en-text">Never allowed</span></strong><ul style="padding-right:14px;font-size:0.85rem;line-height:2;color:var(--text-soft)"><li><span class="ar-text">إجبار اللاعب على أكل ما هو حساس منه</span><span class="en-text">Force athlete to eat allergens</span></li><li><span class="ar-text">إعطاء مكملات بدون مراجعة المكونات</span><span class="en-text">Give supplements without checking ingredients</span></li><li><span class="ar-text">إهمال أي أعراض غير طبيعية بعد الأكل</span><span class="en-text">Ignore any abnormal symptoms after eating</span></li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPORT SELECTOR -->
+  <div class="card">
+    <div class="card-title">⚽ <span class="ar-text">نوع الرياضة</span><span class="en-text">Sport Type</span></div>
+    <div class="sport-btns" id="sportBtns">
+      <button class="sport-btn" onclick="selectSport(this,'endurance')">🏊 <span class="ar-text">سباحة / جري</span><span class="en-text">Swimming / Running</span></button>
+      <button class="sport-btn" onclick="selectSport(this,'team')">⚽ <span class="ar-text">كرة قدم / سلة</span><span class="en-text">Football / Basketball</span></button>
+      <button class="sport-btn" onclick="selectSport(this,'gym')">🤸 <span class="ar-text">جمباز / رقص رياضي</span><span class="en-text">Gymnastics / Dance</span></button>
+      <button class="sport-btn" onclick="selectSport(this,'martial')">🥋 <span class="ar-text">فنون قتالية</span><span class="en-text">Martial Arts</span></button>
+      <button class="sport-btn" onclick="selectSport(this,'racket')">🎾 <span class="ar-text">تنس / اسكواش</span><span class="en-text">Tennis / Squash</span></button>
+      <button class="sport-btn" onclick="selectSport(this,'strength')">🏋️ <span class="ar-text">رفع أثقال / باور</span><span class="en-text">Weightlifting / Power</span></button>
+    </div>
+    <div id="sportTip" style="margin-top:12px;display:none" class="info-box teal">
+      <span class="info-box-icon">💡</span>
+      <div id="sportTipText" style="font-size:0.9rem"></div>
+    </div>
+  </div>
+
+  <!-- BLOOD TESTS VISUAL -->
+  <div class="card">
+    <div class="card-title">🩸 <span class="ar-text">التحاليل المطلوبة — الفحص الأولي للرياضي الصغير</span><span class="en-text">Required Blood Tests — Initial Screening for Young Athletes</span></div>
+    <div class="info-box blue"><span class="info-box-icon">👨‍⚕️</span><div><strong><span class="ar-text">للآباء والمدربين</span><span class="en-text">For parents & coaches</span></strong><span class="ar-text">الأنبوب الملوّن بيدل على نوع التحليل. اضغط على أي أنبوب لمعرفة تفاصيله.</span><span class="en-text">Each tube colour indicates the test type. Tap any tube to see details.</span></div></div>
+
+    <div class="blood-visual" id="bloodVisual"></div>
+
+    <div class="acc-item" style="margin-top:14px">
+      <button class="acc-trigger" onclick="toggleAcc(this)"><span><span class="ar-text">📋 التحاليل المطلوبة — ما كل تحليل بيكشف عنه؟</span><span class="en-text">📋 Required Tests — What Does Each Test Show?</span></span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">
+        <table class="tbl">
+          <thead><tr>
+            <th><span class="ar-text">التحليل</span><span class="en-text">Test</span></th>
+            <th><span class="ar-text">بيكشف عن إيه؟</span><span class="en-text">What does it check?</span></th>
+            <th><span class="ar-text">أهميته للرياضي الصغير</span><span class="en-text">Why it matters for young athletes</span></th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>Ferritin</strong></td><td><span class="ar-text">مخزون الحديد في الجسم</span><span class="en-text">Iron stores in the body</span></td><td><span class="ar-text">الأهم! نقصه سبب شائع للتعب وضعف الأداء عند الأطفال الرياضيين</span><span class="en-text">Most important! A common cause of fatigue and poor performance in young athletes</span></td></tr>
+            <tr><td><strong>Haemoglobin</strong></td><td><span class="ar-text">كمية الأكسجين اللي بيحملها الدم</span><span class="en-text">Oxygen-carrying capacity of blood</span></td><td><span class="ar-text">بيقل بشكل طبيعي مع النمو السريع — لا يُعتمد عليه وحده</span><span class="en-text">Naturally lower during rapid growth — don't rely on it alone</span></td></tr>
+            <tr><td><strong>Vitamin D</strong></td><td><span class="ar-text">مستوى فيتامين D في الدم</span><span class="en-text">Vitamin D level in blood</span></td><td><span class="ar-text">نقصه يضر ببناء العظام ويضعف المناعة في مرحلة النمو</span><span class="en-text">Deficiency harms bone building and weakens immunity during growth</span></td></tr>
+            <tr><td><strong>Calcium</strong></td><td><span class="ar-text">مستوى الكالسيوم في الدم</span><span class="en-text">Calcium level in blood</span></td><td><span class="ar-text">مهم لبناء العظام — قياس الدم ممكن يكون طبيعي حتى لو الجسم محتاج أكتر</span><span class="en-text">Important for bone building — blood level may appear normal even when body needs more</span></td></tr>
+            <tr><td><strong>Zinc</strong></td><td><span class="ar-text">مستوى الزنك</span><span class="en-text">Zinc level</span></td><td><span class="ar-text">يُفقد في العرق — مهم للنمو والمناعة والشفاء من الإصابات</span><span class="en-text">Lost in sweat — important for growth, immunity and injury recovery</span></td></tr>
+            <tr><td><strong>Vitamin B12</strong></td><td><span class="ar-text">مستوى فيتامين B12</span><span class="en-text">Vitamin B12 level</span></td><td><span class="ar-text">ضروري لتكوين خلايا الدم وصحة الجهاز العصبي — أهمية خاصة للأطفال النباتيين</span><span class="en-text">Essential for blood cell formation and nervous system health — critical for vegetarian children</span></td></tr>
+            <tr><td><strong>TSH (Thyroid)</strong></td><td><span class="ar-text">وظيفة الغدة الدرقية</span><span class="en-text">Thyroid gland function</span></td><td><span class="ar-text">لاستبعاد أمراض الدرقية التي تعطي أعراضاً مشابهة للإجهاد الرياضي</span><span class="en-text">To rule out thyroid conditions that give symptoms similar to sports fatigue</span></td></tr>
+            <tr><td><strong>Blood Glucose</strong></td><td><span class="ar-text">مستوى السكر في الدم</span><span class="en-text">Blood sugar level</span></td><td><span class="ar-text">لاستبعاد السكري — خصوصاً لو في تاريخ عائلي للمرض</span><span class="en-text">To rule out diabetes — especially if there is family history of the condition</span></td></tr>
+          </tbody>
+        </table>
+        <div class="info-box amber" style="margin-top:10px"><span class="info-box-icon">📅</span><div><strong><span class="ar-text">متى تعمل التحاليل؟</span><span class="en-text">When to do blood tests?</span></strong><span class="ar-text">أول مرة: قبل بدء التدريب المنظم. المتابعة: كل ٦ أشهر للرياضي التنافسي، وسنوياً للترفيهي. وفوراً لو ظهرت أعراض زي تعب مفاجئ أو دوخة أو ضعف في الأداء.</span><span class="en-text">Initially: before starting structured training. Follow-up: every 6 months for competitive athletes, annually for recreational. Immediately if symptoms appear such as sudden fatigue, dizziness, or poor performance.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASSESSMENT CHECKLIST -->
+  <div class="card">
+    <div class="card-title">✅ <span class="ar-text">قائمة التقييم الكاملة للمختص</span><span class="en-text">Complete Assessment Checklist for the Specialist</span></div>
+    <ul class="chklist">
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">📝 يوميات أكل ٣–٧ أيام</span><span class="en-text">📝 3–7 day food diary</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">📏 وزن وطول وتركيبة الجسم ومرحلة النمو (Tanner stage)</span><span class="en-text">📏 Weight, height, body composition & growth stage (Tanner stage)</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🩸 التحاليل المطلوبة منجزة</span><span class="en-text">🩸 Required blood tests completed</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🩺 التاريخ المرضي الشخصي والعائلي</span><span class="en-text">🩺 Personal & family medical history</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">⚠️ الحساسية الغذائية وحالات عدم تحمّل الأكل موثّقة</span><span class="en-text">⚠️ Food allergies & intolerances documented</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🏆 تحديد المستوى (تنافسي / ترفيهي)</span><span class="en-text">🏆 Level determined (competitive / recreational)</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">⚽ نوع الرياضة وجدول التدريب</span><span class="en-text">⚽ Sport type and training schedule</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">😴 عادات النوم والراحة</span><span class="en-text">😴 Sleep and rest habits</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">💊 المكملات والأدوية الحالية</span><span class="en-text">💊 Current supplements and medications</span></span></li>
+      <li><span class="chk" onclick="toggleChk(this)"></span><span><span class="ar-text">🎯 أهداف الرياضي والأسرة والمدرب</span><span class="en-text">🎯 Goals of the athlete, family and coach</span></span></li>
+    </ul>
+  </div>
+
+  <div class="foot-nav">
+    <div class="dots"><div class="dot done"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(1)"><span class="ar-text">الطاقة ⟵</span><span class="en-text">Energy ›</span></button>
+  </div>
+</div>
+
+<!-- ══════════════ 1 — ENERGY & EA ══════════════ -->
+<div class="section" id="sec-1">
+  <div class="sec-head">
+    <div class="sec-icon">⚡</div>
+    <div>
+      <h2><span class="ar-text">الطاقة ومتوفرية الطاقة</span><span class="en-text">Energy & Energy Availability</span></h2>
+      <div class="sub-label"><span class="ar-text">احتياجات الطاقة + مفهوم EA — مشروح بالبسيط</span><span class="en-text">Energy needs + the EA concept — explained simply</span></div>
+    </div>
+  </div>
+
+  <div class="fun-tip">
+    <span class="tip-icon">🔋</span>
+    <div class="tip-body">
+      <span class="ar-text">جسم الرياضي الصغير بيحتاج طاقة لـ<strong>٣ أغراض في نفس الوقت</strong>: النمو الطبيعي + التمرين + حياته اليومية. لو الأكل مش كافي — الجسم بيضحّي بالنمو أولاً!</span>
+      <span class="en-text">A young athlete's body needs energy for <strong>3 purposes simultaneously</strong>: Normal growth + Training + Daily life. If food is insufficient — the body sacrifices growth first!</span>
+    </div>
+  </div>
+
+  <!-- ENERGY AVAILABILITY CONCEPT -->
+  <div class="card">
+    <div class="card-title">⚡ <span class="ar-text">متوفرية الطاقة (Energy Availability) — ما هي ولماذا تهم؟</span><span class="en-text">Energy Availability (EA) — What is it and why does it matter?</span></div>
+
+    <div class="info-box teal"><span class="info-box-icon">🔬</span><div><strong><span class="ar-text">تعريف بسيط</span><span class="en-text">Simple Definition</span></strong><span class="ar-text">متوفرية الطاقة = الطاقة اللي بتدخل من الأكل <strong>ناقص</strong> الطاقة اللي بيحرقها التمرين. النتيجة دي هي الطاقة اللي فضلت للجسم عشان ينمو ويشتغل صح.</span><span class="en-text">Energy Availability = Energy from food <strong>minus</strong> energy burned in exercise. What's left is the energy available for the body to grow and function properly.</span></div></div>
+
+    <!-- EA VISUAL SCALE -->
+    <div style="margin:18px 0">
+      <div style="font-weight:800;font-size:0.95rem;color:var(--text);margin-bottom:10px"><span class="ar-text">📊 مقياس متوفرية الطاقة — أنت في الزون الأخضر؟</span><span class="en-text">📊 Energy Availability Scale — Are you in the green zone?</span></div>
+      <div class="ea-scale">
+        <div class="ea-zone ea-danger">🚨 &lt;30</div>
+        <div class="ea-zone ea-caution">⚠️ 30–45</div>
+        <div class="ea-zone ea-optimal">✅ ≥45 <span class="ar-text">مثالي</span><span class="en-text">Optimal</span></div>
+      </div>
+      <div class="ea-markers">
+        <span>0</span><span>30</span><span>45</span><span>70+ kcal/kg FFM/day</span>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:16px">
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:5px">
+        <strong>🚨 <span class="ar-text">خطر (&lt;30)</span><span class="en-text">Danger (&lt;30)</span></strong>
+        <span style="font-size:0.82rem;color:var(--text-soft)"><span class="ar-text">نقص الطاقة الشديد — يضر النمو والعظام والهرمونات. خطر RED-S.</span><span class="en-text">Severe energy deficiency — harms growth, bones and hormones. RED-S risk.</span></span>
+      </div>
+      <div class="info-box amber" style="margin:0;flex-direction:column;gap:5px">
+        <strong>⚠️ <span class="ar-text">تحذير (30–45)</span><span class="en-text">Caution (30–45)</span></strong>
+        <span style="font-size:0.82rem;color:var(--text-soft)"><span class="ar-text">منطقة الخطر — الجسم بيعاني. مراجعة الأكل ضرورية.</span><span class="en-text">Risk zone — body is struggling. Dietary review is essential.</span></span>
+      </div>
+      <div class="info-box green" style="margin:0;flex-direction:column;gap:5px">
+        <strong>✅ <span class="ar-text">مثالي (≥45)</span><span class="en-text">Optimal (≥45)</span></strong>
+        <span style="font-size:0.82rem;color:var(--text-soft)"><span class="ar-text">الجسم بيشتغل بكفاءة — نمو صح وأداء ممتاز.</span><span class="en-text">Body functioning efficiently — healthy growth and excellent performance.</span></span>
+      </div>
+    </div>
+
+    <div class="acc-item" style="margin-top:14px">
+      <button class="acc-trigger" onclick="toggleAcc(this)"><span><span class="ar-text">🚨 لما الأكل مش كافي — خطر على صحة الرياضي الصغير</span><span class="en-text">🚨 RED-S — When Food Is Not Enough</span></span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">
+        <div class="info-box red"><span class="info-box-icon">⚠️</span><div><strong><span class="ar-text">إيه اللي بيحصل لو الرياضي الصغير مش بياكل كفاية؟</span><span class="en-text">What happens when a young athlete doesn't eat enough?</span></strong><br><span class="ar-text">لو الجسم مش بياخد طاقة كافية بالنسبة للتمرين اللي بيعمله — بيبدأ يتأثر النمو والعظام والهرمونات والمناعة والأداء الرياضي. الأطباء بيسموا الحالة دي RED-S.</span><span class="en-text">If the body doesn't receive enough energy relative to its training load — growth, bones, hormones, immunity and athletic performance all begin to suffer. Doctors call this condition RED-S.</span></div></div>
+        <p style="font-weight:800;margin:12px 0 8px;font-size:0.93rem;color:var(--text)">⚠️ <span class="ar-text">علامات تحتاج انتباه من الأهل والمدربين:</span><span class="en-text">Signs that parents and coaches need to watch out for:</span></p>
+        <div class="grid-2">
+          <ul style="padding-right:14px;font-size:0.86rem;line-height:2.2;color:var(--text-soft)">
+            <li><span class="ar-text">تعب مستمر وصعوبة في التركيز</span><span class="en-text">Constant tiredness and difficulty concentrating</span></li>
+            <li><span class="ar-text">إصابات متكررة أو كسور بدون سبب واضح</span><span class="en-text">Recurrent injuries or fractures without clear cause</span></li>
+            <li><span class="ar-text">انقطاع أو عدم انتظام الدورة الشهرية (للبنات)</span><span class="en-text">Absent or irregular periods (girls)</span></li>
+            <li><span class="ar-text">عدم زيادة الطول بالشكل الطبيعي</span><span class="en-text">Not growing in height as expected</span></li>
+          </ul>
+          <ul style="padding-right:14px;font-size:0.86rem;line-height:2.2;color:var(--text-soft)">
+            <li><span class="ar-text">ضعف واضح في مستوى الأداء الرياضي</span><span class="en-text">Clear decline in sports performance</span></li>
+            <li><span class="ar-text">مرض متكرر أو برد دايم</span><span class="en-text">Frequent illness or persistent colds</span></li>
+            <li><span class="ar-text">تقلبات مزاجية غير طبيعية</span><span class="en-text">Unusual mood swings</span></li>
+            <li><span class="ar-text">قلق شديد بشأن الأكل أو الوزن</span><span class="en-text">Excessive worry about eating or weight</span></li>
+          </ul>
+        </div>
+        <div class="info-box red" style="margin-top:12px"><span class="info-box-icon">🚨</span><div><span class="ar-text"><strong>للمدربين:</strong> لو لاحظت أي من هذه العلامات على لاعب — لا تتردد، توقّف التمرين وحوّله فوراً للطبيب المختص.</span><span class="en-text"><strong>For coaches:</strong> If you notice any of these signs in a player — don't hesitate, stop training and refer them immediately to a specialist doctor.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENERGY NEEDS TABLE -->
+  <div class="card">
+    <div class="card-title">📊 <span class="ar-text">احتياجات الطاقة اليومية حسب العمر والجنس</span><span class="en-text">Daily Energy Needs by Age & Sex</span></div>
+    <table class="tbl">
+      <thead><tr>
+        <th><span class="ar-text">العمر</span><span class="en-text">Age</span></th>
+        <th><span class="ar-text">بنين (تمرين متوسط)</span><span class="en-text">Boys (moderate training)</span></th>
+        <th><span class="ar-text">بنات (تمرين متوسط)</span><span class="en-text">Girls (moderate training)</span></th>
+        <th><span class="ar-text">تنافسي شديد</span><span class="en-text">Competitive/intense</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td>9–10</td><td>1,900–2,200 kcal</td><td>1,700–2,000 kcal</td><td><span class="ar-text">+ ٣٠٠–٦٠٠</span><span class="en-text">+300–600</span></td></tr>
+        <tr><td>11–12</td><td>2,200–2,500 kcal</td><td>1,900–2,200 kcal</td><td><span class="ar-text">+ ٤٠٠–٧٠٠</span><span class="en-text">+400–700</span></td></tr>
+        <tr><td>13–14</td><td>2,500–2,900 kcal</td><td>2,100–2,400 kcal</td><td><span class="ar-text">+ ٥٠٠–٨٠٠</span><span class="en-text">+500–800</span></td></tr>
+        <tr><td>15–16</td><td>2,800–3,200 kcal</td><td>2,200–2,500 kcal</td><td><span class="ar-text">+ ٥٠٠–١٠٠٠</span><span class="en-text">+500–1,000</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="calc-box">
+    <h3><span class="ar-text">⚡ حاسبة الطاقة للرياضيين الصغار</span><span class="en-text">⚡ Energy Calculator for Young Athletes</span></h3>
+    <p><span class="ar-text">يستخدم معادلات Schofield المعيارية للأطفال والمراهقين</span><span class="en-text">Uses standard Schofield equations for children and adolescents</span></p>
+    <div class="form-row">
+      <div class="form-g"><label><span class="ar-text">العمر (٩–١٦)</span><span class="en-text">Age (9–16)</span></label><input type="number" id="y-age" placeholder="12" min="9" max="16"></div>
+      <div class="form-g"><label><span class="ar-text">الجنس</span><span class="en-text">Sex</span></label><select id="y-sex"><option value="m">Male / ذكر</option><option value="f">Female / أنثى</option></select></div>
+      <div class="form-g"><label><span class="ar-text">الوزن (كجم)</span><span class="en-text">Weight (kg)</span></label><input type="number" id="y-wt" placeholder="45" min="25" max="90"></div>
+      <div class="form-g"><label><span class="ar-text">الطول (سم)</span><span class="en-text">Height (cm)</span></label><input type="number" id="y-ht" placeholder="155" min="120" max="200"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-g"><label><span class="ar-text">مستوى التمرين</span><span class="en-text">Training Level</span></label>
+        <select id="y-act">
+          <option value="1.4"><span class="ar-text">خفيف (١–٢ أيام)</span><span class="en-text">Light (1–2 days/wk)</span></option>
+          <option value="1.6" selected><span class="ar-text">متوسط (٣–٤ أيام)</span><span class="en-text">Moderate (3–4 days/wk)</span></option>
+          <option value="1.8"><span class="ar-text">عالي (٥–٦ أيام)</span><span class="en-text">High (5–6 days/wk)</span></option>
+          <option value="2.0"><span class="ar-text">تنافسي مكثف</span><span class="en-text">Competitive elite</span></option>
+        </select>
+      </div>
+      <div class="form-g"><label><span class="ar-text">EEE تقريبي (سعر/يوم)</span><span class="en-text">Est. EEE (kcal/day)</span></label><input type="number" id="y-eee" placeholder="400"></div>
+    </div>
+    <button class="calc-btn" onclick="calcYouth()"><span class="ar-text">احسب الطاقة ومتوفريتها 🔥</span><span class="en-text">Calculate Energy & EA 🔥</span></button>
+    <div class="result-box" id="youthRes">
+      <h4><span class="ar-text">⚡ النتيجة</span><span class="en-text">⚡ Results</span></h4>
+      <div class="r-row"><span class="r-label">BMR (Schofield)</span><span class="r-val" id="y-bmr">—</span></div>
+      <div class="r-row"><span class="r-label">TDEE</span><span class="r-val" id="y-tdee">—</span></div>
+      <div class="r-row"><span class="r-label"><span class="ar-text">البروتين المطلوب</span><span class="en-text">Protein Target</span></span><span class="r-val" id="y-prot">—</span></div>
+      <div class="r-row"><span class="r-label"><span class="ar-text">الكالسيوم المطلوب</span><span class="en-text">Calcium Target</span></span><span class="r-val" id="y-calc">—</span></div>
+      <div class="r-row" id="eaRow" style="display:none"><span class="r-label">Energy Availability (EA)</span><span class="r-val" id="y-ea">—</span></div>
+      <div id="eaInterpret" style="display:none;margin-top:12px;padding:12px;border-radius:9px;font-weight:700;font-size:0.9rem"></div>
+      <p class="r-note"><span class="ar-text">* تقديرات — يُنصح بمراجعة أخصائي تغذية رياضية للأطفال.</span><span class="en-text">* Estimates — recommend consulting a paediatric sports dietitian.</span></p>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(0)"><span class="ar-text">⟶ التقييم</span><span class="en-text">‹ Assessment</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(2)"><span class="ar-text">الأكل ⟵</span><span class="en-text">Food ›</span></button>
+  </div>
+</div>
+
+<!-- ══════════════ 2 — MACROS ══════════════ -->
+<div class="section" id="sec-2">
+  <div class="sec-head">
+    <div class="sec-icon">🍽️</div>
+    <div>
+      <h2><span class="ar-text">الغذاء الصح = نمو وأداء</span><span class="en-text">Right Food = Growth & Performance</span></h2>
+      <div class="sub-label"><span class="ar-text">الكارب والبروتين والدهون والكالسيوم والحديد</span><span class="en-text">Carbs, protein, fat, calcium & iron</span></div>
+    </div>
+  </div>
+
+  <div class="fun-tip"><span class="tip-icon">🎮</span><div class="tip-body"><span class="ar-text">تخيّل جسم الرياضي الصغير لعبة فيديو — <strong>الكارب</strong> هو البطارية، <strong>البروتين</strong> هو الـ upgrade للعضلات، و<strong>الكالسيوم</strong> هو درع العظام. كل عنصر بيؤدي دور مش ممكن يعوّضه غيره!</span><span class="en-text">Picture the young athlete's body as a video game — <strong>carbs</strong> are the battery, <strong>protein</strong> upgrades muscles, and <strong>calcium</strong> is the bone shield. Each nutrient plays a role nothing else can replace!</span></div></div>
+
+  <!-- PLATE -->
+  <div class="card">
+    <div class="card-title">🍽️ <span class="ar-text">طبق الرياضي الصغير المثالي</span><span class="en-text">The Young Athlete's Ideal Plate</span></div>
+    <div class="plate-wrap">
+      <div class="plate">
+        <div class="seg-carb"></div><div class="seg-protein"></div><div class="seg-veggies"></div>
+        <div class="plate-center">🏅</div>
+      </div>
+      <div class="plate-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#fbbf24"></div><span class="ar-text">كارب ٥٥٪</span><span class="en-text">Carbs 55%</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#34d399"></div><span class="ar-text">بروتين ٢٠٪</span><span class="en-text">Protein 20%</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#60a5fa"></div><span class="ar-text">خضار وفاكهة ٢٥٪</span><span class="en-text">Veg & fruit 25%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARBS -->
+  <div class="card">
+    <div class="card-title">🌾 <span class="ar-text">الكربوهيدرات — الوقود الأساسي</span><span class="en-text">Carbohydrates — Primary Fuel</span></div>
+    <div class="mbar-wrap"><div class="mbar-lbl"><span>🌾 <span class="ar-text">كارب</span><span class="en-text">Carbs</span></span><span>50–60%</span></div><div class="mbar-bg"><div class="mbar-fill" style="width:55%;background:linear-gradient(90deg,#d97706,#fbbf24)"></div></div></div>
+    <table class="tbl" style="margin-top:12px">
+      <thead><tr><th><span class="ar-text">الفئة العمرية</span><span class="en-text">Age Group</span></th><th><span class="ar-text">الكمية اليومية</span><span class="en-text">Daily Amount</span></th><th><span class="ar-text">مثال</span><span class="en-text">Example</span></th></tr></thead>
+      <tbody>
+        <tr><td>9–11</td><td>5–6 g/kg</td><td><span class="ar-text">٢٢٥–٣٠٠ جم</span><span class="en-text">225–300 g</span></td></tr>
+        <tr><td>12–13</td><td>5–7 g/kg</td><td><span class="ar-text">٢٥٠–٣٥٠ جم</span><span class="en-text">250–350 g</span></td></tr>
+        <tr><td>14–16</td><td>6–8 g/kg</td><td><span class="ar-text">٣٠٠–٤٨٠ جم</span><span class="en-text">300–480 g</span></td></tr>
+      </tbody>
+    </table>
+    <div class="fun-box"><strong>🌟 <span class="ar-text">مثال</span><span class="en-text">Example</span></strong><span class="ar-text">أحمد (١٣ سنة، ٥٠ كجم، لاعب كرة قدم) — ٢٥٠–٣٥٠ جم كارب يومياً = كوبين أرز + ٤ توست + موزة + كوب عصير.</span><span class="en-text">Ahmed (13 yrs, 50 kg, football) — 250–350 g carbs daily = 2 cups rice + 4 toast + 1 banana + 1 glass juice.</span></div>
+  </div>
+
+  <!-- PROTEIN -->
+  <div class="card">
+    <div class="card-title">🥩 <span class="ar-text">البروتين — بنّاء العضلات والخلايا</span><span class="en-text">Protein — Building Muscles & Cells</span></div>
+    <div class="mbar-wrap"><div class="mbar-lbl"><span>🥩 <span class="ar-text">بروتين</span><span class="en-text">Protein</span></span><span>20–25%</span></div><div class="mbar-bg"><div class="mbar-fill" style="width:22%;background:linear-gradient(90deg,#059669,#34d399)"></div></div></div>
+    <div class="info-box green"><span class="info-box-icon">🎯</span><div><strong><span class="ar-text">الجرعة اليومية:</span><span class="en-text">Daily dose:</span></strong><span class="ar-text"> ٩–١٢ سنة: ١.٢–١.٥ جم/كجم | ١٣–١٦ سنة: ١.٤–١.٨ جم/كجم</span><span class="en-text"> Ages 9–12: 1.2–1.5 g/kg | Ages 13–16: 1.4–1.8 g/kg</span></div></div>
+    <div class="fun-box"><strong>🌟 <span class="ar-text">مثال</span><span class="en-text">Example</span></strong><span class="ar-text">سلمى (١٥ سنة، ٥٥ كجم، سبّاحة) — ٧٧–٩٩ جم بروتين يومياً = ١٥٠ جم سمك مشوي + ٣ بيضات + كوب لبن + زبادي.</span><span class="en-text">Salma (15 yrs, 55 kg, swimmer) — 77–99 g protein/day = 150 g grilled fish + 3 eggs + 1 glass milk + yoghurt.</span></div>
+  </div>
+
+  <!-- CALCIUM & IRON -->
+  <div class="card">
+    <div class="card-title">🦴 <span class="ar-text">الكالسيوم والحديد — خاص بمرحلة النمو</span><span class="en-text">Calcium & Iron — Special for Growth Phase</span></div>
+    <div class="grid-2">
+      <div>
+        <div class="info-box blue" style="margin:0 0 10px"><span class="info-box-icon">🦴</span><div><strong><span class="ar-text">الكالسيوم: ١٣٠٠ مجم/يوم</span><span class="en-text">Calcium: 1,300 mg/day</span></strong><span class="ar-text">للأعمار ٩–١٨ سنة — ضعف احتياج الكبار. أساسي لبناء عظام تدوم.</span><span class="en-text">For ages 9–18 — double adult needs. Essential for building lasting bones.</span></div></div>
+        <div class="fun-box" style="margin:0"><strong>🥛 <span class="ar-text">مصادره</span><span class="en-text">Sources</span></strong><span class="ar-text">لبن، جبنة، زبادي، سمك صغير بعظمه، خضار ورقية، لبن نباتي مدعّم</span><span class="en-text">Milk, cheese, yoghurt, small whole fish, leafy greens, fortified plant milk</span></div>
+      </div>
+      <div>
+        <div class="info-box pink" style="margin:0 0 10px"><span class="info-box-icon">🔩</span><div><strong><span class="ar-text">الحديد — مهم خصوصاً للبنات</span><span class="en-text">Iron — especially important for girls</span></strong><span class="ar-text">بعد بداية الدورة الشهرية ومع التمرين — نقصه يسبب تعب وضعف أداء.</span><span class="en-text">After menstruation begins and with training — deficiency causes fatigue and poor performance.</span></div></div>
+        <div class="fun-box" style="margin:0"><strong>🥩 <span class="ar-text">مصادره + نصيحة</span><span class="en-text">Sources + Tip</span></strong><span class="ar-text">لحمة حمراء، كبدة، عدس، فاصوليا، سبانخ. أكل فيتامين C مع الحديد النباتي يضاعف امتصاصه!</span><span class="en-text">Red meat, liver, lentils, beans, spinach. Eating Vitamin C with plant iron doubles absorption!</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(1)"><span class="ar-text">⟶ الطاقة</span><span class="en-text">‹ Energy</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(3)"><span class="ar-text">المياه ⟵</span><span class="en-text">Water ›</span></button>
+  </div>
+</div>
+
+<!-- ══════════════ 3 — HYDRATION ══════════════ -->
+<div class="section" id="sec-3">
+  <div class="sec-head">
+    <div class="sec-icon">💧</div>
+    <div>
+      <h2><span class="ar-text">الترطيب — سلاح سري للرياضيين الصغار</span><span class="en-text">Hydration — A Secret Weapon for Young Athletes</span></h2>
+      <div class="sub-label"><span class="ar-text">الأطفال أكثر عرضة للجفاف من الكبار</span><span class="en-text">Children are more vulnerable to dehydration than adults</span></div>
+    </div>
+  </div>
+
+  <div class="fun-tip"><span class="tip-icon">💧</span><div class="tip-body"><span class="ar-text">الرياضي الصغير بيحس بالعطش <strong>أبطأ</strong> من الكبار حتى لو جسمه محتاج مياه. للمدربين والآباء: ذكّروهم دايماً يشربوا قبل ما يحسوا بالعطش!</span><span class="en-text">Young athletes feel thirsty <strong>more slowly</strong> than adults even when their body needs water. Coaches and parents: always remind them to drink before feeling thirsty!</span></div></div>
+
+  <div class="grid-3" style="margin-bottom:16px">
+    <div class="stat-card"><div class="stat-num" style="color:var(--primary)">1–2%</div><div class="stat-unit"><span class="ar-text">فقدان الوزن كمياه</span><span class="en-text">body weight water loss</span></div><div class="stat-label"><span class="ar-text">يضر التركيز والأداء</span><span class="en-text">Impairs focus & performance</span></div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--blue)">6–8</div><div class="stat-unit"><span class="ar-text">أكواب / يوم عادي</span><span class="en-text">glasses / rest day</span></div><div class="stat-label"><span class="ar-text">الحد الأدنى للرياضيين الصغار</span><span class="en-text">Minimum for young athletes</span></div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--accent)">10–12</div><div class="stat-unit"><span class="ar-text">أكواب / يوم تمرين</span><span class="en-text">glasses / training day</span></div><div class="stat-label"><span class="ar-text">في الحر أو التمرين الشديد</span><span class="en-text">In heat or intense training</span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎨 <span class="ar-text">راقب لون البول — دليلك السهل!</span><span class="en-text">Urine Colour Guide — Easy Check!</span></div>
+    <div class="urine-row">
+      <div class="urine-box" style="background:#fefce8"><div class="u-emoji">💛</div><div class="u-label"><span class="ar-text">شاحب جداً</span><span class="en-text">Very pale</span></div><div class="u-status" style="color:var(--green)">✅ <span class="ar-text">ممتاز</span><span class="en-text">Excellent</span></div></div>
+      <div class="urine-box" style="background:#fef9c3"><div class="u-emoji">💛</div><div class="u-label"><span class="ar-text">فاتح</span><span class="en-text">Pale</span></div><div class="u-status" style="color:var(--green)">✅ <span class="ar-text">كويس</span><span class="en-text">Good</span></div></div>
+      <div class="urine-box" style="background:#fde68a"><div class="u-emoji">🟡</div><div class="u-label"><span class="ar-text">أصفر</span><span class="en-text">Yellow</span></div><div class="u-status" style="color:var(--accent)">⚠️ <span class="ar-text">اشرب</span><span class="en-text">Drink!</span></div></div>
+      <div class="urine-box" style="background:#fcd34d"><div class="u-emoji">🟠</div><div class="u-label"><span class="ar-text">غامق</span><span class="en-text">Dark</span></div><div class="u-status" style="color:var(--orange)">⚠️ <span class="ar-text">تحذير</span><span class="en-text">Warning</span></div></div>
+      <div class="urine-box" style="background:#fca5a5"><div class="u-emoji">🔴</div><div class="u-label"><span class="ar-text">برتقالي</span><span class="en-text">Orange</span></div><div class="u-status" style="color:var(--red)">🚨 <span class="ar-text">خطر!</span><span class="en-text">Danger!</span></div></div>
+    </div>
+    <div class="info-box purple" style="margin-top:10px"><span class="info-box-icon">👨‍🏫</span><div><strong><span class="ar-text">نصيحة للمدربين</span><span class="en-text">Coach Tip</span></strong><span class="ar-text">علّم الرياضيين الصغار يراقبوا لون البولهم قبل ما يروحوا التمرين. ده أسهل طريقة يتحققوا بها إنهم شربوا كفاية.</span><span class="en-text">Teach young athletes to check their urine colour before training. This is the easiest way for them to verify they're well hydrated.</span></div></div>
+  </div>
+
+  <!-- WATER TRACKER -->
+  <div class="card">
+    <div class="card-title">🥤 <span class="ar-text">تراكر الماء اليومي</span><span class="en-text">Daily Water Tracker</span></div>
+    <p style="font-size:0.87rem;color:var(--text-soft);margin-bottom:11px"><span class="ar-text">اضغط على كل كوب (٢٥٠ مل) لما بتشربه</span><span class="en-text">Tap each glass (250 ml) as you drink it</span></p>
+    <div class="water-row" id="waterRow"></div>
+    <div style="margin-top:13px;display:flex;align-items:baseline;gap:11px">
+      <div class="water-display" id="wCount">0</div>
+      <div><div style="font-size:0.84rem;color:var(--text-soft)" id="wMl">0 ml</div><div style="font-size:0.88rem;color:var(--primary);font-weight:800" id="wMsg"></div></div>
+    </div>
+    <button class="calc-btn" style="margin-top:12px;padding:7px 16px;font-size:0.84rem;background:#e5e7eb;color:var(--text)" onclick="resetWater()"><span class="ar-text">إعادة ضبط</span><span class="en-text">Reset</span></button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 <span class="ar-text">جدول الترطيب يوم التمرين</span><span class="en-text">Hydration Schedule on Training Days</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">قبل التمرين بساعة</span><span class="en-text">1 Hour Before</span></h4><p><span class="ar-text">٣٠٠–٤٠٠ مل مياه عادية</span><span class="en-text">300–400 ml plain water</span></p></div>
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">أثناء التمرين</span><span class="en-text">During Training</span></h4><p><span class="ar-text">١٥٠–٢٥٠ مل كل ١٥–٢٠ دقيقة. في الحر أو تمرين أكتر من ساعة — مشروب رياضي مخفف.</span><span class="en-text">150–250 ml every 15–20 min. In heat or sessions over 60 min — diluted sports drink.</span></p></div>
+      <div class="tl-item"><div class="tl-dot"></div><h4><span class="ar-text">بعد التمرين</span><span class="en-text">After Training</span></h4><p><span class="ar-text">٥٠٠ مل على الأقل في أول ساعة. إجمالي: ١.٥× الوزن المفقود.</span><span class="en-text">At least 500 ml in the first hour. Total: 1.5× weight lost.</span></p></div>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(2)"><span class="ar-text">⟶ الأكل</span><span class="en-text">‹ Food</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(4)"><span class="ar-text">قبل/بعد التمرين ⟵</span><span class="en-text">Pre/Post Workout ›</span></button>
+  </div>
+</div>
+
+<!-- ══════════════ 4 — PRE/POST ══════════════ -->
+<div class="section" id="sec-4">
+  <div class="sec-head">
+    <div class="sec-icon">🕐</div>
+    <div>
+      <h2><span class="ar-text">التغذية قبل وبعد التمرين</span><span class="en-text">Nutrition Before & After Training</span></h2>
+      <div class="sub-label"><span class="ar-text">التوقيت يفرق فرق كبير في أداء وتعافي الرياضي الصغير</span><span class="en-text">Timing makes a huge difference in the young athlete's performance and recovery</span></div>
+    </div>
+  </div>
+
+  <div class="fun-tip"><span class="tip-icon">⏰</span><div class="tip-body"><span class="ar-text">للمدربين والآباء: إيه اللي بياكله الرياضي الصغير <strong>قبل</strong> التمرين بيحدد طاقته خلاله، وإيه اللي بياكله <strong>بعده</strong> بيحدد مدى سرعة تعافيه ونموه.</span><span class="en-text">For coaches and parents: what the young athlete eats <strong>before</strong> training determines their energy during it, and what they eat <strong>after</strong> determines recovery speed and growth.</span></div></div>
+
+  <div class="card">
+    <div class="card-title">⏱️ <span class="ar-text">الجدول الزمني ليوم التمرين</span><span class="en-text">Training Day Timeline</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">٢–٣ ساعات قبل: الوجبة الرئيسية</span><span class="en-text">2–3 Hours Before: Main Meal</span></h4>
+        <p><span class="ar-text">كارب + بروتين + أقل دهون — سهل الهضم</span><span class="en-text">Carbs + protein + minimal fat — easy to digest</span></p>
+        <div class="fun-box" style="margin-top:7px"><strong>🍽️ <span class="ar-text">أمثلة</span><span class="en-text">Examples</span></strong><span class="ar-text">أرز بفراخ مشوية · معكرونة بتونة · شوفان بالموز واللبن · عيش بيض مسلوق</span><span class="en-text">Rice with grilled chicken · Pasta with tuna · Oats with banana & milk · Toast with boiled egg</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">٣٠–٦٠ دقيقة قبل: سناك خفيف</span><span class="en-text">30–60 Min Before: Light Snack</span></h4>
+        <p><span class="ar-text">للرياضيين التنافسيين أو التمرينات الطويلة فقط</span><span class="en-text">For competitive athletes or long sessions only</span></p>
+        <div class="fun-box" style="margin-top:7px"><strong>🍌 <span class="ar-text">أمثلة</span><span class="en-text">Examples</span></strong><span class="ar-text">موزة · ٢–٣ تمرات · توست بعسل · كوب عصير طبيعي</span><span class="en-text">Banana · 2–3 dates · Toast with honey · Natural juice</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4>⭐ <span class="ar-text">بعد التمرين بـ٣٠ دقيقة: نافذة التعافي الذهبية!</span><span class="en-text">30 Min After: The Golden Recovery Window!</span></h4>
+        <p><span class="ar-text">كارب + بروتين مع بعض = بناء عضل + إرجاع طاقة</span><span class="en-text">Carbs + protein together = muscle building + energy refuel</span></p>
+        <div class="fun-box" style="margin-top:7px"><strong>🥛 <span class="ar-text">أفضل خيارات للرياضي الصغير</span><span class="en-text">Best options for young athletes</span></strong><span class="ar-text">شيكولاتة حليب (الأفضل!) · زبادي يوناني + موزة · بيض + توست · فول + عيش</span><span class="en-text">Chocolate milk (best!) · Greek yoghurt + banana · Eggs + toast · Fava beans + bread</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot"></div>
+        <h4><span class="ar-text">الوجبة الكاملة (١–٢ ساعة بعد)</span><span class="en-text">Full Recovery Meal (1–2 hours after)</span></h4>
+        <p><span class="ar-text">وجبة متكاملة — كارب + بروتين + خضار + مياه كافية</span><span class="en-text">Balanced meal — carbs + protein + vegetables + adequate water</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHOOL BAG TIP -->
+  <div class="card">
+    <div class="card-title">🎒 <span class="ar-text">للمدربين والآباء: تمرين بعد المدرسة؟</span><span class="en-text">For Coaches & Parents: Training After School?</span></div>
+    <div class="info-box purple"><span class="info-box-icon">💡</span><div><strong><span class="ar-text">الحل الذكي: سناك في الحقيبة!</span><span class="en-text">Smart solution: Snack in the bag!</span></strong><span class="ar-text">لو الرياضي بيتمرن مباشرة بعد المدرسة — خليه ياخد سناك معاه يتناوله في الاستراحة أو الأتوبيس. مش لازم يكون كبير.</span><span class="en-text">If the athlete trains straight after school — let them pack a snack to eat at break or on the bus. It doesn't need to be big.</span></div></div>
+    <div class="grid-2" style="margin-top:10px">
+      <div class="fun-box" style="margin:0"><strong>✅ <span class="ar-text">سناكات ممتازة</span><span class="en-text">Great snacks</span></strong><span class="ar-text">موزة · تمر · جبنة + توست · مكسرات · زبادي · فاكهة</span><span class="en-text">Banana · Dates · Cheese + toast · Nuts · Yoghurt · Fruit</span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong>❌ <span class="ar-text">تجنب</span><span class="en-text">Avoid</span></strong><span style="font-size:0.83rem;color:var(--text-soft)"><span class="ar-text">شيبس، حلويات، مشروبات غازية — طاقة وهمية تنتهي بسرعة</span><span class="en-text">Crisps, sweets, fizzy drinks — fake energy that crashes fast</span></span></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card">
+    <div class="quiz-q">🧠 <span class="ar-text">سؤال للآباء والمدربين: إيه أحسن وجبة بعد التمرين مباشرة؟</span><span class="en-text">Question for parents & coaches: What's the best snack right after training?</span></div>
+    <div class="quiz-opts">
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">شيبس وعصير غازي</span><span class="en-text">Crisps and fizzy drink</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">لا حاجة، ينام</span><span class="en-text">Nothing, let them sleep</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,true)">🥛 <span class="ar-text">شيكولاتة حليب + موزة</span><span class="en-text">Chocolate milk + banana</span></button>
+      <button class="quiz-opt" onclick="answerQ(this,false)"><span class="ar-text">وجبة دسمة كبيرة فوراً</span><span class="en-text">A heavy full meal immediately</span></button>
+    </div>
+    <div class="quiz-fb" id="qfb1"></div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(3)"><span class="ar-text">⟶ المياه</span><span class="en-text">‹ Water</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot"></div></div>
+    <button class="nav-btn prim" onclick="goTab(5)"><span class="ar-text">المكملات ⟵</span><span class="en-text">Supplements ›</span></button>
+  </div>
+</div>
+
+<!-- ══════════════ 5 — SUPPLEMENTS ══════════════ -->
+<div class="section" id="sec-5">
+  <div class="sec-head">
+    <div class="sec-icon">💊</div>
+    <div>
+      <h2><span class="ar-text">المكملات — ما هو آمن وما هو خطر</span><span class="en-text">Supplements — What's Safe & What's Dangerous</span></h2>
+      <div class="sub-label"><span class="ar-text">دليل الآباء والمدربين لحماية الرياضي الصغير</span><span class="en-text">Parent & coach guide to protecting the young athlete</span></div>
+    </div>
+  </div>
+
+  <div class="info-box red"><span class="info-box-icon">🚨</span><div><strong><span class="ar-text">تحذير مهم للآباء والمدربين!</span><span class="en-text">Important Warning for Parents & Coaches!</span></strong><span class="ar-text">جسم الرياضي الصغير لسه بينمو — المكملات التي تكون آمنة للبالغين قد تكون خطيرة عليه. <strong>لا تُعطَ أي مكمل بدون موافقة طبيب أو أخصائي تغذية متخصص في الأطفال.</strong></span><span class="en-text">A young athlete's body is still growing — supplements safe for adults may be harmful to them. <strong>No supplement should be given without approval from a doctor or paediatric nutrition specialist.</strong></span></div></div>
+
+  <div class="fun-tip"><span class="tip-icon">🍎</span><div class="tip-body"><span class="ar-text"><strong>القاعدة الذهبية:</strong> الأكل الحقيقي المتوازن دايماً أحسن بكتير من أي مكمل. لو الرياضي الصغير بياكل كويس — مش هيحتاج مكملات في الغالب.</span><span class="en-text"><strong>Golden rule:</strong> Real balanced food is always far better than any supplement. If the young athlete eats well — they will rarely need supplements.</span></div></div>
+
+  <div class="card">
+    <div class="card-title">✅ <span class="ar-text">مكملات آمنة (بشرط تأكيد النقص أولاً)</span><span class="en-text">✅ Safe Supplements (only if deficiency confirmed)</span></div>
+
+    <div class="supp-card">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">☀️ <span class="ar-text">فيتامين D</span><span class="en-text">Vitamin D</span></span><span class="badge ok"><span class="ar-text">آمن ✓</span><span class="en-text">Safe ✓</span></span></div>
+      <div class="supp-bd"><p><span class="ar-text">أكثر مكمل موصى به للرياضيين الصغار. ضروري لنمو العظام، المناعة، وعمل العضلات. الجرعة: ٦٠٠–١٠٠٠ وحدة/يوم بعد تأكيد النقص بالتحليل.</span><span class="en-text">Most recommended supplement for young athletes. Essential for bone growth, immunity and muscle function. Dose: 600–1,000 IU/day after confirming deficiency with blood test.</span></p><div class="pill g"><span class="ar-text">عظام أقوى</span><span class="en-text">Stronger bones</span></div><div class="pill b"><span class="ar-text">مناعة أحسن</span><span class="en-text">Better immunity</span></div></div>
+    </div>
+
+    <div class="supp-card" style="margin-top:8px">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">🔩 <span class="ar-text">الحديد</span><span class="en-text">Iron</span></span><span class="badge ok"><span class="ar-text">آمن لو ناقصك ✓</span><span class="en-text">Safe if deficient ✓</span></span></div>
+      <div class="supp-bd"><p><span class="ar-text">بس بعد تحليل يثبت النقص. الجرعة: حسب الطبيب. مع عصير برتقال لامتصاص أحسن. تحذير: الحديد الزيادة خطير!</span><span class="en-text">Only after blood test confirming deficiency. Dose: as prescribed. Take with orange juice for better absorption. Warning: excess iron is dangerous!</span></p><div class="info-box amber" style="margin-top:8px"><span class="info-box-icon">⚠️</span><div><span class="ar-text">لا تُعطى كمكمل وقائي بدون تحليل — الحديد الزيادة يضر الكبد والقلب.</span><span class="en-text">Never given preventively without a blood test — excess iron harms liver and heart.</span></div></div></div>
+    </div>
+
+    <div class="supp-card" style="margin-top:8px">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">🥛 <span class="ar-text">كالسيوم</span><span class="en-text">Calcium</span></span><span class="badge ok"><span class="ar-text">آمن لو محتاجه ✓</span><span class="en-text">Safe if needed ✓</span></span></div>
+      <div class="supp-bd"><p><span class="ar-text">لو مش بياكل منتجات الألبان كفاية. الأفضل دايماً من الأكل الطبيعي. لو في حساسية لبن — مكمل كالسيوم بموافقة الطبيب.</span><span class="en-text">If not consuming enough dairy. Always best from natural food. If lactose intolerant — calcium supplement with doctor's approval.</span></p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚠️ <span class="ar-text">مكملات تحتاج حذر خاص للصغار</span><span class="en-text">⚠️ Supplements Requiring Special Caution in Young Athletes</span></div>
+    <div class="supp-card">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">⚡ <span class="ar-text">الكرياتين</span><span class="en-text">Creatine</span></span><span class="badge caution">⚠️ <span class="ar-text">حذر</span><span class="en-text">Caution</span></span></div>
+      <div class="supp-bd"><p><span class="ar-text">IOC وASCM <strong>لا يوصيان به لمن هم أقل من ١٨ سنة</strong>. الأبحاث على الأطفال محدودة جداً. التمرين الصح + الأكل الكافي يكفيان تماماً في هذه المرحلة.</span><span class="en-text">IOC and ACSM <strong>do not recommend for under-18s</strong>. Research in children is very limited. Proper training + adequate food is completely sufficient at this age.</span></p></div>
+    </div>
+    <div class="supp-card" style="margin-top:8px">
+      <div class="supp-hd" onclick="toggleSupp(this)"><span class="supp-name">☕ <span class="ar-text">الكافيين</span><span class="en-text">Caffeine</span></span><span class="badge caution">⚠️ <span class="ar-text">حذر</span><span class="en-text">Caution</span></span></div>
+      <div class="supp-bd"><p><span class="ar-text">يؤثر على نمو المخ والنوم عند الصغار أكثر بكتير من الكبار. مشروبات الطاقة ممنوعة تماماً تحت ١٦ سنة. القهوة والشاي بكميات صغيرة للـ ١٤+ بشكل معتدل فقط.</span><span class="en-text">Affects brain development and sleep in young people far more than adults. Energy drinks completely forbidden under 16. Small amounts of tea/coffee for 14+ in moderation only.</span></p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚫 <span class="ar-text">ممنوع تماماً للرياضيين الصغار</span><span class="en-text">🚫 Completely Forbidden for Young Athletes</span></div>
+    <div class="grid-2">
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong>🚫 <span class="ar-text">مشروبات الطاقة</span><span class="en-text">Energy Drinks</span></strong><span style="font-size:0.83rem;color:var(--text-soft)"><span class="ar-text">كافيين عالي + مواد كيميائية. خطر على قلب وأعصاب الأطفال.</span><span class="en-text">High caffeine + chemicals. Dangerous for children's hearts and nervous systems.</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong>🚫 Pre-Workout</strong><span style="font-size:0.83rem;color:var(--text-soft)"><span class="ar-text">جرعات عالية جداً من المنبهات — خطير للغاية على الصغار.</span><span class="en-text">Very high stimulant doses — extremely dangerous for young athletes.</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong>🚫 <span class="ar-text">هرمونات / Testosterone Boosters</span><span class="en-text">Hormones / Testosterone Boosters</span></strong><span style="font-size:0.83rem;color:var(--text-soft)"><span class="ar-text">خطيرة جداً على النمو والهرمونات الطبيعية.</span><span class="en-text">Extremely dangerous for growth and natural hormones.</span></span></div>
+      <div class="info-box red" style="margin:0;flex-direction:column;gap:4px"><strong>🚫 <span class="ar-text">Fat Burners / Detox</span><span class="en-text">Fat Burners / Detox</span></strong><span style="font-size:0.83rem;color:var(--text-soft)"><span class="ar-text">لا دليل علمي + مكونات غير آمنة للأطفال.</span><span class="en-text">No scientific evidence + unsafe ingredients for children.</span></span></div>
+    </div>
+  </div>
+
+  <!-- STAR RATING -->
+  <div class="card">
+    <div class="card-title">⭐ <span class="ar-text">قيّم هذا الدليل</span><span class="en-text">Rate This Guide</span></div>
+    <p style="font-size:0.88rem;color:var(--text-soft);margin-bottom:10px"><span class="ar-text">ما رأيك كمدرب أو ولي أمر؟</span><span class="en-text">What do you think as a coach or parent?</span></p>
+    <div class="star-rating" id="stars"><span class="star" onclick="rateStar(1)">⭐</span><span class="star" onclick="rateStar(2)">⭐</span><span class="star" onclick="rateStar(3)">⭐</span><span class="star" onclick="rateStar(4)">⭐</span><span class="star" onclick="rateStar(5)">⭐</span></div>
+    <div class="star-msg" id="starMsg"></div>
+  </div>
+
+  <!-- FINAL CARD -->
+  <div class="card" style="background:linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed,#f59e0b);color:white;border:none">
+    <div style="font-size:1.4rem;font-weight:900;margin-bottom:10px">🏆 <span class="ar-text">دليل اكتمل — أبطال الغد بأيديكم!</span><span class="en-text">Guide Complete — Tomorrow's Champions Are in Your Hands!</span></div>
+    <p style="opacity:0.9;font-size:0.92rem;margin-bottom:10px">
+      <span class="ar-text">إعداد: أ.د. رندا رضا (المؤلف الرئيسي) | أ.د. ياسمين جمال</span>
+      <span class="en-text">Prepared by: Prof. Randa Reda (Principal Author) | Prof. Yasmine Gamal</span>
+    </p>
+    <ul style="opacity:0.9;font-size:0.89rem;line-height:2.1;padding-right:18px">
+      <li><span class="ar-text">📋 التقييم الشامل — أساس كل خطة ناجحة</span><span class="en-text">📋 Comprehensive assessment — the foundation of every successful plan</span></li>
+      <li><span class="ar-text">⚡ الطاقة المتوفرة (EA) — ≥٤٥ kcal/kg FFM/day</span><span class="en-text">⚡ Energy Availability (EA) — ≥45 kcal/kg FFM/day</span></li>
+      <li><span class="ar-text">🦴 الكالسيوم والحديد — خاصان بمرحلة النمو</span><span class="en-text">🦴 Calcium & iron — unique to the growth phase</span></li>
+      <li><span class="ar-text">💧 الترطيب — يسبق الإحساس بالعطش دايماً</span><span class="en-text">💧 Hydration — always before feeling thirsty</span></li>
+      <li><span class="ar-text">⏰ نافذة التعافي — ٣٠ دقيقة بعد التمرين</span><span class="en-text">⏰ Recovery window — 30 minutes after training</span></li>
+      <li><span class="ar-text">💊 مكملات — بموافقة الطبيب فقط</span><span class="en-text">💊 Supplements — with doctor's approval only</span></li>
+    </ul>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="calc-btn" style="background:rgba(255,255,255,0.18);border:2px solid rgba(255,255,255,0.35)" onclick="goTab(0)"><span class="ar-text">↩ من البداية</span><span class="en-text">↩ Start Again</span></button>
+      <button class="calc-btn" style="background:white;color:var(--primary)" onclick="window.print()">🖨️ <span class="ar-text">طباعة الدليل</span><span class="en-text">Print Guide</span></button>
+    </div>
+  </div>
+
+  <div class="foot-nav">
+    <button class="nav-btn" onclick="goTab(4)"><span class="ar-text">⟶ قبل/بعد</span><span class="en-text">‹ Pre/Post</span></button>
+    <div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div></div>
+    <button class="nav-btn prim" onclick="goTab(0)"><span class="ar-text">↩ من البداية</span><span class="en-text">↩ Start Again</span></button>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ── LANGUAGE ──
+function setLang(lang) {
+  document.body.className='lang-'+lang;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>b.classList.toggle('active',(i===0&&lang==='ar')||(i===1&&lang==='en')));
+}
+
+// ── TABS ──
+const tabs=document.querySelectorAll('.tab-btn');
+const secs=document.querySelectorAll('.section');
+function goTab(i){tabs.forEach((t,idx)=>t.classList.toggle('active',idx===i));secs.forEach((s,idx)=>s.classList.toggle('active',idx===i));window.scrollTo({top:0,behavior:'smooth'});}
+
+// ── ACCORDION ──
+function toggleAcc(btn){const b=btn.nextElementSibling,open=b.classList.contains('open');btn.classList.toggle('open',!open);b.classList.toggle('open',!open);}
+
+// ── CHECKLIST ──
+function toggleChk(el){el.classList.toggle('done');el.textContent=el.classList.contains('done')?'✓':'';}
+
+// ── QUIZ ──
+function answerQ(btn,correct){
+  btn.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);
+  btn.classList.add(correct?'correct':'wrong');
+  const fb=btn.closest('.card').querySelector('.quiz-fb');
+  fb.className='quiz-fb show '+(correct?'ok':'no');
+  const isAr=document.body.classList.contains('lang-ar');
+  fb.textContent=correct?(isAr?'✅ ممتاز! إجابة صحيحة! 🎉':'✅ Excellent! Correct answer! 🎉'):(isAr?'❌ مش صح — راجع المحتوى!':'❌ Not quite — review the content!');
+}
+
+// ── COMPETITION MODE ──
+function setMode(mode){
+  const isComp=mode==='competitive';
+  document.getElementById('compBtn').className='comp-btn'+(isComp?' active-comp':'');
+  document.getElementById('recBtn').className='comp-btn'+(!isComp?' active-rec':'');
+  document.getElementById('compResult').style.display=isComp?'block':'none';
+  document.getElementById('recResult').style.display=!isComp?'block':'none';
+  document.getElementById('compResult').className='comp-result show comp-mode';
+  document.getElementById('recResult').className='comp-result show rec-mode';
+}
+
+// ── ALLERGY TOGGLE ──
+const allergyTipsAr={
+  gluten:'❗ حساسية الجلوتين (القمح): استبدله بالأرز والبطاطس والبقوليات والمنتجات المعتمدة Gluten-Free. راجع أخصائي تغذية لضمان احتياجات الكربوهيدرات.',
+  dairy:'❗ حساسية الألبان أو صعوبة هضمها: احرص على مصادر كالسيوم بديلة مثل السمك الصغير بعظمه والخضار الورقية واللبن النباتي المدعّم. قد يحتاج لمكمل كالسيوم بإشراف طبي.',
+  nuts:'❗ حساسية المكسرات قد تكون شديدة وتحتاج تدخلاً طبياً فورياً. يجب أن يحمل الرياضي جهاز EpiPen دايماً إذا أوصى الطبيب بذلك. أبلغ المدرب ومنظمي المسابقات فوراً.',
+  eggs:'⚠️ حساسية البيض: عوّض البروتين من مصادر أخرى مثل الفراخ والسمك والبقوليات. راجع مكونات المكملات لأن كثيراً منها يحتوي على بيض.',
+  fish:'⚠️ حساسية السمك: احرص على مصادر بديلة لأوميجا-٣ مثل بذر الكتان والجوز وزيت أوميجا-٣ النباتي.',
+  soy:'⚠️ حساسية فول الصويا: اقرأ مكونات المكملات ومساحيق البروتين جيداً — معظم Whey protein آمن لكن تأكد دايماً.'
+};
+const allergyTipsEn={
+  gluten:'❗ Gluten allergy (wheat): Replace with rice, potatoes, legumes and certified Gluten-Free products. Consult a dietitian to ensure adequate carbohydrate intake.',
+  dairy:'❗ Dairy allergy or difficulty digesting dairy: Ensure alternative calcium sources such as whole small fish with bones, leafy greens and fortified plant milk. May need a calcium supplement under medical supervision.',
+  nuts:'❗ Nut allergy can be severe and require immediate medical attention. The athlete should always carry an EpiPen if the doctor has recommended one. Immediately inform the coach and event organisers.',
+  eggs:'⚠️ Egg allergy: Compensate protein from other sources such as chicken, fish and legumes. Check supplement ingredients as many contain egg.',
+  fish:'⚠️ Fish allergy: Ensure alternative omega-3 sources such as flaxseed, walnuts and plant-based omega-3 oil.',
+  soy:'⚠️ Soya allergy: Carefully read supplement and protein powder ingredient labels — most whey protein is safe but always verify.'
+};
+let selectedAllergies=[];
+function toggleAllergy(btn,allergy){
+  btn.classList.toggle('selected');
+  if(btn.classList.contains('selected'))selectedAllergies.push(allergy);
+  else selectedAllergies=selectedAllergies.filter(a=>a!==allergy);
+  const isAr=document.body.classList.contains('lang-ar');
+  const res=document.getElementById('allergyResult');
+  if(selectedAllergies.length>0){
+    res.className='allergy-result show';
+    res.innerHTML=selectedAllergies.map(a=>'<div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid rgba(220,38,38,0.15)">'+(isAr?allergyTipsAr[a]:allergyTipsEn[a])+'</div>').join('');
+  } else { res.className='allergy-result'; res.innerHTML=''; }
+}
+
+// ── SPORT SELECTOR ──
+const sportTipsAr={endurance:'🏊 سباحة/جري: يحتاج كمية كربوهيدرات أعلى وترطيب ممتاز. وجبة كربوهيدرات كافية قبل التمرين ضرورية.',team:'⚽ رياضات جماعية: طاقة سريعة ومتجددة. وجبة كربوهيدرات جيدة قبل المباراة وسناك بعدها مباشرة.',gym:'🤸 جمباز/رقص رياضي: يحتاج التحكم في الوزن — انتبه جيداً لعلامات نقص الطاقة عند الرياضي مثل التعب المستمر والإصابات المتكررة.',martial:'🥋 فنون قتالية: ممكن يكون فيه متطلبات وزن للمباريات — لا تقلل الأكل بشكل حاد! استشر أخصائياً دايماً.',racket:'🎾 تنس/اسكواش: يحتاج تركيز عالٍ وطاقة متجددة. وجبات صغيرة متكررة وترطيب ممتاز.',strength:'🏋️ أثقال/باور: يحتاج بروتين وكالسيوم أعلى. تحذير: تمارين الأثقال الثقيلة غير موصى بها قبل اكتمال النمو!'};
+const sportTipsEn={endurance:'🏊 Swimming/running: Needs higher carbohydrates + excellent hydration. A substantial carbohydrate meal before training is essential.',team:'⚽ Team sports: Quick renewable energy. Good carbohydrate meal before matches and snack immediately after.',gym:'🤸 Gymnastics/dance: Requires controlled body weight — watch carefully for signs of low energy such as constant tiredness and recurrent injuries.',martial:'🥋 Martial arts: May have weight category requirements — never cut food sharply! Always consult a specialist.',racket:'🎾 Tennis/squash: Needs high concentration and renewable energy. Small frequent meals and excellent hydration.',strength:'🏋️ Weightlifting/power: Higher protein and calcium needs. Warning: heavy weightlifting not recommended before growth is complete!'};
+function selectSport(btn,sport){
+  document.querySelectorAll('.sport-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const isAr=document.body.classList.contains('lang-ar');
+  document.getElementById('sportTipText').textContent=isAr?sportTipsAr[sport]:sportTipsEn[sport];
+  document.getElementById('sportTip').style.display='flex';
+}
+
+// ── AGE BUBBLES ──
+function buildAgeBubbles(){
+  const wrap=document.getElementById('ageBubbles');
+  for(let a=9;a<=16;a++){
+    const b=document.createElement('div');
+    const cls=a<=11?'child':a<=13?'early-teen':'teen';
+    b.className=`age-bubble ${cls}`;b.textContent=a;
+    b.onclick=()=>{document.querySelectorAll('.age-bubble').forEach(x=>{x.style.transform='scale(1)';x.style.border='2px solid rgba(255,255,255,0.3)';});b.style.transform='scale(1.35)';b.style.border='2px solid white';};
+    wrap.appendChild(b);
+  }
+}
+buildAgeBubbles();
+
+// ── BLOOD VISUAL ──
+const bloodTests=[
+  {cap:'#c62828',liquid:'#e53935',fill:70,name_ar:'فيريتين',name_en:'Ferritin',tip_ar:'مخزون الحديد في الجسم — الأهم للكشف المبكر عن نقص الحديد عند الرياضيين الصغار.',tip_en:'Iron stores in the body — most important for early detection of iron deficiency in young athletes.'},
+  {cap:'#c62828',liquid:'#ef5350',fill:55,name_ar:'هيموجلوبين',name_en:'Haemoglobin',tip_ar:'كمية الأكسجين اللي بيحملها الدم — يقل طبيعياً مع النمو السريع.',tip_en:'Oxygen-carrying capacity of blood — naturally lower during rapid growth.'},
+  {cap:'#f9a825',liquid:'#fdd835',fill:60,name_ar:'فيتامين D',name_en:'Vitamin D',tip_ar:'ضروري لبناء العظام وتقوية المناعة — نقصه شائع حتى في المناطق المشمسة.',tip_en:'Essential for bone building and immunity — deficiency is common even in sunny regions.'},
+  {cap:'#1565c0',liquid:'#1e88e5',fill:65,name_ar:'كالسيوم',name_en:'Calcium',tip_ar:'أساسي لبناء العظام والأسنان — المراهقون يحتاجون كميات أعلى من الكبار.',tip_en:'Essential for building bones and teeth — adolescents need higher amounts than adults.'},
+  {cap:'#2e7d32',liquid:'#43a047',fill:50,name_ar:'زنك',name_en:'Zinc',tip_ar:'يُفقد مع العرق — مهم للنمو والمناعة والشفاء السريع من الإصابات.',tip_en:'Lost in sweat — important for growth, immunity and quick recovery from injuries.'},
+  {cap:'#6a1b9a',liquid:'#8e24aa',fill:45,name_ar:'فيتامين B12',name_en:'Vitamin B12',tip_ar:'ضروري لتكوين خلايا الدم الحمراء وصحة الجهاز العصبي — أهمية خاصة للأطفال النباتيين.',tip_en:'Essential for red blood cell formation and nervous system health — critical for vegetarian children.'},
+  {cap:'#00695c',liquid:'#00897b',fill:40,name_ar:'الغدة الدرقية TSH',name_en:'TSH (Thyroid)',tip_ar:'وظيفة الغدة الدرقية — لاستبعاد أمراض الدرقية التي تعطي أعراضاً مشابهة للإجهاد الرياضي.',tip_en:'Thyroid gland function — to rule out thyroid conditions that give symptoms similar to sports fatigue.'},
+  {cap:'#e65100',liquid:'#fb8c00',fill:35,name_ar:'سكر الدم',name_en:'Blood Glucose',tip_ar:'مستوى السكر في الدم — لاستبعاد السكري خصوصاً لو في تاريخ عائلي للمرض.',tip_en:'Blood sugar level — to rule out diabetes, especially if there is family history of the condition.'}
+];
+function buildBloodVisual(){
+  const wrap=document.getElementById('bloodVisual');
+  bloodTests.forEach(t=>{
+    wrap.innerHTML+=`
+      <div class="blood-tube">
+        <div class="tube-wrap">
+          <div class="tube-cap" style="background:${t.cap}"></div>
+          <div class="tube-body" style="background:#f5f5f5">
+            <div class="tube-liquid" style="background:${t.liquid};height:${t.fill}%"></div>
+          </div>
+          <div class="tube-tooltip">${t.name_ar} / ${t.name_en}<br>${t.tip_ar}</div>
+        </div>
+        <div class="blood-label">${t.name_ar}<br><span style="font-size:9px;color:var(--text-soft)">${t.name_en}</span></div>
+      </div>`;
+  });
+}
+buildBloodVisual();
+
+// ── YOUTH CALCULATOR (Schofield) ──
+function calcYouth(){
+  const age=+document.getElementById('y-age').value;
+  const sex=document.getElementById('y-sex').value;
+  const wt=+document.getElementById('y-wt').value;
+  const ht=+document.getElementById('y-ht').value;
+  const act=+document.getElementById('y-act').value;
+  const eee=+document.getElementById('y-eee').value||0;
+  const isAr=document.body.classList.contains('lang-ar');
+  if(!age||!wt||!ht||age<9||age>16){alert(isAr?'ادخل بيانات صحيحة (العمر من ٩ إلى ١٦)':'Please enter valid data (age 9–16)');return;}
+  let bmr;
+  if(sex==='m'){bmr=age<=12?(19.6*wt)+(130.3*(ht/100))+414.9:(16.25*wt)+(137.2*(ht/100))+515.5;}
+  else{bmr=age<=12?(16.97*wt)+(161.8*(ht/100))+371.2:(8.365*wt)+(465.0*(ht/100))+200.0;}
+  const tdee=Math.round(bmr*act);
+  const prot=Math.round(wt*(age<=12?1.4:1.6));
+  const u=isAr?' سعر/يوم':' kcal/day';
+  document.getElementById('y-bmr').textContent=Math.round(bmr)+u;
+  document.getElementById('y-tdee').textContent=tdee+u;
+  document.getElementById('y-prot').textContent=prot+(isAr?' جم/يوم':' g/day');
+  document.getElementById('y-calc').textContent='1,300 mg/day';
+  if(eee>0){
+    const ffm=wt*0.8;
+    const ea=Math.round((tdee-eee)/ffm);
+    document.getElementById('y-ea').textContent=ea+' kcal/kg FFM/day';
+    document.getElementById('eaRow').style.display='flex';
+    const box=document.getElementById('eaInterpret');
+    box.style.display='block';
+    if(ea>=45){box.style.background='var(--green-pale)';box.style.color='var(--green)';box.textContent=(isAr?'✅ EA ممتاز (≥٤٥) — الجسم يحصل على ما يكفيه للنمو والأداء.':'✅ Excellent EA (≥45) — the body is getting enough for growth and performance.');}
+    else if(ea>=30){box.style.background='var(--accent-pale)';box.style.color='var(--orange)';box.textContent=(isAr?'⚠️ EA منخفض (٣٠–٤٤) — راجع الأكل. خطر RED-S محتمل.':'⚠️ Low EA (30–44) — review food intake. Possible RED-S risk.');}
+    else{box.style.background='var(--red-pale)';box.style.color='var(--red)';box.textContent=(isAr?'🚨 EA خطير (<٣٠) — تدخل طبي فوري مطلوب! أوقف التمرين حتى يتحسن الوضع.':'🚨 Critical EA (<30) — immediate medical intervention needed! Stop training until resolved.');}
+  } else{document.getElementById('eaRow').style.display='none';document.getElementById('eaInterpret').style.display='none';}
+  document.getElementById('youthRes').classList.add('show');
+}
+
+// ── WATER TRACKER ──
+const wMsgsAr={0:'',1:'بداية! كمّل',2:'استمر!',3:'على الطريق 💧',4:'النص!',6:'قريب!',8:'🌊 ممتاز!',10:'🏆 بطل الترطيب!',12:'👑 مثالي!'};
+const wMsgsEn={0:'',1:'Good start!',2:'Keep going!',3:'On track 💧',4:'Halfway!',6:'Nearly there!',8:'🌊 Excellent!',10:'🏆 Hydration champion!',12:'👑 Perfect!'};
+function buildWater(){
+  const row=document.getElementById('waterRow');
+  for(let i=0;i<12;i++){
+    const g=document.createElement('div');g.className='w-glass';g.innerHTML='💧';
+    g.onclick=()=>{g.classList.toggle('on');const f=document.querySelectorAll('.w-glass.on').length;const isAr=document.body.classList.contains('lang-ar');document.getElementById('wCount').textContent=f;document.getElementById('wMl').textContent=(f*250)+' ml / '+(f*0.25).toFixed(2)+' L';document.getElementById('wMsg').textContent=(isAr?wMsgsAr:wMsgsEn)[f]||'';};
+    row.appendChild(g);
+  }
+}
+buildWater();
+function resetWater(){document.querySelectorAll('.w-glass').forEach(g=>g.classList.remove('on'));document.getElementById('wCount').textContent='0';document.getElementById('wMl').textContent='0 ml';document.getElementById('wMsg').textContent='';}
+
+// ── SUPPLEMENTS ──
+function toggleSupp(hd){hd.nextElementSibling.classList.toggle('open');}
+
+// ── STAR RATING ──
+const starMsgsAr={1:'شكراً على رأيك! 🙏',2:'نشكرك — هنحاول نتحسن!',3:'كويس! شكراً 😊',4:'جميل! سعيدين برأيك ⭐',5:'رائع! شكراً جزيلاً! 🏆'};
+const starMsgsEn={1:'Thank you for your feedback! 🙏',2:'Thanks — we\'ll improve!',3:'Good! Thank you 😊',4:'Great! Happy to hear that ⭐',5:'Amazing! Thank you so much! 🏆'};
+function rateStar(n){document.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('lit',i<n));const isAr=document.body.classList.contains('lang-ar');document.getElementById('starMsg').textContent=isAr?starMsgsAr[n]:starMsgsEn[n];}
+
+// ── MACRO BARS ──
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.mbar-fill').forEach(b=>{const t=b.style.width;b.style.width='0';setTimeout(()=>{b.style.width=t;},500);});});
+</script>
+</body>
+</html>
