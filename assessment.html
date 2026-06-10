@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athlete Nutrition Assessment · تقييم تغذية الرياضيين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2F8F6;
+    --surface:#FFFFFF;
+    --ink:#0C2B2A;
+    --muted:#5A7A78;
+    --teal:#0E7C7B;
+    --teal-deep:#0B4F4E;
+    --teal-soft:#E3F1EE;
+    --accent:#F49A3C;       /* energy / call to action */
+    --accent-deep:#D97E1F;
+    --line:#D7E6E3;
+    --ring:#2DD4BF;
+    --error:#C0392B;
+    --radius:16px;
+    --maxw:680px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-text-size-adjust:100%;
+  }
+  body[dir="rtl"]{font-family:'Tajawal',sans-serif;}
+  .ar{display:none;}
+  body[data-lang="ar"] .en{display:none;}
+  body[data-lang="ar"] .ar{display:inline;}
+  body[data-lang="ar"] .ar.block{display:block;}
+
+  /* ---------- header band ---------- */
+  header{
+    background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 100%);
+    color:#fff;
+    padding:30px 20px 34px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    right:-60px;bottom:-80px;
+    width:220px;height:220px;
+    border:3px solid rgba(255,255,255,.10);
+    border-radius:50%;
+  }
+  body[dir="rtl"] header::after{right:auto;left:-60px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;}
+  .langbar{display:flex;justify-content:flex-end;gap:6px;margin-bottom:18px;position:relative;z-index:2;}
+  .langbtn{
+    background:rgba(255,255,255,.14);
+    color:#fff;border:1px solid rgba(255,255,255,.25);
+    font-family:inherit;font-weight:700;font-size:13px;
+    padding:6px 14px;border-radius:999px;cursor:pointer;transition:.15s;
+  }
+  .langbtn[aria-pressed="true"]{background:#fff;color:var(--teal-deep);border-color:#fff;}
+  .badge{
+    display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;background:rgba(255,255,255,.16);
+    padding:5px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  h1{font-size:27px;font-weight:900;margin:0 0 8px;line-height:1.2;letter-spacing:-.01em;}
+  .lede{font-size:15px;color:rgba(255,255,255,.9);margin:0;max-width:46ch;}
+  .meta{font-size:13px;color:rgba(255,255,255,.78);margin-top:14px;}
+
+  /* ---------- form ---------- */
+  main{max-width:var(--maxw);margin:0 auto;padding:22px 16px 60px;}
+  .section{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 18px;
+    margin-bottom:16px;
+    position:relative;
+  }
+  .section-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .num{
+    flex:0 0 auto;width:34px;height:34px;border-radius:10px;
+    background:var(--teal-soft);color:var(--teal-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:15px;
+  }
+  .section-head h2{font-size:18px;font-weight:800;margin:0;color:var(--teal-deep);}
+
+  .field{margin-bottom:15px;}
+  .field:last-child{margin-bottom:0;}
+  label.q{display:block;font-weight:700;font-size:14.5px;margin-bottom:6px;color:var(--ink);}
+  .req{color:var(--accent-deep);font-weight:900;margin-inline-start:3px;}
+  .hint{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px;}
+
+  input[type=text],input[type=number],input[type=email],input[type=tel],textarea,select{
+    width:100%;font-family:inherit;font-size:15px;color:var(--ink);
+    background:#FBFEFD;border:1.5px solid var(--line);border-radius:11px;
+    padding:11px 13px;transition:.15s;
+  }
+  textarea{min-height:70px;resize:vertical;}
+  input:focus,textarea:focus,select:focus{
+    outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(45,212,191,.28);
+  }
+  .field.invalid input,.field.invalid textarea,.field.invalid select{border-color:var(--error);background:#FDF3F2;}
+
+  .opts{display:flex;flex-wrap:wrap;gap:8px;}
+  .opt{position:relative;}
+  .opt input{position:absolute;opacity:0;width:0;height:0;}
+  .opt label{
+    display:block;cursor:pointer;font-size:14px;font-weight:600;
+    border:1.5px solid var(--line);border-radius:10px;padding:9px 14px;
+    background:#FBFEFD;color:var(--ink);transition:.12s;user-select:none;
+  }
+  .opt input:checked + label{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .opt input:focus-visible + label{box-shadow:0 0 0 3px rgba(45,212,191,.4);}
+
+  .consent{display:flex;gap:11px;align-items:flex-start;background:var(--teal-soft);border-radius:12px;padding:13px 14px;}
+  .consent input{margin-top:3px;width:19px;height:19px;flex:0 0 auto;accent-color:var(--teal);}
+  .consent label{font-size:14px;font-weight:600;}
+
+  /* ---------- submit / success ---------- */
+  .submit-wrap{margin-top:22px;}
+  .btn-send{
+    width:100%;border:none;cursor:pointer;font-family:inherit;
+    font-size:17px;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+    padding:16px;border-radius:14px;
+    box-shadow:0 6px 18px rgba(217,126,31,.32);transition:.15s;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+  }
+  .btn-send:hover{transform:translateY(-1px);box-shadow:0 9px 22px rgba(217,126,31,.4);}
+  .btn-send:active{transform:translateY(0);}
+  .formnote{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px;}
+  .errsummary{display:none;background:#FDF3F2;border:1.5px solid var(--error);color:var(--error);
+    border-radius:12px;padding:12px 14px;font-size:14px;font-weight:700;margin-top:16px;}
+  .errsummary.show{display:block;}
+
+  #success{display:none;text-align:center;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px 22px;}
+  #success.show{display:block;}
+  .tick{width:58px;height:58px;border-radius:50%;background:var(--teal-soft);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  #success h2{font-size:21px;color:var(--teal-deep);margin:0 0 8px;}
+  #success p{font-size:15px;color:var(--muted);margin:0 auto 22px;max-width:40ch;}
+  .wa-send{display:flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;font-weight:900;font-size:17px;color:#fff;
+    background:#25D366;padding:15px;border-radius:14px;
+    box-shadow:0 6px 18px rgba(37,211,102,.32);transition:.15s;}
+  .wa-send:hover{transform:translateY(-1px);}
+  .btn-copy{margin-top:12px;width:100%;background:#fff;border:1.5px solid var(--line);
+    color:var(--ink);font-family:inherit;font-weight:700;font-size:15px;
+    padding:13px;border-radius:13px;cursor:pointer;}
+  .setupwarn{display:none;background:#FFF6E9;border:1.5px solid var(--accent);color:var(--accent-deep);
+    border-radius:12px;padding:12px;font-size:13.5px;font-weight:700;margin-bottom:16px;}
+
+  footer{text-align:center;padding:8px 16px 34px;color:var(--muted);font-size:13px;}
+  footer b{color:var(--teal-deep);}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+  @media (min-width:560px){ h1{font-size:31px;} .section{padding:24px 22px;} }
+</style>
+</head>
+<body data-lang="en" dir="ltr">
+
+<header>
+  <div class="wrap">
+    <div class="langbar">
+      <button class="langbtn" id="btn-en" aria-pressed="true" onclick="setLang('en')">English</button>
+      <button class="langbtn" id="btn-ar" aria-pressed="false" onclick="setLang('ar')">العربية</button>
+    </div>
+    <span class="badge"><span class="en">Intake Form</span><span class="ar">نموذج تقييم</span></span>
+    <h1><span class="en">Athlete Nutrition Assessment</span><span class="ar">تقييم تغذية الرياضيين</span></h1>
+    <p class="lede">
+      <span class="en">This form gathers what's needed to design a nutrition plan tailored to your sport, training load, and goals. It takes about 10–15 minutes.</span>
+      <span class="ar">يجمع هذا النموذج المعلومات اللازمة لتصميم خطة تغذية مخصصة لرياضتك وحمل تدريبك وأهدافك. يستغرق حوالي ١٠–١٥ دقيقة.</span>
+    </p>
+    <p class="meta">
+      <span class="en">All answers are confidential and used only to support your performance, recovery, and health.</span>
+      <span class="ar">جميع الإجابات سرية وتُستخدم فقط لدعم أدائك وتعافيك وصحتك.</span>
+    </p>
+  </div>
+</header>
+
+<main>
+  <div id="setupwarn" class="setupwarn"></div>
+
+  <form id="form" novalidate>
+
+    <!-- 01 Personal -->
+    <section class="section">
+      <div class="section-head"><div class="num">01</div>
+        <h2><span class="en">Personal details</span><span class="ar">البيانات الشخصية</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Full name" data-ar="الاسم الكامل">Full name<span class="req">*</span></label>
+        <input type="text" name="Name" data-req></div>
+
+      <div class="field"><label class="q" data-en="Age" data-ar="العمر">Age<span class="req">*</span></label>
+        <input type="number" name="Age" min="5" max="100" data-req></div>
+
+      <div class="field"><label class="q" data-en="Sex" data-ar="النوع">Sex</label>
+        <div class="opts" data-opts="Sex" data-en='["Male","Female"]' data-ar='["ذكر","أنثى"]'></div></div>
+
+      <div class="field"><label class="q" data-en="City / Country" data-ar="المدينة / الدولة">City / Country</label>
+        <input type="text" name="City/Country"></div>
+
+      <div class="field"><label class="q" data-en="Your WhatsApp number" data-ar="رقم الواتساب الخاص بك">Your WhatsApp number<span class="req">*</span></label>
+        <input type="tel" name="WhatsApp" data-req></div>
+
+      <div class="field"><label class="q" data-en="Email (optional)" data-ar="البريد الإلكتروني (اختياري)">Email (optional)</label>
+        <input type="email" name="Email"></div>
+    </section>
+
+    <!-- 02 Body -->
+    <section class="section">
+      <div class="section-head"><div class="num">02</div>
+        <h2><span class="en">Body measurements</span><span class="ar">القياسات الجسمية</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Height (cm)" data-ar="الطول (سم)">Height (cm)<span class="req">*</span></label>
+        <input type="number" name="Height (cm)" data-req></div>
+      <div class="field"><label class="q" data-en="Current weight (kg)" data-ar="الوزن الحالي (كجم)">Current weight (kg)<span class="req">*</span></label>
+        <input type="number" name="Current weight (kg)" data-req></div>
+      <div class="field"><label class="q" data-en="Goal weight (kg)" data-ar="الوزن المستهدف (كجم)">Goal weight (kg)</label>
+        <input type="number" name="Goal weight (kg)"></div>
+      <div class="field"><label class="q" data-en="Body fat % (if known)" data-ar="نسبة الدهون ٪ (إن وُجدت)">Body fat % (if known)</label>
+        <input type="text" name="Body fat %"></div>
+    </section>
+
+    <!-- 03 Sport -->
+    <section class="section">
+      <div class="section-head"><div class="num">03</div>
+        <h2><span class="en">Sport &amp; training</span><span class="ar">الرياضة والتدريب</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Primary sport" data-ar="الرياضة الأساسية">Primary sport<span class="req">*</span></label>
+        <input type="text" name="Primary sport" data-req></div>
+      <div class="field"><label class="q" data-en="Position / discipline" data-ar="المركز / التخصص">Position / discipline</label>
+        <input type="text" name="Position"></div>
+      <div class="field"><label class="q" data-en="Type of training" data-ar="نوع التدريب">Type of training</label>
+        <div class="opts" data-opts="Training type" data-en='["Endurance","Power","Strength","Mixed"]' data-ar='["تحمّل","قدرة (انفجارية)","قوة","مختلط"]'></div></div>
+      <div class="field"><label class="q" data-en="Training hours per week" data-ar="عدد ساعات التدريب أسبوعياً">Training hours per week</label>
+        <input type="text" name="Training hours/week"></div>
+      <div class="field"><label class="q" data-en="Currently in a training period?" data-ar="هل أنت حالياً في فترة تدريب؟">Currently in a training period?</label>
+        <div class="opts" data-opts="In training period" data-en='["Yes","No"]' data-ar='["نعم","لا"]'></div></div>
+      <div class="field"><label class="q" data-en="Competitive level" data-ar="المستوى التنافسي">Competitive level</label>
+        <div class="opts" data-opts="Level" data-en='["Recreational","Club / Amateur","Competitive","Elite / Pro"]' data-ar='["ترفيهي","نادٍ / هاوٍ","تنافسي","نخبة / محترف"]'></div></div>
+      <div class="field"><label class="q" data-en="Years training" data-ar="عدد سنوات التدريب">Years training</label>
+        <input type="number" name="Years training"></div>
+      <div class="field"><label class="q" data-en="Training days per week" data-ar="أيام التدريب أسبوعياً">Training days per week<span class="req">*</span></label>
+        <input type="number" name="Training days/week" min="0" max="14" data-req></div>
+      <div class="field"><label class="q" data-en="Typical session length (hours)" data-ar="مدة الجلسة المعتادة (ساعات)">Typical session length (hours)</label>
+        <input type="text" name="Session length"></div>
+      <div class="field"><label class="q" data-en="Usual training time" data-ar="وقت التدريب المعتاد">Usual training time</label>
+        <div class="opts" data-opts="Training time" data-en='["Morning","Afternoon","Evening","Varies"]' data-ar='["صباحاً","ظهراً","مساءً","متغير"]'></div></div>
+      <div class="field"><label class="q" data-en="Current season phase" data-ar="مرحلة الموسم الحالية">Current season phase</label>
+        <div class="opts" data-opts="Season phase" data-en='["Off-season","Pre-season","In-season","Event prep"]' data-ar='["خارج الموسم","ما قبل الموسم","داخل الموسم","تجهيز لبطولة"]'></div></div>
+    </section>
+
+    <!-- 04 Goals -->
+    <section class="section">
+      <div class="section-head"><div class="num">04</div>
+        <h2><span class="en">Goals</span><span class="ar">الأهداف</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Main goal" data-ar="الهدف الأساسي">Main goal<span class="req">*</span></label>
+        <div class="opts" data-opts="Main goal" data-req data-en='["Lose fat","Gain muscle","Improve performance","Make weight (category)","Maintain / health"]' data-ar='["خسارة دهون","بناء عضل","تحسين الأداء","ضبط الوزن للفئة","الحفاظ / الصحة"]'></div></div>
+      <div class="field"><label class="q" data-en="Target event &amp; date" data-ar="البطولة والتاريخ المستهدف">Target event &amp; date</label>
+        <input type="text" name="Target event/date"></div>
+      <div class="field"><label class="q" data-en="What result do you most want from this plan?" data-ar="ما النتيجة التي تريد تحقيقها من هذه الخطة؟">What result do you most want from this plan?</label>
+        <textarea name="Main result wanted"></textarea></div>
+    </section>
+
+    <!-- 05 Medical -->
+    <section class="section">
+      <div class="section-head"><div class="num">05</div>
+        <h2><span class="en">Medical history</span><span class="ar">التاريخ الطبي</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Chronic conditions (e.g. diabetes, asthma)" data-ar="أمراض مزمنة (مثل السكري، الربو)">Chronic conditions</label>
+        <textarea name="Chronic conditions"></textarea></div>
+      <div class="field"><label class="q" data-en="Current medications" data-ar="الأدوية الحالية">Current medications</label>
+        <input type="text" name="Medications"></div>
+      <div class="field"><label class="q" data-en="Injuries (current or recent)" data-ar="إصابات حالية أو حديثة">Injuries (current or recent)</label>
+        <input type="text" name="Injuries"></div>
+      <div class="field"><label class="q" data-en="Food allergies" data-ar="حساسية تجاه أطعمة">Food allergies</label>
+        <input type="text" name="Food allergies"></div>
+      <div class="field"><label class="q" data-en="Digestive issues" data-ar="مشاكل في الهضم">Digestive issues</label>
+        <input type="text" name="Digestive issues"></div>
+    </section>
+
+    <!-- 06 Diet preferences -->
+    <section class="section">
+      <div class="section-head"><div class="num">06</div>
+        <h2><span class="en">Diet preferences</span><span class="ar">تفضيلات الطعام</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Diet type" data-ar="نمط الطعام">Diet type</label>
+        <div class="opts" data-opts="Diet type" data-en='["Omnivore","Vegetarian","Vegan","Other"]' data-ar='["متنوع","نباتي","نباتي صرف","أخرى"]'></div></div>
+      <div class="field"><label class="q" data-en="Foods you avoid (cultural / religious / dislike)" data-ar="أطعمة تتجنبها (ثقافية / دينية / لا تفضلها)">Foods you avoid</label>
+        <input type="text" name="Foods avoided"></div>
+      <div class="field"><label class="q" data-en="Do you fast (Ramadan / intermittent)?" data-ar="هل تصوم (رمضان / متقطع)؟">Do you fast?</label>
+        <div class="opts" data-opts="Fasting" data-en='["No","Ramadan","Intermittent","Other"]' data-ar='["لا","رمضان","متقطع","أخرى"]'></div></div>
+      <div class="field"><label class="q" data-en="Who prepares your food?" data-ar="من يجهّز طعامك؟">Who prepares your food?</label>
+        <div class="opts" data-opts="Food prep" data-en='["I cook","Family","Mostly eat out"]' data-ar='["أطبخ بنفسي","العائلة","أكل خارجي غالباً"]'></div></div>
+    </section>
+
+    <!-- 07 Daily intake -->
+    <section class="section">
+      <div class="section-head"><div class="num">07</div>
+        <h2><span class="en">Typical daily intake</span><span class="ar">الطعام اليومي المعتاد</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Meals per day" data-ar="عدد الوجبات يومياً">Meals per day</label>
+        <input type="text" name="Meals per day"></div>
+      <div class="field"><label class="q" data-en="Breakfast" data-ar="الفطار">Breakfast</label>
+        <textarea name="Breakfast"></textarea></div>
+      <div class="field"><label class="q" data-en="Lunch" data-ar="الغداء">Lunch</label>
+        <textarea name="Lunch"></textarea></div>
+      <div class="field"><label class="q" data-en="Dinner" data-ar="العشاء">Dinner</label>
+        <textarea name="Dinner"></textarea></div>
+      <div class="field"><label class="q" data-en="Snacks" data-ar="الوجبات الخفيفة">Snacks</label>
+        <input type="text" name="Snacks"></div>
+      <div class="field"><label class="q" data-en="Pre / post-training meals" data-ar="وجبات قبل وبعد التمرين">Pre / post-training meals</label>
+        <textarea name="Pre/post-training meals"></textarea></div>
+    </section>
+
+    <!-- 08 Hydration -->
+    <section class="section">
+      <div class="section-head"><div class="num">08</div>
+        <h2><span class="en">Hydration</span><span class="ar">الترطيب</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Daily fluid intake (litres)" data-ar="السوائل اليومية (لتر)">Daily fluid intake (litres)</label>
+        <input type="text" name="Daily fluids (L)"></div>
+      <div class="field"><label class="q" data-en="Do you drink during training?" data-ar="هل تشرب أثناء التمرين؟">Do you drink during training?</label>
+        <div class="opts" data-opts="Drinks during training" data-en='["Yes","No","Sometimes"]' data-ar='["نعم","لا","أحياناً"]'></div></div>
+      <div class="field"><label class="q" data-en="Heavy sweating or cramps?" data-ar="تعرق شديد أو تشنجات؟">Heavy sweating or cramps?</label>
+        <div class="opts" data-opts="Sweat/cramps" data-en='["Yes","No","Sometimes"]' data-ar='["نعم","لا","أحياناً"]'></div></div>
+    </section>
+
+    <!-- 09 Supplements -->
+    <section class="section">
+      <div class="section-head"><div class="num">09</div>
+        <h2><span class="en">Supplements</span><span class="ar">المكملات الغذائية</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Current supplements &amp; doses" data-ar="المكملات الحالية والجرعات">Current supplements &amp; doses</label>
+        <textarea name="Supplements"></textarea></div>
+      <div class="field"><label class="q" data-en="Caffeine (coffee / energy drinks per day)" data-ar="الكافيين (قهوة / مشروبات طاقة يومياً)">Caffeine per day</label>
+        <input type="text" name="Caffeine"></div>
+    </section>
+
+    <!-- 10 Lifestyle -->
+    <section class="section">
+      <div class="section-head"><div class="num">10</div>
+        <h2><span class="en">Lifestyle &amp; recovery</span><span class="ar">نمط الحياة والاستشفاء</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Sleep hours per night" data-ar="ساعات النوم في الليلة">Sleep hours per night</label>
+        <input type="text" name="Sleep hours"></div>
+      <div class="field"><label class="q" data-en="Sleep quality" data-ar="جودة النوم">Sleep quality</label>
+        <div class="opts" data-opts="Sleep quality" data-en='["Poor","Fair","Good"]' data-ar='["ضعيفة","متوسطة","جيدة"]'></div></div>
+      <div class="field"><label class="q" data-en="Stress level" data-ar="مستوى التوتر">Stress level</label>
+        <div class="opts" data-opts="Stress" data-en='["Low","Medium","High"]' data-ar='["منخفض","متوسط","مرتفع"]'></div></div>
+      <div class="field"><label class="q" data-en="Energy levels through the day" data-ar="مستوى الطاقة خلال اليوم">Energy through the day</label>
+        <input type="text" name="Energy levels"></div>
+    </section>
+
+    <!-- 11 Anything else -->
+    <section class="section">
+      <div class="section-head"><div class="num">11</div>
+        <h2><span class="en">Anything else</span><span class="ar">أي شيء آخر</span></h2></div>
+
+      <div class="field"><label class="q" data-en="Recent blood tests?" data-ar="تحاليل دم حديثة؟">Recent blood tests?</label>
+        <input type="text" name="Recent blood tests"></div>
+      <div class="field"><label class="q" data-en="Worked with a nutritionist before?" data-ar="هل تعاملت مع أخصائي تغذية من قبل؟">Worked with a nutritionist before?</label>
+        <input type="text" name="Previous nutrition support"></div>
+      <div class="field"><label class="q" data-en="Your biggest nutrition challenge" data-ar="أكبر تحدٍ غذائي تواجهه">Biggest nutrition challenge</label>
+        <textarea name="Biggest challenge"></textarea></div>
+      <div class="field"><label class="q" data-en="Anything you'd like your coach to know" data-ar="أي شيء تود أن يعرفه مدربك">Anything you'd like your coach to know</label>
+        <textarea name="Notes to coach"></textarea></div>
+
+      <div class="field consent">
+        <input type="checkbox" id="consent" data-req>
+        <label for="consent"><span class="en">I confirm the information above is accurate.</span><span class="ar">أؤكد أن المعلومات أعلاه صحيحة.</span></label>
+      </div>
+    </section>
+
+    <div class="submit-wrap">
+      <button type="submit" class="btn-send">
+        <span class="en">Send my answers on WhatsApp</span><span class="ar">إرسال إجاباتي عبر واتساب</span>
+      </button>
+      <div class="errsummary" id="errsummary">
+        <span class="en">Please fill the required fields highlighted above.</span>
+        <span class="ar">من فضلك أكمل الحقول المطلوبة المظللة بالأعلى.</span>
+      </div>
+      <p class="formnote">
+        <span class="en">Your answers open in WhatsApp ready to send — nothing is stored on this page.</span>
+        <span class="ar">تُفتح إجاباتك في واتساب جاهزة للإرسال — لا يتم تخزين أي شيء على هذه الصفحة.</span>
+      </p>
+    </div>
+  </form>
+
+  <!-- success panel -->
+  <div id="success">
+    <div class="tick">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0B4F4E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2><span class="en">One last step</span><span class="ar">خطوة أخيرة</span></h2>
+    <p>
+      <span class="en">Tap the button to open WhatsApp with your answers, then press send.</span>
+      <span class="ar">اضغط على الزر لفتح واتساب مع إجاباتك، ثم اضغط إرسال.</span>
+    </p>
+    <a class="wa-send" id="waLink" href="#" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.039zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      <span class="en">Open WhatsApp &amp; send</span><span class="ar">فتح واتساب والإرسال</span>
+    </a>
+    <button class="btn-copy" id="copyBtn">
+      <span class="en">Copy answers instead</span><span class="ar">نسخ الإجابات بدلاً من ذلك</span>
+    </button>
+  </div>
+</main>
+
+<footer>
+  <span class="en">Prepared by <b>Prof. Randa Reda</b></span>
+  <span class="ar">إعداد <b>أ.د. رنده رضا</b></span>
+</footer>
+
+<script>
+  /* ====== SET YOUR WHATSAPP NUMBER HERE ======
+     Full international format, digits only — country code, no "+", no spaces.
+     Egypt example: 20 then your number without the leading 0  ->  "201001234567"        */
+  const WHATSAPP_NUMBER = "201227341620";
+
+  /* ====== TO COLLECT ANSWERS IN A FREE GOOGLE SHEET ======
+     Paste your Google Apps Script Web App URL between the quotes (it ends in /exec).
+     Leave it empty ("") if you only want WhatsApp.                                  */
+  const SHEET_ENDPOINT = "";
+  /* ============================================ */
+
+  // build radio option groups
+  document.querySelectorAll('.opts').forEach(function(box){
+    var name = box.dataset.opts;
+    var en = JSON.parse(box.dataset.en), ar = JSON.parse(box.dataset.ar);
+    en.forEach(function(label,i){
+      var id = name.replace(/[^a-z0-9]/gi,'') + '_' + i;
+      var d = document.createElement('div'); d.className='opt';
+      d.innerHTML = '<input type="radio" name="'+name+'" id="'+id+'" value="'+label+'" data-aval="'+ar[i]+'">'
+        + '<label for="'+id+'"><span class="en">'+label+'</span><span class="ar">'+ar[i]+'</span></label>';
+      box.appendChild(d);
+    });
+  });
+
+  // language switch
+  function setLang(l){
+    document.body.dataset.lang = l;
+    document.body.dir = (l==='ar') ? 'rtl' : 'ltr';
+    document.documentElement.lang = l;
+    document.getElementById('btn-en').setAttribute('aria-pressed', l==='en');
+    document.getElementById('btn-ar').setAttribute('aria-pressed', l==='ar');
+    // swap question label text
+    document.querySelectorAll('label.q[data-en]').forEach(function(lab){
+      lab.childNodes[0].nodeValue = (l==='ar' ? lab.dataset.ar : lab.dataset.en);
+    });
+  }
+
+  // validation + submit
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var lang = document.body.dataset.lang;
+    var ok = true, firstBad = null;
+    document.querySelectorAll('.field').forEach(function(f){ f.classList.remove('invalid'); });
+
+    // text/number/checkbox required
+    document.querySelectorAll('[data-req]').forEach(function(el){
+      if(el.classList && el.classList.contains('opts')){
+        var checked = el.querySelector('input:checked');
+        if(!checked){ ok=false; markBad(el); }
+      } else if(el.type === 'checkbox'){
+        if(!el.checked){ ok=false; var fld=el.closest('.field'); if(fld){fld.classList.add('invalid');} if(!firstBad)firstBad=el; }
+      } else {
+        if(!el.value.trim()){ ok=false; markBad(el); }
+      }
+    });
+    function markBad(el){ var f = el.closest('.field'); if(f){ f.classList.add('invalid'); } if(!firstBad) firstBad = el; }
+
+    var es = document.getElementById('errsummary');
+    if(!ok){
+      es.classList.add('show');
+      if(firstBad) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    es.classList.remove('show');
+
+    // gather answers
+    var lines = [];
+    var answers = {};
+    lines.push(lang==='ar' ? '🏅 تقييم تغذية رياضي' : '🏅 Athlete Nutrition Assessment');
+    lines.push('—');
+    var sections = document.querySelectorAll('section.section');
+    sections.forEach(function(sec){
+      var title = sec.querySelector('h2 .'+lang).textContent;
+      var secLines = [];
+      sec.querySelectorAll('input, textarea').forEach(function(el){
+        if(el.id==='consent') return;
+        var qlabel, val;
+        if(el.type==='radio'){
+          if(!el.checked) return;
+          qlabel = el.closest('.opts').dataset.opts;
+          val = (lang==='ar' && el.dataset.aval) ? el.dataset.aval : el.value;
+          answers[qlabel] = el.value;           // store English value for the sheet
+        } else {
+          if(!el.value.trim()) return;
+          qlabel = el.name;
+          val = el.value.trim();
+          answers[qlabel] = val;
+        }
+        secLines.push('• ' + qlabel + ': ' + val);
+      });
+      if(secLines.length){ lines.push('*'+title+'*'); lines = lines.concat(secLines); lines.push(''); }
+    });
+    var msg = lines.join('\n');
+
+    // send to a free Google Sheet if configured
+    if(SHEET_ENDPOINT){
+      try{
+        fetch(SHEET_ENDPOINT, {method:'POST', mode:'no-cors',
+          headers:{'Content-Type':'application/x-www-form-urlencoded'},
+          body: new URLSearchParams(answers).toString()});
+      }catch(err){}
+    }
+
+    // build WhatsApp link
+    var link = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+    document.getElementById('waLink').href = link;
+
+    // copy fallback
+    document.getElementById('copyBtn').onclick = function(){
+      navigator.clipboard && navigator.clipboard.writeText(msg);
+      this.querySelector('.'+lang).textContent = (lang==='ar' ? 'تم النسخ ✓' : 'Copied ✓');
+    };
+
+    // show success, hide form
+    document.getElementById('form').style.display='none';
+    var s = document.getElementById('success'); s.classList.add('show');
+    s.scrollIntoView({behavior:'smooth', block:'start'});
+
+    var waOn = WHATSAPP_NUMBER.indexOf('X') === -1 && WHATSAPP_NUMBER.length > 6;
+    var sheetOn = !!SHEET_ENDPOINT;
+
+    if(!waOn){
+      // no WhatsApp: just confirm receipt (used when collecting only to the Google Sheet)
+      document.getElementById('waLink').style.display='none';
+      document.getElementById('copyBtn').style.display='none';
+      s.querySelector('h2').innerHTML = '<span class="en">Thank you!</span><span class="ar">شكراً لك!</span>';
+      s.querySelector('p').innerHTML  = '<span class="en">Your answers have been received.</span><span class="ar">تم استلام إجاباتك.</span>';
+    }
+
+    if(waOn){
+      // open WhatsApp automatically with the answers pre-filled.
+      // the success screen stays behind as a fallback button if the phone blocks the redirect.
+      window.location.href = link;
+    }
+
+    if(!waOn && !sheetOn){
+      var w = document.getElementById('setupwarn');
+      w.textContent = 'Setup note (only you see this): set WHATSAPP_NUMBER and/or SHEET_ENDPOINT in the file.';
+      w.style.display='block';
+      s.insertAdjacentElement('beforebegin', w);
+    }
+  });
+</script>
+</body>
+</html>
