@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlEl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رحلة نجلاء الغذائية — خطة تفاعلية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@400;500;700&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF7F2;--ink:#2B302E;--ink-soft:#5A615D;
+    --teal:#1F4E46;--teal-2:#2E6B5E;--teal-soft:#E3EDE9;
+    --coral:#E08A6E;--coral-deep:#C96B4E;--coral-soft:#F8E7DF;
+    --gold:#D8A24A;--gold-soft:#F6EAD2;--sage:#6E8B7F;
+    --line:#EADFD3;--card:#FFFFFF;--shadow:0 14px 40px -20px rgba(31,78,70,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;-webkit-font-smoothing:antialiased;font-size:17px}
+  body.en{font-family:'Nunito',system-ui,sans-serif}
+  h1,h2,h3,h4{font-family:'Cairo',sans-serif;line-height:1.35}
+  body.en h1,body.en h2,body.en h3,body.en h4{font-family:'Nunito',sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+  /* LANG TOGGLE */
+  .langbar{position:sticky;top:0;z-index:50;background:var(--teal);color:#fff;text-align:center;padding:10px 14px;font-family:'Cairo';font-weight:700;font-size:.95rem}
+  body.en .langbar{font-family:'Nunito'}
+  .langbar button{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:800;font-size:.85rem;margin-inline-start:10px}
+  .langbar button:hover{background:rgba(255,255,255,.3)}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#173B35 0%,#1F4E46 38%,#2E6B5E 64%,#E08A6E 122%);padding:48px 0 70px}
+  .sun{position:absolute;left:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(255,221,168,.85),rgba(216,162,74,.25) 55%,transparent 72%);filter:blur(2px);z-index:0}
+  .hero *{position:relative}
+  .author-line{font-family:'Cairo';font-weight:700;font-size:.95rem;letter-spacing:.5px;color:#FFE0CF;margin-bottom:18px}
+  body.en .author-line{font-family:'Nunito'}
+  .hero-eyebrow{display:inline-block;font-family:'Cairo';font-weight:600;font-size:.85rem;letter-spacing:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:7px 18px;border-radius:999px;margin-bottom:20px}
+  body.en .hero-eyebrow{font-family:'Nunito'}
+  .hero h1{font-size:2.7rem;font-weight:800;margin-bottom:8px}
+  .hero h1 .name{color:#FFE0CF}
+  .hero .lead{font-size:1.18rem;max-width:640px;color:#EAF3EF;font-weight:500}
+  .hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:1rem;color:#D7E6E1}
+  .hero-meta b{color:#fff;font-family:'Cairo';font-weight:700}
+  body.en .hero-meta b{font-family:'Nunito'}
+
+  section{padding:46px 0}
+  .eyebrow{font-family:'Cairo';font-weight:700;color:var(--coral-deep);font-size:.9rem;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  body.en .eyebrow{font-family:'Nunito'}
+  .eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:var(--coral)}
+  .sec-title{font-size:1.85rem;font-weight:800;color:var(--teal);margin-bottom:14px}
+  .sec-intro{color:var(--ink-soft);max-width:660px;margin-bottom:24px;font-size:1.05rem}
+
+  /* STAT */
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+  .stat .k{font-family:'Cairo';font-weight:600;font-size:.85rem;color:var(--sage);margin-bottom:6px}
+  body.en .stat .k{font-family:'Nunito'}
+  .stat .v{font-family:'Cairo';font-weight:800;font-size:1.7rem;color:var(--teal)}
+  body.en .stat .v{font-family:'Nunito'}
+  .stat .v small{font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+  .stat.good{background:var(--teal-soft);border-color:#CFE2DB}.stat.good .v{color:var(--teal-2)}
+  .stat.watch{background:var(--gold-soft);border-color:#EEDDB8}.stat.watch .v{color:#B9842B}
+  .tag{display:inline-block;font-size:.78rem;font-weight:700;font-family:'Cairo';padding:3px 10px;border-radius:999px;margin-top:8px}
+  body.en .tag{font-family:'Nunito'}
+  .tag.ok{background:#D9ECE3;color:#1F6B53}.tag.fix{background:#F6E0D6;color:var(--coral-deep)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow)}
+  .card p{color:var(--ink-soft);font-size:1.05rem}
+  .note{background:var(--teal-soft);border-right:4px solid var(--teal-2);border-radius:0 12px 12px 0;padding:14px 18px;margin-top:14px;font-size:1rem;color:#2C4F47}
+  [dir="ltr"] .note{border-right:none;border-left:4px solid var(--teal-2);border-radius:12px 0 0 12px}
+  ul.clean{list-style:none;margin-top:6px}
+  ul.clean li{padding:8px 26px 8px 0;position:relative;color:var(--ink-soft);font-size:1.02rem}
+  [dir="ltr"] ul.clean li{padding:8px 0 8px 26px}
+  ul.clean li::before{content:"●";position:absolute;right:0;top:10px;color:var(--coral);font-size:.7rem}
+  [dir="ltr"] ul.clean li::before{right:auto;left:0}
+
+  /* ACCORDION */
+  .acc{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+  .acc-head{width:100%;text-align:right;background:none;border:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;gap:12px;font-family:'Cairo';font-weight:700;color:var(--teal);font-size:1.15rem}
+  body.en .acc-head{font-family:'Nunito';text-align:left}
+  .acc-head .ic{width:38px;height:38px;border-radius:10px;background:var(--coral-soft);color:var(--coral-deep);display:grid;place-items:center;font-size:1.15rem;flex:none}
+  .acc-head .chev{margin-inline-start:auto;transition:transform .3s;color:var(--sage);font-size:1.3rem}
+  .acc.open .chev{transform:rotate(180deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .acc-body .inner{padding:0 22px 22px}
+
+  /* HABITS + WATER */
+  .habits{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+  .habit{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+  .habit .h-ic{font-size:1.6rem;margin-bottom:8px;display:block}
+  .habit b{font-family:'Cairo';color:var(--teal);display:block;margin-bottom:3px;font-size:1.05rem}
+  body.en .habit b{font-family:'Nunito'}
+  .habit span{font-size:.92rem;color:var(--ink-soft)}
+  .water{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-top:16px;text-align:center}
+  .water h4{color:var(--teal);margin-bottom:4px;font-size:1.15rem}
+  .water .sub{font-size:.92rem;color:var(--ink-soft);margin-bottom:14px}
+  .cups{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .cup{width:44px;height:44px;border-radius:12px;border:2px solid #BFD7CF;background:#F1F7F4;display:grid;place-items:center;font-size:1.25rem;cursor:pointer;transition:.2s;user-select:none}
+  .cup.full{background:var(--teal-2);border-color:var(--teal);transform:translateY(-2px)}
+  .water .count{margin-top:12px;font-family:'Cairo';font-weight:800;color:var(--teal-2);font-size:1.05rem}
+  body.en .water .count{font-family:'Nunito'}
+
+  /* DAY TABS */
+  .daybar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .daybtn{flex:1;min-width:74px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 6px;cursor:pointer;font-family:'Cairo';font-weight:700;color:var(--ink-soft);text-align:center;transition:.2s;font-size:1rem}
+  body.en .daybtn{font-family:'Nunito'}
+  .daybtn small{display:block;font-size:.74rem;font-weight:600;color:var(--sage);margin-top:2px}
+  .daybtn.active{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:var(--shadow)}
+  .daybtn.active small{color:#CFE6DF}
+  .daypanel{display:none}
+  .daypanel.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+  .day-head{background:linear-gradient(110deg,var(--teal) 0%,var(--teal-2) 100%);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .day-num{width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.16);display:grid;place-items:center;font-family:'Cairo';font-weight:800;font-size:1.4rem;flex:none;border:1px solid rgba(255,255,255,.28)}
+  body.en .day-num{font-family:'Nunito'}
+  .day-head .d-t{font-family:'Cairo';font-weight:800;font-size:1.25rem}
+  body.en .day-head .d-t{font-family:'Nunito'}
+  .day-head .d-s{font-size:.92rem;color:#CFE6DF}
+  .day-head .d-count{margin-inline-start:auto;font-family:'Cairo';font-weight:800;font-size:1rem;background:rgba(255,255,255,.16);padding:6px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.28)}
+  body.en .day-head .d-count{font-family:'Nunito'}
+  .meals{padding:8px 18px 18px}
+  .meal{display:flex;gap:13px;align-items:flex-start;padding:15px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+  .meal:last-child{border-bottom:none}
+  .meal .check{width:26px;height:26px;border-radius:8px;border:2px solid #C9D9D3;flex:none;margin-top:2px;display:grid;place-items:center;color:#fff;font-size:.85rem;transition:.2s}
+  .meal .lbl{font-family:'Cairo';font-weight:700;color:var(--coral-deep);min-width:110px;flex:none;font-size:.98rem;padding-top:2px}
+  body.en .meal .lbl{font-family:'Nunito';min-width:130px}
+  .meal .txt{color:var(--ink);font-weight:500;transition:.2s;font-size:1.02rem}
+  .meal.snack .lbl{color:var(--sage)}
+  .meal.done .check{background:var(--teal-2);border-color:var(--teal-2)}
+  .meal.done .txt{text-decoration:line-through;color:var(--sage)}
+  .meal .macros{display:block;font-size:.85rem;color:var(--sage);margin-top:4px;font-family:'Cairo';font-weight:600}
+  body.en .meal .macros{font-family:'Nunito'}
+
+  /* RECOMMENDATION CARDS */
+  .recgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .rec{border-radius:18px;padding:20px;color:#fff;box-shadow:var(--shadow)}
+  .rec h4{font-family:'Cairo';font-size:1.1rem;margin-bottom:8px;font-weight:800}
+  body.en .rec h4{font-family:'Nunito'}
+  .rec p{font-size:.98rem;line-height:1.6;color:rgba(255,255,255,.95)}
+  .rec.train1{background:linear-gradient(135deg,#1F4E46,#2E6B5E)}
+  .rec.train2{background:linear-gradient(135deg,#2E6B5E,#6E8B7F)}
+  .rec.train3{background:linear-gradient(135deg,#1F4E46,#3a8a78)}
+  .rec.rest1{background:linear-gradient(135deg,#E08A6E,#C96B4E)}
+  .rec.rest2{background:linear-gradient(135deg,#D8A24A,#C96B4E)}
+  .rec.rest3{background:linear-gradient(135deg,#C96B4E,#a85a3e)}
+
+  .closing{background:linear-gradient(135deg,#1F4E46,#2E6B5E 70%,#C96B4E);color:#fff;border-radius:26px;padding:46px 36px;text-align:center;box-shadow:var(--shadow)}
+  .closing h2{font-size:1.75rem;margin-bottom:14px;color:#fff}
+  .closing p{color:#EAF3EF;max-width:580px;margin:0 auto 8px;font-size:1.05rem}
+  .closing .sign{margin-top:24px;font-family:'Cairo';font-weight:700;color:#FFE0CF;font-size:1.05rem}
+  body.en .closing .sign{font-family:'Nunito'}
+  .foot{text-align:center;color:var(--sage);font-size:.9rem;padding:30px 0 50px}
+
+  @media (max-width:560px){
+    .hero h1{font-size:2.1rem}.sec-title{font-size:1.5rem}
+    .meal .lbl{min-width:80px;font-size:.88rem}
+    .daybtn{min-width:0;font-size:.92rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar">
+  <span id="langLabel">اللغة: العربية</span>
+  <button onclick="toggleLang()" id="langBtn">English</button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="sun"></span>
+  <div class="wrap">
+    <div class="author-line" id="authorLine">إعداد: الأستاذة الدكتورة رندا رضا مبروك</div>
+    <span class="hero-eyebrow" id="eyebrow1">رحلتك تبدأ من هنا 🏅</span>
+    <h1 id="heroTitle">أهلاً بيكي يا <span class="name">نجلاء</span></h1>
+    <p class="lead" id="heroLead">خطة غذائية تفاعلية مصممة لجسم رياضي قوي — بتدور حوالين تمرينك وتعافيك. علّمي على وجبتك لما تخلّصيها، وتابعي شربك للمية يوم بيوم. هنمشي خطوة بخطوة لطاقة أعلى وأداء أحسن.</p>
+    <div class="hero-meta" id="heroMeta">
+      <div><span id="m1l">الإنجاز:</span> <b id="m1v">متمّمة عدة ماراثونات</b></div>
+      <div><span id="m2l">إنجاز إضافي:</span> <b id="m2v">نصف آيرون مان</b></div>
+      <div><span id="m3l">أيام التمرين:</span> <b id="m3v">٤ أيام/أسبوع</b></div>
+      <div><span id="m4l">أيام الراحة:</span> <b id="m4v">٣ أيام/أسبوع</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- START POINT -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" id="ey2"></div>
+    <h2 class="sec-title" id="t-statsTitle"></h2>
+    <p class="sec-intro" id="t-statsIntro"></p>
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="card" style="margin-top:18px">
+      <p id="statSummary"></p>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING/REST OVERVIEW (accordions) -->
+<section style="background:linear-gradient(180deg,transparent,var(--teal-soft) 30%,var(--teal-soft) 70%,transparent)">
+  <div class="wrap">
+    <div class="eyebrow" id="ey3"></div>
+    <h2 class="sec-title" id="t-cycleTitle"></h2>
+    <p class="sec-intro" id="t-cycleIntro"></p>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)"><span class="ic">1</span><span id="acc1h"></span><span class="chev">⌄</span></button>
+      <div class="acc-body"><div class="inner"><p id="acc1body"></p><div class="note" id="acc1note"></div></div></div>
+    </div>
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)"><span class="ic">2</span><span id="acc2h"></span><span class="chev">⌄</span></button>
+      <div class="acc-body"><div class="inner"><p id="acc2body"></p><div class="note" id="acc2note"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HABITS + WATER -->
+<section style="background:var(--coral-soft)">
+  <div class="wrap">
+    <div class="eyebrow" id="ey4"></div>
+    <h2 class="sec-title" id="t-habitsTitle"></h2>
+    <p class="sec-intro" id="t-habitsIntro"></p>
+    <div class="habits" id="habitsGrid"></div>
+
+    <div class="water">
+      <h4 id="waterTitle"></h4>
+      <div class="sub" id="waterSub"></div>
+      <div class="cups" id="cups"></div>
+      <div class="count" id="watercount"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7-DAY INTERACTIVE PLAN -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" id="ey5"></div>
+    <h2 class="sec-title" id="t-planTitle"></h2>
+    <p class="sec-intro" id="t-planIntro"></p>
+    <div class="daybar" id="daybar"></div>
+    <div id="daywrap"></div>
+  </div>
+</section>
+
+<!-- NUTRITION RECOMMENDATIONS -->
+<section style="background:var(--teal-soft)">
+  <div class="wrap">
+    <div class="eyebrow" id="ey6"></div>
+    <h2 class="sec-title" id="t-recTitle"></h2>
+    <p class="sec-intro" id="t-recIntro"></p>
+
+    <h3 style="color:var(--teal);font-size:1.25rem;margin:18px 0 12px;font-family:'Cairo'" id="recTrainHead"></h3>
+    <div class="recgrid" id="recTrain"></div>
+
+    <h3 style="color:var(--coral-deep);font-size:1.25rem;margin:28px 0 12px;font-family:'Cairo'" id="recRestHead"></h3>
+    <div class="recgrid" id="recRest"></div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section>
+  <div class="wrap">
+    <div class="closing">
+      <h2 id="closeTitle"></h2>
+      <p id="closeP1"></p>
+      <p id="closeP2"></p>
+      <div class="sign" id="closeSign"></div>
+    </div>
+    <p class="foot" id="footNote"></p>
+  </div>
+</section>
+
+<script>
+function toAr(n){return String(n).replace(/[0-9]/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);}
+
+/* ============== TEXT CONTENT (AR / EN) ============== */
+const T = {
+  ar:{
+    dir:"rtl", bodyClass:"", langLabel:"اللغة: العربية", langBtn:"English",
+    author:"إعداد: الأستاذة الدكتورة رندا رضا مبروك",
+    eyebrow1:"رحلتك تبدأ من هنا 🏅",
+    heroTitle:'أهلاً بيكي يا <span class="name">نجلاء</span>',
+    heroLead:"خطة غذائية تفاعلية مصممة لجسم رياضي قوي — بتدور حوالين تمرينك وتعافيك. علّمي على وجبتك لما تخلّصيها، وتابعي شربك للمية يوم بيوم. هنمشي خطوة بخطوة لطاقة أعلى وأداء أحسن.",
+    m1l:"الإنجاز:", m1v:"متمّمة عدة ماراثونات",
+    m2l:"إنجاز إضافي:", m2v:"نصف آيرون مان",
+    m3l:"أيام التمرين:", m3v:"٤ أيام / أسبوع",
+    m4l:"أيام الراحة:", m4v:"٣ أيام / أسبوع",
+
+    ey2:"نقطة البداية",
+    statsTitle:"هدفك الغذائي — بالأرقام",
+    statsIntro:"الخطة دي مبنية على احتياجاتك كرياضية تحمّل: حرق دهون، وفي نفس الوقت بناء وحماية الكتلة العضلية.",
+    stats:[
+      {k:"سعرات أيام التمرين",v:"٢١٠٠–٢٣٠٠",u:"سعر/يوم",tag:"وقود للأداء",cls:"good"},
+      {k:"بروتين أيام التمرين",v:"١٣٠–١٤٠",u:"جم/يوم",tag:"حماية العضلات",cls:"good"},
+      {k:"سعرات أيام الراحة",v:"١٦٠٠–١٨٠٠",u:"سعر/يوم",tag:"حرق دهون",cls:"watch"},
+      {k:"بروتين أيام الراحة",v:"١٠٠–١١٠",u:"جم/يوم",tag:"حماية العضلات",cls:"watch"},
+      {k:"أيام التمرين أسبوعياً",v:"٤",u:"أيام",tag:"إثنين / أربعاء / جمعة / سبت",cls:""},
+      {k:"أيام الراحة أسبوعياً",v:"٣",u:"أيام",tag:"ثلاثاء / خميس / أحد",cls:""}
+    ],
+    statSummary:"<b style=\"font-family:'Cairo';color:var(--teal)\">الخلاصة:</b> في أيام التمرين، السعرات والكارب أعلى لتغذية التمرين والتعافي بعده. في أيام الراحة، السعرات أقل قليلاً والتركيز على البروتين والخضار لدعم حرق الدهون مع الحفاظ على العضلات.",
+
+    ey3:"دورة الأسبوع",
+    cycleTitle:"التمرين والراحة — فريق واحد",
+    cycleIntro:"كل يوم له دور. أيام التمرين بتغذّي الأداء، وأيام الراحة بتبني وتُصلّح. (اضغطي على كل عنوان للتفاصيل)",
+    acc1h:"أيام التمرين — إثنين، أربعاء، جمعة، سبت",
+    acc1body:"في صباح التمرين، وجبة خفيفة سريعة الهضم قبل التمرين بـ٣٠–٤٥ دقيقة بتعطيكي طاقة فورية بدون ثقل على المعدة. بعد التمرين بساعة، وجبة فيها بروتين وكارب لاستعادة الجليكوجين وبدء إصلاح العضلات. الغداء هو الوجبة الرئيسية ويحتوي على أعلى نسبة من السعرات.",
+    acc1note:"اشربي مية قبل وأثناء وبعد التمرين — حتى لو الجلسة قصيرة، الترطيب بيأثر على الأداء والتعافي.",
+    acc2h:"أيام الراحة — ثلاثاء، خميس، أحد",
+    acc2body:"مفيش وجبة قبل التمرين لأنه يوم بدون تمرين. الفطار يبدأ على معاد متأخر بشكل بسيط. السعرات أقل قليلاً من أيام التمرين، لكن البروتين يفضل عالي عشان يحمي العضل وقت ما الجسم بيحرق دهون.",
+    acc2note:"أيام الراحة جزء أساسي من التدريب — هي وقت بناء القوة والتعافي الحقيقي، فمعاملتها بجدية بالأكل والنوم مهمة جداً.",
+
+    ey4:"القواعد الذهبية",
+    habitsTitle:"٦ عادات يومية بسيطة",
+    habitsIntro:"اختاري عادة أو اتنين الأسبوع الأول، وكمّلي الباقي بالتدريج.",
+    habits:[
+      ["💧","مية كفاية","٢٫٥ – ٣ لتر يومياً، وأكتر في أيام التمرين"],
+      ["🍽️","بروتين كل وجبة","فراخ، سمك، لحم، جبن، زبادي — في كل وجبة رئيسية"],
+      ["🥗","نص الطبق خضار","الألياف بتساعد الهضم والشبع وتنظيم السكر"],
+      ["🍚","كارب يناسب اليوم","أكتر في أيام التمرين، أقل في أيام الراحة"],
+      ["🧂","عشاء خفيف","سلطة + جبن + زيت زيتون — هضم أسهل ونوم أفضل"],
+      ["🌙","نوم كافي","٧–٨ ساعات — هنا بيحصل التعافي والبناء العضلي"]
+    ],
+    waterTitle:"💧 تتبّع المية النهاردة",
+    waterSub:"دوسي على الكوباية لما تشربي — الهدف ٨ كوبايات",
+    waterCount:"٠ / ٨ كوبايات",
+
+    ey5:"خطة الأكل",
+    planTitle:"٧ أيام بأكل مصري — بدون بيض",
+    planIntro:"اختاري اليوم من فوق، وعلّمي على كل وجبة لما تخلّصيها. كل الكميات موضّحة بالجرام والمقاييس المنزلية. الخطة بدون بيض وبدون زبدة فول سوداني أو لوز.",
+
+    ey6:"توصيات غذائية",
+    recTitle:"إزاي تاكلي حوالين تمرينك",
+    recIntro:"نصائح عملية مقسّمة حسب نوع اليوم — تمرين أو راحة.",
+    recTrainHead:"💪 في أيام التمرين",
+    recRestHead:"🌙 في أيام الراحة",
+    recTrain:[
+      ["⚡ وقود قبل التمرين","قبل الجلسة الصباحية بـ٣٠–٤٥ دقيقة، كربوهيدرات سريعة وسهلة — بلح، موزة، أو خبز بلدي بالعسل. طاقة فورية بدون ثقل."],
+      ["🥛 عوّضي خلال الساعة","فور انتهاء التمرين: بروتين + كارب معاً — زبادي بلدي أو جبنة قريش مع خبز بلدي وعصير طازج، لاستعادة الجليكوجين وبدء بناء العضلات."],
+      ["🍚 الغداء هو المحرك","أيام التمرين أعلى سعرات (٢١٠٠–٢٣٠٠) وبروتين (١٣٠–١٤٠جم). اجعلي الغداء حول الأرز أو الخبز البلدي أو البطاطا حسب احتياج الطاقة."]
+    ],
+    recRest:[
+      ["🍲 بروتين أعلى، كارب أهدى","لا حاجة لوجبة قبل التمرين. ابدئي بفول مدمس أو جبنة قريش مع خبز بلدي. السعرات حوالي ١٦٠٠–١٨٠٠ والبروتين ١٠٠–١١٠جم لحماية العضل وقت حرق الدهون."],
+      ["🥗 تعافٍ بالخضار والدهون الجيدة","اعتمدي على الخضار والملوخية والسلطات الطازجة وزيت الزيتون والزبادي واللبنة — تدعم التعافي وتُشبع بسعرات أقل."],
+      ["💧 الترطيب والنوم","حتى بدون تمرين، استمري في شرب المية بانتظام وخصصي وقت كافي للنوم — هنا بتُبنى القوة فعلياً."]
+    ],
+
+    closeTitle:"إنتي بطلة بكل المقاييس 🏅",
+    closeP1:"مش مطلوب الكمال — مطلوب الاستمرار. لو يوم عدّى مش مظبوط، كمّلي عادي من الوجبة اللي بعدها. كل وجبة صح بتقرّبك من طاقة أحسن، وتعافي أسرع، وأداء أقوى في سباقك الجاي.",
+    closeP2:"هنتابع سوا ونظبط الخطة خطوة بخطوة حسب إحساسك ونتايجك في التمرين.",
+    closeSign:"— خطة شخصية معدّة بعناية لكِ يا نجلاء، من الأستاذة الدكتورة رندا رضا مبروك",
+    footNote:"خطة غذائية تثقيفية داعمة للأداء الرياضي ولا تُغني عن المتابعة الطبية أو متابعة أخصائي التغذية الرياضية بشكل مباشر عند الحاجة.",
+
+    days:[
+      {t:'الإثنين', type:'workout', s:'يوم تمرين — دجاج وأرز', cal:'٢١٥٠ سعر', m:[
+        ['قبل التمرين','بلح — ٣ حبات (٣٠ جم)','٩٠ سعر | ك٢٣ ب١ د٠',0],
+        ['الفطار','زبادي بلدي ٢٠٠جم + خبز بلدي رغيف (٦٠جم) + عسل ملعقة كبيرة + عصير برتقال ١٠٠مل','٤٠٠ سعر | ك٦٩ ب٢١ د٥',0],
+        ['سناك','جوافة ١٥٠جم + جبنة بيضاء ٣٠جم','١٩٠ سعر | ك٢٣ ب٨ د٨',1],
+        ['الغداء','صدر فراخ مشوي ٢٠٠جم + أرز مصري ٢٥٠جم + ملوخية ١٥٠جم + زيت زيتون ملعقة كبيرة','٧٤٥ سعر | ك٧١ ب٦٦ د٢٤',0],
+        ['سناك','موزة ١٠٠جم + عين جمل ٣٠جم','٢٧٥ سعر | ك٢٧ ب٥ د١٩',1],
+        ['العشاء','سلطة بلدي ٢٠٠جم + جبنة بيضاء ١٢٠جم + زيت زيتون وليمون ملعقة كبيرة','٤٧٠ سعر | ك١٣ ب١٨ د٣٨',0]]},
+      {t:'الثلاثاء', type:'rest', s:'يوم راحة — سمك وأرز', cal:'١٧٥٠ سعر', m:[
+        ['الفطار','فول مدمس ٢٠٠جم بالزيت + خبز بلدي رغيف (٦٠جم) + طماطم وزيت زيتون ملعقة صغيرة + برتقالة ١٠٠جم','٤٥٠ سعر | ك٧٩ ب٢٠ د٩',0],
+        ['سناك','جوافة ١٥٠جم + جبنة بيضاء ٣٠جم','٢١٠ سعر | ك٢٤ ب٨ د٨',1],
+        ['الغداء','سمك مشوي ١٦٠جم + أرز أبيض ١٥٠جم + فاصوليا خضراء ٢٠٠جم + زيت زيتون ملعقة كبيرة','٦٠٥ سعر | ك٥٨ ب٥١ د١٦',0],
+        ['سناك','تفاحة ١٥٠جم + لب عباد الشمس ٢٥جم','٢٢٠ سعر | ك٢٨ ب٥ د١٢',1],
+        ['العشاء','سلطة بلدي ١٨٠جم + لبنة ١٠٠جم + زيت زيتون وليمون ملعقة كبيرة','٣٦٠ سعر | ك١٤ ب٩ د٣٠',0]]},
+      {t:'الأربعاء', type:'workout', s:'يوم تمرين — كفتة وأرز', cal:'٢٢٠٠ سعر', m:[
+        ['قبل التمرين','نصف رغيف خبز بلدي + عسل','١١٥ سعر | ك٢٧ ب٢ د١',0],
+        ['الفطار','زبادي بلدي ٢٠٠جم + ¾ رغيف خبز بلدي (٤٥جم) + عسل ملعقة صغيرة + موزة ١٠٠جم + عصير طازج ١٥٠مل','٤٥٠ سعر | ك٨٣ ب٢٠ د٥',0],
+        ['سناك','جوافة ١٥٠جم + جبنة بيضاء ٣٠جم','٢١٠ سعر | ك٢٣ ب٨ د٨',1],
+        ['الغداء','كفتة مشوية (لحم قليل الدهن) ٢٠٠جم + أرز مصري ٢٠٠جم + سبانخ ١٠٠جم + جزر ٦٥جم + زيت زيتون ملعقة كبيرة','٦٨٩ سعر | ك٦٢ ب٦١ د٢٤',0],
+        ['سناك','موزة ١٠٠جم + عين جمل ٣٠جم','٢٧٥ سعر | ك٢٧ ب٥ د١٩',1],
+        ['العشاء','سلطة بلدي ٢٢٠جم + جبنة بيضاء ١٢٠جم + زيت زيتون وليمون ملعقة كبيرة','٤٨٠ سعر | ك١٧ ب١٨ د٣٨',0]]},
+      {t:'الخميس', type:'rest', s:'يوم راحة — لحم وبطاطا', cal:'١٧٠٠ سعر', m:[
+        ['الفطار','جبنة قريش ١٠٠جم + خبز بلدي رغيف (٦٠جم) + طماطم وزيتون وزيت زيتون ملعقة صغيرة + موزة ١٠٠جم','٤٥٠ سعر | ك٦٥ ب٢٦ د١١',0],
+        ['سناك','تفاحة ١٥٠جم + لوز ٢٥جم','٢٤٠ سعر | ك٢٧ ب٦ د١٤',1],
+        ['الغداء','لحم بقري قليل الدهن مشوي ١٦٠جم + بطاطا حلوة ١٨٠جم + بامية ١٥٠جم + زيت زيتون ملعقة كبيرة','٥٦٠ سعر | ك٤٤ ب٤٩ د٢١',0],
+        ['سناك','برتقالة ١٥٠جم + جبنة بيضاء ٣٠جم','١٨٥ سعر | ك٢٠ ب٨ د٩',1],
+        ['العشاء','سلطة بلدي ٢٠٠جم + جبنة بيضاء ١٠٠جم + زيت زيتون وليمون ملعقة كبيرة','٤٢٠ سعر | ك١٣ ب١٦ د٣٤',0]]},
+      {t:'الجمعة', type:'workout', s:'يوم تمرين — سلمون وأرز', cal:'٢٢٥٠ سعر', m:[
+        ['قبل التمرين','نصف رغيف خبز بلدي + عسل','١١٠ سعر | ك٢٥ ب٢ د١',0],
+        ['الفطار','زبادي بلدي ٢٠٠جم + خبز بلدي رغيف (٦٠جم) + عسل ملعقة كبيرة + عصير برتقال ٢٠٠مل + موزة ٧٥جم','٤٩٠ سعر | ك٨٦ ب٢١ د٦',0],
+        ['سناك','جوافة ١٥٠جم + لوز ٢٥جم','٢٦٠ سعر | ك٢٨ ب٧ د١٤',1],
+        ['الغداء','سلمون مشوي ١٨٠جم + أرز مصري ٢٥٠جم + كوسة وفلفل وجزر مشوي ٤٠٠جم (متنوع) + زيت زيتون ملعقة كبيرة','٨٧٨ سعر | ك٩٦ ب٥٠ د٣٢',0],
+        ['سناك','موزة ١٠٠جم + عين جمل ٣٠جم','٢٧٥ سعر | ك٢٧ ب٥ د١٩',1],
+        ['العشاء','سلطة بلدي ٢٠٠جم + جبنة رومي ١٠٠جم + زيت زيتون وليمون ملعقة كبيرة','٤٩٠ سعر | ك١٢ ب٢٠ د٤٠',0]]},
+      {t:'السبت', type:'workout', s:'يوم تمرين — لحم وبطاطا', cal:'٢١٨٠ سعر', m:[
+        ['قبل التمرين','عصير طازج ١٥٠مل + بلح ٢ حبة','١١٥ سعر | ك٣٠ ب١ د٠',0],
+        ['الفطار','زبادي بلدي ٢٥٠جم + ¾ رغيف خبز بلدي (٤٥جم) + عسل ملعقة صغيرة + موزة ١٠٠جم + عصير طازج ٨٠مل','٤٣٠ سعر | ك٧٧ ب٢٠ د٦',0],
+        ['سناك','تفاحة ١٥٠جم + لب عباد الشمس ٢٥جم','٢٢٠ سعر | ك٢٨ ب٥ د١٢',1],
+        ['الغداء','لحم بقري قليل الدهن مشوي ١٩٠جم + بطاطا حلوة ٢٠٠جم + جزر ١٠٠جم + كوسة ١٢٠جم + زيت زيتون ملعقة كبيرة','٦٢٣ سعر | ك٥٠ ب٥٨ د٢٠',0],
+        ['سناك','جوافة ١٥٠جم + عين جمل ٣٠جم','٢٨٥ سعر | ك٢٧ ب٥ د١٩',1],
+        ['العشاء','سلطة (بقدونس وطماطم وخيار) ٢٠٠جم + جبنة مشوية ١٠٠جم + زيت زيتون وليمون ملعقة كبيرة','٥١٠ سعر | ك١٤ ب٢٧ د٤١',0]]},
+      {t:'الأحد', type:'rest', s:'يوم راحة — سمك وأرز', cal:'١٧٥٠ سعر', m:[
+        ['الفطار','فول مدمس ١٥٠جم + خبز بلدي رغيف (٦٠جم) + زبادي بلدي ١٠٠جم + برتقالة ١٠٠جم','٤٠٥ سعر | ك٧٣ ب٢٣ د٥',0],
+        ['سناك','جوافة ١٥٠جم + جبنة بيضاء ٣٠جم','٢١٠ سعر | ك٢٣ ب٨ د٨',1],
+        ['الغداء','سمك مشوي ١٦٠جم + أرز مصري ٢٠٠جم + فاصوليا خضراء ٢٠٠جم + زيت زيتون ملعقة كبيرة','٦٣٨ سعر | ك٦٥ ب٥٣ د١٨',0],
+        ['سناك','تفاحة ١٥٠جم + لوز ٢٥جم','٢٤٠ سعر | ك٢٧ ب٦ د١٤',1],
+        ['العشاء','سلطة بلدي ١٨٠جم + لبنة ١٠٠جم + زيت زيتون وليمون ملعقة كبيرة','٣٦٠ سعر | ك١٤ ب٩ د٣٠',0]]}
+    ]
+  },
+
+  en:{
+    dir:"ltr", bodyClass:"en", langLabel:"Language: English", langBtn:"العربية",
+    author:"Prepared by: Professor Randa Reda Mabrouk",
+    eyebrow1:"Your journey starts here 🏅",
+    heroTitle:'Welcome, <span class="name">Najla</span>',
+    heroLead:"An interactive nutrition plan built for a strong endurance body — designed around your training and recovery. Tap each meal as you finish it, and track your water day by day. We'll build this step by step toward higher energy and stronger performance.",
+    m1l:"Achievement:", m1v:"Multi-Marathon Finisher",
+    m2l:"Also:", m2v:"Half Ironman Achiever",
+    m3l:"Training days:", m3v:"4 days / week",
+    m4l:"Rest days:", m4v:"3 days / week",
+
+    ey2:"Starting Point",
+    statsTitle:"Your Nutrition Targets — In Numbers",
+    statsIntro:"This plan is built around your needs as an endurance athlete: losing fat while building and protecting muscle mass.",
+    stats:[
+      {k:"Training day calories",v:"2,100–2,300",u:"kcal/day",tag:"Fuel for performance",cls:"good"},
+      {k:"Training day protein",v:"130–140",u:"g/day",tag:"Protect muscle",cls:"good"},
+      {k:"Rest day calories",v:"1,600–1,800",u:"kcal/day",tag:"Fat loss",cls:"watch"},
+      {k:"Rest day protein",v:"100–110",u:"g/day",tag:"Protect muscle",cls:"watch"},
+      {k:"Training days / week",v:"4",u:"days",tag:"Mon / Wed / Fri / Sat",cls:""},
+      {k:"Rest days / week",v:"3",u:"days",tag:"Tue / Thu / Sun",cls:""}
+    ],
+    statSummary:"<b style=\"font-family:'Nunito';color:var(--teal)\">Summary:</b> On training days, calories and carbs are higher to fuel the workout and recovery afterward. On rest days, calories are slightly lower with a focus on protein and vegetables to support fat loss while preserving muscle.",
+
+    ey3:"Weekly Cycle",
+    cycleTitle:"Training & Rest — One Team",
+    cycleIntro:"Every day has a role. Training days fuel performance, and rest days build and repair. (Tap each title for details)",
+    acc1h:"Training Days — Monday, Wednesday, Friday, Saturday",
+    acc1body:"On training mornings, a light, easily digested snack 30–45 minutes before the session gives instant energy without sitting heavy on the stomach. Within an hour after training, a meal with protein and carbs restores glycogen and starts muscle repair. Lunch is the main meal and carries the highest share of calories.",
+    acc1note:"Drink water before, during and after training — even short sessions, hydration affects performance and recovery.",
+    acc2h:"Rest Days — Tuesday, Thursday, Sunday",
+    acc2body:"No pre-workout meal is needed since there's no training. Breakfast can start a bit later. Calories are slightly lower than training days, but protein stays high to protect muscle while the body burns fat.",
+    acc2note:"Rest days are an essential part of training — this is when real strength-building and recovery happen, so treat food and sleep on these days seriously.",
+
+    ey4:"Golden Habits",
+    habitsTitle:"6 Simple Daily Habits",
+    habitsIntro:"Pick one or two habits for the first week, and add the rest gradually.",
+    habits:[
+      ["💧","Stay hydrated","2.5 – 3 liters daily, more on training days"],
+      ["🍽️","Protein every meal","Chicken, fish, beef, cheese, yogurt — in every main meal"],
+      ["🥗","Half plate vegetables","Fiber supports digestion, fullness, and blood sugar"],
+      ["🍚","Carbs match the day","More on training days, less on rest days"],
+      ["🧂","Light dinner","Salad + cheese + olive oil — easier digestion, better sleep"],
+      ["🌙","Enough sleep","7–8 hours — this is when recovery and muscle-building happen"]
+    ],
+    waterTitle:"💧 Track Today's Water",
+    waterSub:"Tap a cup when you drink — goal is 8 cups",
+    waterCount:"0 / 8 cups",
+
+    ey5:"Meal Plan",
+    planTitle:"7 Days of Egyptian Food — No Eggs",
+    planIntro:"Pick a day above, and tap each meal as you finish it. All amounts are shown in grams and household measures. The plan contains no eggs and no peanut or almond butter.",
+
+    ey6:"Nutrition Recommendations",
+    recTitle:"How to Eat Around Your Training",
+    recIntro:"Practical tips split by day type — training or rest.",
+    recTrainHead:"💪 On Training Days",
+    recRestHead:"🌙 On Rest Days",
+    recTrain:[
+      ["⚡ Pre-workout fuel","30–45 minutes before your morning session, have a quick, easy carb — dates, a banana, or baladi bread with honey. Instant energy without heaviness."],
+      ["🥛 Refuel within the hour","Right after training: protein + carbs together — Egyptian yogurt (zabadi baladi) or areesh cheese with baladi bread and fresh juice, to restore glycogen and start muscle repair."],
+      ["🍚 Lunch is the engine","Training days run higher in calories (2,100–2,300) and protein (130–140g). Build lunch around rice, baladi bread, or sweet potato based on your energy needs."]
+    ],
+    recRest:[
+      ["🍲 More protein, gentler carbs","No pre-workout meal needed. Start with ful medames or areesh cheese with baladi bread. Calories around 1,600–1,800 and protein 100–110g to protect muscle while burning fat."],
+      ["🥗 Recover with greens & good fats","Lean on vegetables, molokhia, fresh salads, olive oil, yogurt and labneh — they support recovery and keep you full on fewer calories."],
+      ["💧 Hydration & sleep","Even without training, keep drinking water steadily and give yourself enough sleep — this is where strength is actually built."]
+    ],
+
+    closeTitle:"You're a Champion in Every Sense 🏅",
+    closeP1:"Perfection isn't the goal — consistency is. If one day doesn't go as planned, simply continue with the next meal. Every good meal brings you closer to better energy, faster recovery, and a stronger performance in your next race.",
+    closeP2:"We'll follow up together and fine-tune this plan step by step based on how you feel and your training results.",
+    closeSign:"— A personal plan prepared with care for you, Najla, by Professor Randa Reda Mabrouk",
+    footNote:"This is an educational nutrition plan to support athletic performance and does not replace direct medical follow-up or guidance from a sports nutrition specialist when needed.",
+
+    days:[
+      {t:'Monday', type:'workout', s:'Training Day — Chicken & Rice', cal:'2,150 kcal', m:[
+        ['Pre-Workout','Dates — 3 pieces (30g)','90 kcal | C23 P1 F0',0],
+        ['Breakfast','Egyptian Yogurt 200g + Baladi Bread 1 loaf (60g) + Honey 1 tbsp + Orange Juice 100ml','400 kcal | C69 P21 F5',0],
+        ['Snack','Guava 150g + White Cheese 30g','190 kcal | C23 P8 F8',1],
+        ['Lunch','Grilled Chicken Breast 200g + Egyptian Rice 250g + Molokhia 150g + Olive Oil 1 tbsp','745 kcal | C71 P66 F24',0],
+        ['Snack','Banana 100g + Walnuts 30g','275 kcal | C27 P5 F19',1],
+        ['Dinner','Salata Baladi 200g + White Cheese 120g + Olive Oil & Lemon 1 tbsp','470 kcal | C13 P18 F38',0]]},
+      {t:'Tuesday', type:'rest', s:'Rest Day — Fish & Rice', cal:'1,750 kcal', m:[
+        ['Breakfast','Ful Medames 200g with oil + Baladi Bread 1 loaf (60g) + Tomato & Olive Oil 1 tsp + Orange 100g','450 kcal | C79 P20 F9',0],
+        ['Snack','Guava 150g + White Cheese 30g','210 kcal | C24 P8 F8',1],
+        ['Lunch','Grilled Fish 160g + White Rice 150g + Green Beans 200g + Olive Oil 1 tbsp','605 kcal | C58 P51 F16',0],
+        ['Snack','Apple 150g + Sunflower Seeds 25g','220 kcal | C28 P5 F12',1],
+        ['Dinner','Salata Baladi 180g + Labneh 100g + Olive Oil & Lemon 1 tbsp','360 kcal | C14 P9 F30',0]]},
+      {t:'Wednesday', type:'workout', s:'Training Day — Kofta & Rice', cal:'2,200 kcal', m:[
+        ['Pre-Workout','Baladi Bread (½ loaf) + Honey','115 kcal | C27 P2 F1',0],
+        ['Breakfast','Egyptian Yogurt 200g + Baladi Bread ¾ loaf (45g) + Honey 1 tsp + Banana 100g + Fresh Juice 150ml','450 kcal | C83 P20 F5',0],
+        ['Snack','Guava 150g + White Cheese 30g','210 kcal | C23 P8 F8',1],
+        ['Lunch','Grilled Kofta (lean beef) 200g + Egyptian Rice 200g + Spinach 100g + Carrots 65g + Olive Oil 1 tbsp','689 kcal | C62 P61 F24',0],
+        ['Snack','Banana 100g + Walnuts 30g','275 kcal | C27 P5 F19',1],
+        ['Dinner','Salata Baladi 220g + White Cheese 120g + Olive Oil & Lemon 1 tbsp','480 kcal | C17 P18 F38',0]]},
+      {t:'Thursday', type:'rest', s:'Rest Day — Beef & Sweet Potato', cal:'1,700 kcal', m:[
+        ['Breakfast','Areesh Cheese 100g + Baladi Bread 1 loaf (60g) + Tomato, Olives & Olive Oil 1 tsp + Banana 100g','450 kcal | C65 P26 F11',0],
+        ['Snack','Apple 150g + Almonds 25g','240 kcal | C27 P6 F14',1],
+        ['Lunch','Grilled Lean Beef 160g + Sweet Potato 180g + Bamia (Okra) 150g + Olive Oil 1 tbsp','560 kcal | C44 P49 F21',0],
+        ['Snack','Orange 150g + White Cheese 30g','185 kcal | C20 P8 F9',1],
+        ['Dinner','Salata Baladi 200g + White Cheese 100g + Olive Oil & Lemon 1 tbsp','420 kcal | C13 P16 F34',0]]},
+      {t:'Friday', type:'workout', s:'Training Day — Salmon & Rice', cal:'2,250 kcal', m:[
+        ['Pre-Workout','Baladi Bread (½ loaf) + Honey','110 kcal | C25 P2 F1',0],
+        ['Breakfast','Egyptian Yogurt 200g + Baladi Bread 1 loaf (60g) + Honey 1 tbsp + Orange Juice 200ml + Banana 75g','490 kcal | C86 P21 F6',0],
+        ['Snack','Guava 150g + Almonds 25g','260 kcal | C28 P7 F14',1],
+        ['Lunch','Grilled Salmon 180g + Egyptian Rice 250g + Mixed Roasted Zucchini, Pepper & Carrots 400g + Olive Oil 1 tbsp','878 kcal | C96 P50 F32',0],
+        ['Snack','Banana 100g + Walnuts 30g','275 kcal | C27 P5 F19',1],
+        ['Dinner','Salata Baladi 200g + Rumi Cheese 100g + Olive Oil & Lemon 1 tbsp','490 kcal | C12 P20 F40',0]]},
+      {t:'Saturday', type:'workout', s:'Training Day — Beef & Sweet Potato', cal:'2,180 kcal', m:[
+        ['Pre-Workout','Fresh Juice 150ml + Dates 2 pieces','115 kcal | C30 P1 F0',0],
+        ['Breakfast','Egyptian Yogurt 250g + Baladi Bread ¾ loaf (45g) + Honey 1 tsp + Banana 100g + Fresh Juice 80ml','430 kcal | C77 P20 F6',0],
+        ['Snack','Apple 150g + Sunflower Seeds 25g','220 kcal | C28 P5 F12',1],
+        ['Lunch','Grilled Lean Beef 190g + Sweet Potato 200g + Carrots 100g + Zucchini 120g + Olive Oil 1 tbsp','623 kcal | C50 P58 F20',0],
+        ['Snack','Guava 150g + Walnuts 30g','285 kcal | C27 P5 F19',1],
+        ['Dinner','Salad (parsley, tomato, cucumber) 200g + Grilled Halloumi 100g + Olive Oil & Lemon 1 tbsp','510 kcal | C14 P27 F41',0]]},
+      {t:'Sunday', type:'rest', s:'Rest Day — Fish & Rice', cal:'1,750 kcal', m:[
+        ['Breakfast','Ful Medames 150g + Baladi Bread 1 loaf (60g) + Egyptian Yogurt 100g + Orange 100g','405 kcal | C73 P23 F5',0],
+        ['Snack','Guava 150g + White Cheese 30g','210 kcal | C23 P8 F8',1],
+        ['Lunch','Grilled Fish 160g + Egyptian Rice 200g + Green Beans 200g + Olive Oil 1 tbsp','638 kcal | C65 P53 F18',0],
+        ['Snack','Apple 150g + Almonds 25g','240 kcal | C27 P6 F14',1],
+        ['Dinner','Salata Baladi 180g + Labneh 100g + Olive Oil & Lemon 1 tbsp','360 kcal | C14 P9 F30',0]]}
+    ]
+  }
+};
+
+let currentLang = "ar";
+
+function render(){
+  const L = T[currentLang];
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = L.dir;
+  document.body.className = L.bodyClass;
+
+  document.getElementById("langLabel").textContent = L.langLabel;
+  document.getElementById("langBtn").textContent = L.langBtn;
+  document.getElementById("authorLine").textContent = L.author;
+  document.getElementById("eyebrow1").textContent = L.eyebrow1;
+  document.getElementById("heroTitle").innerHTML = L.heroTitle;
+  document.getElementById("heroLead").textContent = L.heroLead;
+  document.getElementById("m1l").textContent = L.m1l;
+  document.getElementById("m1v").textContent = L.m1v;
+  document.getElementById("m2l").textContent = L.m2l;
+  document.getElementById("m2v").textContent = L.m2v;
+  document.getElementById("m3l").textContent = L.m3l;
+  document.getElementById("m3v").textContent = L.m3v;
+  document.getElementById("m4l").textContent = L.m4l;
+  document.getElementById("m4v").textContent = L.m4v;
+
+  document.getElementById("ey2").textContent = L.ey2;
+  document.getElementById("t-statsTitle").textContent = L.statsTitle;
+  document.getElementById("t-statsIntro").textContent = L.statsIntro;
+  document.getElementById("statSummary").innerHTML = L.statSummary;
+
+  const sg = document.getElementById("statGrid");
+  sg.innerHTML = "";
+  L.stats.forEach(s=>{
+    const div = document.createElement("div");
+    div.className = "stat" + (s.cls ? " "+s.cls : "");
+    div.innerHTML = `<div class="k">${s.k}</div><div class="v">${s.v} <small>${s.u}</small></div>${s.tag?`<span class="tag ${s.cls==='watch'?'fix':'ok'}">${s.tag}</span>`:''}`;
+    sg.appendChild(div);
+  });
+
+  document.getElementById("ey3").textContent = L.ey3;
+  document.getElementById("t-cycleTitle").textContent = L.cycleTitle;
+  document.getElementById("t-cycleIntro").textContent = L.cycleIntro;
+  document.getElementById("acc1h").textContent = L.acc1h;
+  document.getElementById("acc1body").textContent = L.acc1body;
+  document.getElementById("acc1note").textContent = L.acc1note;
+  document.getElementById("acc2h").textContent = L.acc2h;
+  document.getElementById("acc2body").textContent = L.acc2body;
+  document.getElementById("acc2note").textContent = L.acc2note;
+
+  document.getElementById("ey4").textContent = L.ey4;
+  document.getElementById("t-habitsTitle").textContent = L.habitsTitle;
+  document.getElementById("t-habitsIntro").textContent = L.habitsIntro;
+  const hg = document.getElementById("habitsGrid");
+  hg.innerHTML = "";
+  L.habits.forEach(h=>{
+    const div = document.createElement("div");
+    div.className = "habit";
+    div.innerHTML = `<span class="h-ic">${h[0]}</span><b>${h[1]}</b><span>${h[2]}</span>`;
+    hg.appendChild(div);
+  });
+  document.getElementById("waterTitle").textContent = L.waterTitle;
+  document.getElementById("waterSub").textContent = L.waterSub;
+  document.getElementById("watercount").textContent = L.waterCount;
+  // rebuild cups
+  const cups = document.getElementById("cups");
+  cups.innerHTML = "";
+  let water = 0;
+  for(let i=0;i<8;i++){
+    const c = document.createElement("div");
+    c.className = "cup"; c.textContent = "💧";
+    c.onclick = ()=>{
+      c.classList.toggle("full");
+      water = document.querySelectorAll(".cup.full").length;
+      const cnt = currentLang==="ar" ? (toAr(water)+" / ٨ كوبايات") : (water+" / 8 cups");
+      document.getElementById("watercount").textContent = cnt;
+    };
+    cups.appendChild(c);
+  }
+
+  document.getElementById("ey5").textContent = L.ey5;
+  document.getElementById("t-planTitle").textContent = L.planTitle;
+  document.getElementById("t-planIntro").textContent = L.planIntro;
+
+  document.getElementById("ey6").textContent = L.ey6;
+  document.getElementById("t-recTitle").textContent = L.recTitle;
+  document.getElementById("t-recIntro").textContent = L.recIntro;
+  document.getElementById("recTrainHead").textContent = L.recTrainHead;
+  document.getElementById("recRestHead").textContent = L.recRestHead;
+  const rt = document.getElementById("recTrain");
+  rt.innerHTML = "";
+  L.recTrain.forEach((r,i)=>{
+    const div = document.createElement("div");
+    div.className = "rec train"+(i+1);
+    div.innerHTML = `<h4>${r[0]}</h4><p>${r[1]}</p>`;
+    rt.appendChild(div);
+  });
+  const rr = document.getElementById("recRest");
+  rr.innerHTML = "";
+  L.recRest.forEach((r,i)=>{
+    const div = document.createElement("div");
+    div.className = "rec rest"+(i+1);
+    div.innerHTML = `<h4>${r[0]}</h4><p>${r[1]}</p>`;
+    rr.appendChild(div);
+  });
+
+  document.getElementById("closeTitle").textContent = L.closeTitle;
+  document.getElementById("closeP1").textContent = L.closeP1;
+  document.getElementById("closeP2").textContent = L.closeP2;
+  document.getElementById("closeSign").textContent = L.closeSign;
+  document.getElementById("footNote").textContent = L.footNote;
+
+  // build day tabs + panels
+  const bar = document.getElementById('daybar');
+  const wrap = document.getElementById('daywrap');
+  bar.innerHTML = "";
+  wrap.innerHTML = "";
+  const shortAr = ['إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت','أحد'];
+  const shortEn = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+  L.days.forEach((d,i)=>{
+    const typeLabel = currentLang==="ar" ? (d.type==='workout'?'تمرين':'راحة') : (d.type==='workout'?'Training':'Rest');
+    const b = document.createElement('button');
+    b.className = 'daybtn'+(i===0?' active':'');
+    const num = currentLang==="ar" ? toAr(i+1) : (i+1);
+    const sname = currentLang==="ar" ? shortAr[i] : shortEn[i];
+    b.innerHTML = num+'<small>'+sname+'</small>';
+    b.onclick = ()=>showDay(i);
+    bar.appendChild(b);
+
+    const p = document.createElement('div');
+    p.className = 'daypanel'+(i===0?' active':'');
+    p.id = 'day'+i;
+    let meals = '';
+    d.m.forEach((meal,j)=>{
+      meals += `<div class="meal ${meal[3]?'snack':''}" onclick="tickMeal(this,${i})">
+        <span class="check">✓</span><span class="lbl">${meal[0]}</span>
+        <span style="flex:1"><span class="txt">${meal[1]}</span><span class="macros">${meal[2]}</span></span></div>`;
+    });
+    const countLabel = currentLang==="ar" ? (toAr(0)+' / ٥') : '0 / 5';
+    p.innerHTML = `<div class="day"><div class="day-head">
+        <span class="day-num">${num}</span>
+        <div><div class="d-t">${d.t} — ${typeLabel}</div><div class="d-s">${d.s} · ${d.cal}</div></div>
+        <span class="d-count" id="count${i}">${countLabel}</span>
+      </div><div class="meals">${meals}</div></div>`;
+    wrap.appendChild(p);
+  });
+}
+
+function showDay(i){
+  document.querySelectorAll('.daybtn').forEach((b,k)=>b.classList.toggle('active',k===i));
+  document.querySelectorAll('.daypanel').forEach((p,k)=>p.classList.toggle('active',k===i));
+}
+function tickMeal(el,day){
+  el.classList.toggle('done');
+  const panel = document.getElementById('day'+day);
+  const done = panel.querySelectorAll('.meal.done').length;
+  const countEl = document.getElementById('count'+day);
+  countEl.textContent = currentLang==="ar" ? (toAr(done)+' / ٥') : (done+' / 5');
+}
+function toggleAcc(btn){
+  const acc = btn.parentElement;
+  const body = acc.querySelector('.acc-body');
+  const open = acc.classList.toggle('open');
+  body.style.maxHeight = open ? body.scrollHeight+'px' : 0;
+}
+function toggleLang(){
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
